@@ -291,6 +291,7 @@ en-US:
   accounts_small: accounts
   assigned_to: Assigned to
   billing_address: Billing address
+  child_accounts: Child Accounts
   create_account: Create Account
   date_created: Date Created
   date_updated: Date Updated
@@ -557,6 +558,7 @@ en-US:
   no_match: No %{value} match
   no_recent_items: There are no recent items to display yet.
   options: Options
+  parent: Parent
   permissions: Permissions
   please_retry: please try another query.
   recent_items: Recent Items

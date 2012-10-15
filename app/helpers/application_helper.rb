@@ -57,6 +57,13 @@ module ApplicationHelper
   end
 
   #----------------------------------------------------------------------------
+  def naked_section(related, assets)
+    asset = assets.to_s.singularize
+    html = tag(:br)
+    html << content_tag(:div, t(assets), :class => :subtitle, :id => "create_#{asset}_title")
+  end
+
+  #----------------------------------------------------------------------------
   def section(related, assets)
     asset = assets.to_s.singularize
     create_id  = "create_#{asset}"

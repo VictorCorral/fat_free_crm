@@ -21,4 +21,10 @@
 
   = render :partial => "versions/versions", :locals => {:object => @account}
 
+  = naked_section(@account, :child_accounts)
+  .list#accounts
+    - if @account.child_accounts.any?
+      = render @account.child_accounts
+
+
   = load_select_popups_for(@account, :tasks, :contacts, :opportunities)

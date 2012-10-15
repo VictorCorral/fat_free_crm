@@ -35,6 +35,9 @@
     %dt= lost != 0.0 ? number_to_currency(lost, :precision => 0) : t(:n_a)
     %tt #{t :lost}:
   %li
+    %dt= @account.parent_account ? link_to(@account.parent_account.name, account_path(@account.parent_account)) : t(:n_a)
+    %tt #{t :parent}:
+  %li
     %dt= @account.category ? t(@account.category) : t(:other)
     %tt #{t :category}:
   %li
