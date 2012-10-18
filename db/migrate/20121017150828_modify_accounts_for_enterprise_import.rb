@@ -23,7 +23,5 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     change_column :accounts, :fax, :string
     remove_column :accounts, :salesforce_id
     remove_column :accounts, :salesforce_parent_id
- #   remove_index :accounts, :column => :salesforce_id 
-#    remove_index :accounts, :column => :salesforce_parent_id 
   end
 end
