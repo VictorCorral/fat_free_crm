@@ -44,6 +44,7 @@ group :development, :test do
   # Uncomment the following two gems to deploy via Capistrano
   gem 'capistrano'
   gem 'capistrano_colors'
+  gem 'hasherize_csv', '0.0.1', :git => "git@github.apexclearing.local:bbradbury/hasherize_csv.git"
 
   gem 'rspec-rails', '~> 2.9.0'
   gem 'headless'

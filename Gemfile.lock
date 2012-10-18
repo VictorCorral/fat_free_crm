@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.apexclearing.local:bbradbury/hasherize_csv.git
+  revision: 3ebfbb229aac2c5e01eb7778cd919fa17325f7a7
+  specs:
+    hasherize_csv (0.0.1)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -287,6 +294,7 @@ DEPENDENCIES
   ffaker (>= 1.12.0)
   fuubar
   haml (~> 3)
+  hasherize_csv (= 0.0.1)!
   headless
   jquery-rails
   nokogiri

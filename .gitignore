@@ -30,5 +30,6 @@ Design
 .sass-cache
 *~
 *.swp
+*.swo
 *.gem
 

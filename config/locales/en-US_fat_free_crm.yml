@@ -31,12 +31,12 @@ en-US:
   admin_tab_settings: Settings
   admin_tab_plugins: Plugins
 
-  affiliate: Affiliate
-  competitor: Competitor
-  customer: Customer
-  partner: Partneradm
-  reseller: Reseller
-  vendor: Vendor
+#  affiliate: Affiliate
+#  competitor: Competitor
+#  customer: Customer
+#  partner: Partneradm
+#  reseller: Reseller
+#  vendor: Vendor
 
   planned: Planned
   started: Started

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015173558) do
+ActiveRecord::Schema.define(:version => 20121017150828) do
 
   create_table "account_contacts", :force => true do |t|
     t.integer  "account_id"
@@ -32,19 +32,19 @@ ActiveRecord::Schema.define(:version => 20121015173558) do
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "assigned_to"
-    t.string   "name",              :limit => 64, :default => "",       :null => false
-    t.string   "access",            :limit => 8,  :default => "Public"
-    t.string   "website",           :limit => 64
-    t.string   "toll_free_phone",   :limit => 32
-    t.string   "phone",             :limit => 32
-    t.string   "fax",               :limit => 32
+    t.text     "name",                           :default => "",       :null => false
+    t.string   "access",            :limit => 8, :default => "Public"
+    t.text     "website"
+    t.text     "toll_free_phone"
+    t.text     "phone"
+    t.text     "fax"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
-    t.string   "email",             :limit => 64
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.text     "email"
     t.string   "background_info"
-    t.integer  "rating",                          :default => 0,        :null => false
-    t.string   "category",          :limit => 32
+    t.integer  "rating",                         :default => 0,        :null => false
+    t.text     "category"
     t.text     "subscribed_users"
     t.integer  "parent_account_id"
   end
