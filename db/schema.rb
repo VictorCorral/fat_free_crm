@@ -32,24 +32,28 @@ ActiveRecord::Schema.define(:version => 20121017150828) do
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "assigned_to"
-    t.text     "name",                           :default => "",       :null => false
-    t.string   "access",            :limit => 8, :default => "Public"
+    t.text     "name",                              :default => "",       :null => false
+    t.string   "access",               :limit => 8, :default => "Public"
     t.text     "website"
     t.text     "toll_free_phone"
     t.text     "phone"
     t.text     "fax"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
     t.text     "email"
     t.string   "background_info"
-    t.integer  "rating",                         :default => 0,        :null => false
+    t.integer  "rating",                            :default => 0,        :null => false
     t.text     "category"
     t.text     "subscribed_users"
     t.integer  "parent_account_id"
+    t.string   "salesforce_id"
+    t.string   "salesforce_parent_id"
   end
 
   add_index "accounts", ["assigned_to"], :name => "index_accounts_on_assigned_to"
+  add_index "accounts", ["salesforce_id"], :name => "index_accounts_on_salesforce_id", :unique => true
+  add_index "accounts", ["salesforce_parent_id"], :name => "index_accounts_on_salesforce_parent_id"
   add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at", :unique => true
 
   create_table "activities", :force => true do |t|

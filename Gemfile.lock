@@ -1,8 +1,8 @@
 GIT
   remote: git@github.apexclearing.local:bbradbury/hasherize_csv.git
-  revision: 3ebfbb229aac2c5e01eb7778cd919fa17325f7a7
+  revision: c4d46b675b7b837480d1de0d914f2dcca3ed18d5
   specs:
-    hasherize_csv (0.0.1)
+    hasherize_csv (0.0.2)
       activesupport (>= 3.0.0)
 
 GEM
@@ -29,6 +29,9 @@ GEM
       activesupport (= 3.2.8)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-import (0.2.11)
+      activerecord (~> 3.0)
+      activerecord (~> 3.0)
     activeresource (3.2.8)
       activemodel (= 3.2.8)
       activesupport (= 3.2.8)
@@ -272,6 +275,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import (~> 0.2.11)
   acts-as-taggable-on (~> 2.3.3)
   acts_as_commentable (~> 3.0.1)
   acts_as_fu (~> 0.0.8)
@@ -294,7 +298,7 @@ DEPENDENCIES
   ffaker (>= 1.12.0)
   fuubar
   haml (~> 3)
-  hasherize_csv (= 0.0.1)!
+  hasherize_csv (= 0.0.2)!
   headless
   jquery-rails
   nokogiri

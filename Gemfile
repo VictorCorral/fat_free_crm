@@ -5,6 +5,7 @@ source :rubygems
 # gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
 gem 'pg', '~> 0.13.2'
+gem "activerecord-import", "~> 0.2.11"
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
 # See README for more info at: https://github.com/ndbroadbent/bundler_local_development
@@ -44,7 +45,7 @@ group :development, :test do
   # Uncomment the following two gems to deploy via Capistrano
   gem 'capistrano'
   gem 'capistrano_colors'
-  gem 'hasherize_csv', '0.0.1', :git => "git@github.apexclearing.local:bbradbury/hasherize_csv.git"
+  gem 'hasherize_csv', '0.0.2', :git => "git@github.apexclearing.local:bbradbury/hasherize_csv.git"
 
   gem 'rspec-rails', '~> 2.9.0'
   gem 'headless'

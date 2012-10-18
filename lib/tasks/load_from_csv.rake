@@ -1,7 +1,36 @@
 require 'hasherize_csv' 
 require 'fileutils'
 
+def loadAccounts( accounts )
+    failed_instances = []
+    num_inserts = 0
+    ActiveRecord::Base.transaction do 
+       accounts.each do |a|
+          res = a.save 
+          if res 
+           num_inserts = num_inserts + 1
+          else 
+           failed_instances << a 
+          end
+       end
+    end
+
+    Rails.logger.info("Import complete; #{num_inserts}")
+    if failed_instances.count > 0
+      Rails.logger.info("Import failed for following: #{failed_instances.join('\n')}")
+    end
+end
+
 namespace :load_csv do
+    desc "Associated accounts with each other based on Salesforceid"
+    task :associate_accounts => :environment do 
+       children = Account.where("'salesforce_parent_id' IS NOT NULL")
+       children.each do |child|
+         child.parent_account = Account.find_by_salesforce_id(child.salesforce_parent_id)
+         child.save
+       end
+    end
+
     desc "Load accounts from a salesforce csv"
     task :accounts => :environment do
 	if defined?(Rails) && (Rails.env == 'development')
@@ -12,8 +41,10 @@ namespace :load_csv do
 	f = File.new filename
         csv = HasherizeCsv::Csv.new(f, HasherizeCsv::DefaultOpts::SALESFORCE)
 	Account.observers.disable :all do #Otherwise 'recent activity' goes bananas
+                accounts = []
+                i = 0
 		csv.each do |h| 
-		   a = Account.new(
+		   accounts << Account.new(
                      :salesforce_id => h["Id"],
                      :salesforce_parent_id => h["ParentId"],
 		     :user => User.first,
@@ -38,14 +69,16 @@ namespace :load_csv do
 			:country => h["ShippingCountry"],
 			:address_type => 'Shipping', #shouldn't need to specify that... but we do. Probably a activerecord bug with ":conditions" on mass assignment
 		      },
-
 		   )
-		   success = a.save
-		   if !success
-		     Rails.logger.error("Couldn't save #{a.inspect}:")
-		     Rails.logger.error(a.errors.full_messages.join("\n"))
-		   end
-		end
+                 i = i + 1; if i % 1000 == 0
+                  Rails.logger.info("#{i}: begin db load")
+                  loadAccounts(accounts)
+                  accounts = []
+                 end
+               end
+               Rails.logger.info("#{i}: begin db load")
+               loadAccounts(accounts)
+              
 	end
     end
 end

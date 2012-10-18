@@ -7,8 +7,10 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     change_column :accounts, :toll_free_phone, :text
     change_column :accounts, :phone, :text
     change_column :accounts, :fax, :text
-    add_column :accounts, :salesforce_id, :text
-    add_column :accounts, :salesforce_parent_id, :text
+    add_column :accounts, :salesforce_id, :string, :length => 20
+    add_column :accounts, :salesforce_parent_id, :string, :length => 20
+    add_index :accounts, :salesforce_id, :unique => true 
+    add_index :accounts, :salesforce_parent_id, :unique => false 
   end
 
   def down
@@ -19,7 +21,9 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     change_column :accounts, :toll_free_phone, :string
     change_column :accounts, :phone, :string
     change_column :accounts, :fax, :string
-    remove_column :accounts, :salesforce_id, :text
-    remove_column :accounts, :salesforce_parent_id, :text
+    remove_column :accounts, :salesforce_id
+    remove_column :accounts, :salesforce_parent_id
+ #   remove_index :accounts, :column => :salesforce_id 
+#    remove_index :accounts, :column => :salesforce_parent_id 
   end
 end
