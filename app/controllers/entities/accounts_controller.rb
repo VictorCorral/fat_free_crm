@@ -21,10 +21,18 @@ class AccountsController < EntitiesController
   # GET /accounts
   #----------------------------------------------------------------------------
   def index
-    @accounts = get_accounts(:page => params[:page])
-    
-    respond_with @accounts do |format|
-      format.xls { render :layout => 'header' }
+      if params.has_key?(:email)
+        @accounts = Account.find_by_email(params[:email])
+
+        respond_with @accounts do |format|
+          format.json { render :json =>
+            @accounts.nil? ? [] : @accounts.to_json(:include => [:contacts, :billing_address, :shipping_address])}
+        end
+      else
+        @accounts = get_accounts(:page => params[:page])
+        respond_with @accounts do |format|
+          format.xls { render :layout => 'header' }
+      end
     end
   end
 

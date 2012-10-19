@@ -25,8 +25,16 @@ class ContactsController < EntitiesController
     @contacts = get_contacts(:page     => params[:page],
                              :per_page => params[:per_page])
     
-    respond_with @contacts do |format|
-      format.xls { render :layout => 'header' }
+    if params.has_key?(:email)
+      @contacts = Contact.find_by_email(params[:email])
+      respond_with @contacts do |format|
+        format.json { render :json =>
+          @contacts.nil? ? [] : @contacts.to_json(:include => [:account, :business_address]) }
+      end
+    else
+      respond_with @contacts do |format|
+        format.xls { render :layout => 'header' }
+      end
     end
   end
 
