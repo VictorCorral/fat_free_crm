@@ -94,6 +94,8 @@ This is the best way to deploy Fat Free CRM if you need to add plugins or make a
 
 Clone the repo
 
+Install RVM and use it to install and use ruby-1.9.3-p125.  Instructions can be found at [[https://rvm.io/rvm/install/]].
+
 Install postgresql:
 
 ```sudo apt-get install postgresql```
