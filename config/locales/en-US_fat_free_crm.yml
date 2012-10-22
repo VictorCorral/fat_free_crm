@@ -31,12 +31,42 @@ en-US:
   admin_tab_settings: Settings
   admin_tab_plugins: Plugins
 
-#  affiliate: Affiliate
-#  competitor: Competitor
-#  customer: Customer
-#  partner: Partneradm
-#  reseller: Reseller
-#  vendor: Vendor
+  affiliate: Affiliate
+  competitor: Competitor
+  customer: Customer
+  partner: Partneradm
+  reseller: Reseller
+  vendor: Vendor
+
+  # Custom Account Categories defined in settings.yml
+  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  office: Office
+  correspondent_pfsl: Correspondent PFSL
+  correspondent_type_1: Correspondent Type 1
+  correspondent_type_2: Correspondent Type 2
+  correspondent_type_3: Correspondent Type 3
+  correspondent_type_4: Correspondent Type 4
+  other_pfsc: Other PFSC
+  branch: Branch
+  pm: PM
+  pfsi_internal: PFSI Internal
+  prospect_pfsc: Prospect PFSC
+  tick_data: Tick Data
+  customer: Customer
+  nexa: Nexa
+  correspondent: Correspondent
+  type: Type
+  competitor: Competitor
+  press: Press
+  omnibus_pfsc: Omnibus PFSC
+  other: Other
+  "3rd_party": 3rd Party
+  service_provider: Service Provider
+  dma: DMA
+  fx_business: FX Business
+  partner: Partner
+  prospect: Prospect
+  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   planned: Planned
   started: Started
