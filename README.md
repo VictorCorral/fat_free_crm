@@ -104,7 +104,7 @@ Install gem dependencies:
 
 Run the following command from the application’s root directory:
 
-```bundle install --without heroku``
+```bundle install --without heroku```
 
 Configure Postgres to play nice with Rails:
 
