@@ -90,6 +90,47 @@ Run this bash script to quickly setup a Ubuntu server
 Run the Fat Free CRM gem within a separate Rails application.
 This is the best way to deploy Fat Free CRM if you need to add plugins or make any customizations.
 
+## ACS installation steps
+
+Clone the repo
+
+Install postgresql:
+
+```sudo apt-get install postgresql```
+
+Install gem dependencies:
+
+```sudo apt-get install libmagick+-dev libxml2 libxml2-dev libxslt1-dev libyaml-dev libpq-dev libsqlite3-dev```
+
+Run the following command from the application’s root directory:
+
+```bundle install --without heroku``
+
+Configure Postgres to play nice with Rails:
+
+```bash
+sudo pg_dropcluster --stop 9.1 main
+sudo pg_createcluster --start -e UTF-8 9.1 main
+sudo vim /etc/postgresql/9.1/main/pg_hba.conf
+```
+
+Go to the bottom of the page.  At the end of each line, change the privilege keyword to **trust**
+
+Restart postgres:
+
+```sudo /etc/init.d/postgresql restart```
+
+Create the database:
+
+```rake db:create```
+
+Set up the admin user:
+
+```rake ffcrm:setup```
+
+Run the app:
+
+```rails server```
 
 ## Upgrading from previous versions of Fat Free CRM
 
