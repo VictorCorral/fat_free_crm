@@ -1,0 +1,2269 @@
+{
+    "contact": {
+        "Fields": {
+            "Email": {
+                "label": "Email",
+                "required": false,
+                "editable": false,
+                "datatype": "email",
+                "hint": "Email is primarily used for Notifications and Cases"
+            },
+            "HasOptedOutOfEmail": {
+                "label": "Email Opt Out",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "HomePhone": {
+                "label": "Home Phone",
+                "required": false,
+                "editable": false,
+                "datatype": "phone"
+            },
+            "Alt_Email__c": {
+                "label": "Alternate Email",
+                "required": false,
+                "editable": false,
+                "datatype": "email",
+                "hint": "Alternate Email Address other than the main email address listed for the contact."
+            },
+            "Pager__c": {
+                "label": "Pager",
+                "required": false,
+                "editable": false,
+                "datatype": "phone"
+            },
+            "Addt_l_Email__c": {
+                "label": "Addt'l Email",
+                "required": false,
+                "editable": false,
+                "datatype": "email",
+                "hint": "Alternate Email Address other than the main email address listed for the contact."
+            },
+            "Status__c": {
+                "label": "Status",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Active",
+                    "Closed",
+                    "No Longer With Firm",
+                    "Suspended"
+                ]
+            },
+            "Contact_Name__c": {
+                "label": "Contact Name",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Date_Closed__c": {
+                "label": "Date Closed",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Focus_Group_Invite__c": {
+                "label": "Focus Group Invite",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean",
+                "hint": "Designated on contact sheet to be added to the Focus Group Invitation list"
+            },
+            "Auth_Trading_Instrx__c": {
+                "label": "Auth. Trading Instrx",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "AutoNumber_Contact__c": {
+                "label": "AutoNumber_ Contact",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Unique ID/Key for updates in contact data"
+            },
+            "Do_Not_Replicate__c": {
+                "label": "Do Not Replicate",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean",
+                "hint": "Checkbox is for 3rd party or generic contacts that should not replicate over to CMT"
+            },
+            "Authorized__c": {
+                "label": "R_Authorized",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Yes - Authorized",
+                    "No - Not Authorized"
+                ],
+                "hint": "Authorized Contact - See Contact Form"
+            },
+            "RidgeBranches__c": {
+                "label": "R_Ridge Branches",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea",
+                "hint": "Ridge Branches \u2013 enter Branch number / numbers this contact has access to followed by a comma (like 123,456)"
+            },
+            "BranchNumberCheck__c": {
+                "label": "BranchNumberCheck",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            }
+        },
+        "Entitlements": {
+            "Does_the_Contact_have_P3_user_id__c": {
+                "label": "Does the Contact have P3 user id?",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Unknown",
+                    "No",
+                    "Yes"
+                ]
+            },
+            "FTP_Login__c": {
+                "label": "FTP Login",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "P3_Userid__c": {
+                "label": "P3 Userid",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "FTP_Date_Ticket__c": {
+                "label": "FTP Date/Ticket #",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea"
+            },
+            "P3_User_id_2nd__c": {
+                "label": "P3 User id (2nd)",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "CIP_OFAC_ID__c": {
+                "label": "CIP (OFAC) ID",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea"
+            },
+            "P3_Web_UI_id__c": {
+                "label": "P3 Web UI id",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Imdemnification_Form__c": {
+                "label": "Indemnification Form",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Yes",
+                    "No"
+                ]
+            },
+            "Profile_Id__c": {
+                "label": "Profile Id",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "Comp__c": {
+                "label": "Comp",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "External"
+                ]
+            },
+            "Profile__c": {
+                "label": "Profile",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Correspondent",
+                    "Corr with ORD Agr",
+                    "TradeKing",
+                    "Corr with ORD Agr Foreign",
+                    "Corr with Profile",
+                    "Corr with ORD Agr Profile",
+                    "Corr with ORD Agr Foreign/Profile",
+                    "Corr and UPDCUS",
+                    "TradeKing ORD Agr",
+                    "Corr wtih N/A",
+                    "Corr with ORD Agr N/A",
+                    "Corr with ORD Agr Foreign/N/A",
+                    "Corr with Profile/N/A",
+                    "Corr with ORD Agr - Order Entry Only",
+                    "Corr with ORD Agr - Correct Only",
+                    "Corr with ORD Agr - Foreign Order Entry Only",
+                    "Corr wtih ORD Agr with N/A/Profile",
+                    "Regal",
+                    "SAMCO",
+                    "SAMCO1",
+                    "SAMCO2",
+                    "SAMCO ORD Entry w/ PRF",
+                    "KIM",
+                    "SAMCO3"
+                ]
+            },
+            "Dept__c": {
+                "label": "Dept",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "External"
+                ]
+            }
+        },
+        "Other Information": {
+            "OtherPhone": {
+                "label": "Other Phone",
+                "required": false,
+                "editable": false,
+                "datatype": "phone"
+            },
+            "Department": {
+                "label": "Department",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Birthdate": {
+                "label": "Birthdate",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "AssistantPhone": {
+                "label": "Asst. Phone",
+                "required": false,
+                "editable": false,
+                "datatype": "phone"
+            },
+            "Title": {
+                "label": "Title",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "LeadSource": {
+                "label": "Lead Source",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "2008 -CFA Conference",
+                    "2008  Conference/TradeShow",
+                    "Advertisement",
+                    "Aleri",
+                    "BOTQ",
+                    "BOTQ_2011.06.15",
+                    "BT Radianz",
+                    "CBOE Referral",
+                    "CCS Referral",
+                    "Cold Call",
+                    "Contacted by Prospect",
+                    "CSI",
+                    "Deltix",
+                    "Employee Referral",
+                    "Existing Client",
+                    "External Referral",
+                    "FIA08",
+                    "FIA 2009",
+                    "First Derivatives",
+                    "Former Penson correspondent",
+                    "IAFE",
+                    "Industry Event",
+                    "Latent Columbus",
+                    "Marco Polo",
+                    "MEG referral",
+                    "Netezza",
+                    "OneTick",
+                    "Other",
+                    "Partner",
+                    "Penson.ca Website",
+                    "Penson Clearly Print",
+                    "Penson Clearly Website",
+                    "PensonPrime Website",
+                    "Penson Referral",
+                    "Public Relations",
+                    "Quant House",
+                    "QuoteMedia Referral",
+                    "Referral - Existing Customer",
+                    "Referral - Internal Penson dept",
+                    "Referral - Third Party Vendor",
+                    "RinFIN_0512",
+                    "SIA '08",
+                    "SIFMA 08",
+                    "SIFMA 09",
+                    "Stellar Trading",
+                    "StreamBase",
+                    "StreetSight",
+                    "TCT_Australia",
+                    "TD_Boris",
+                    "TD_Event_080527",
+                    "TD_Event_080610",
+                    "TD_Fitz",
+                    "TD_Prime_BAML_lon",
+                    "TD_Prime_BAML_nyc",
+                    "TD_Prime_Barcap_lon",
+                    "TD_Prime_Barcap_nyc",
+                    "TD_Prime_Citi_nyc",
+                    "TD_Prime_CS_nyc",
+                    "TD_Prime_GS_lon",
+                    "TD_Prime_GS_nyc",
+                    "TD_Prime_JPM_chi",
+                    "TD_Prime_MS_lon",
+                    "TD_Prime_MS_nyc",
+                    "TD_Prime_NE_lon",
+                    "TD_Web",
+                    "Tick Data Referral",
+                    "Trade Show",
+                    "Tradeware Global",
+                    "TSX Event '05",
+                    "Web",
+                    "Web Seminar",
+                    "Word of Mouth"
+                ]
+            },
+            "LastCURequestDate": {
+                "label": "Last Stay-in-Touch Request Date",
+                "required": false,
+                "editable": false,
+                "datatype": "datetime"
+            },
+            "Opinionofourcompany__c": {
+                "label": "Opinion of our company",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Positive",
+                    "Neutral",
+                    "Negative",
+                    "Highly Negative",
+                    "Highly Positive"
+                ]
+            },
+            "LastCUUpdateDate": {
+                "label": "Last Stay-in-Touch Save Date",
+                "required": false,
+                "editable": false,
+                "datatype": "datetime"
+            },
+            "PreviousCompany__c": {
+                "label": "Previous Company",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "ContactID__c": {
+                "label": "ContactID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "EmailID__c": {
+                "label": "EmailID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "DoNotCall": {
+                "label": "Do Not Call",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "PhoneID__c": {
+                "label": "PhoneID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "FaxID__c": {
+                "label": "FaxID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "MobileID__c": {
+                "label": "MobileID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "HomePhoneID__c": {
+                "label": "HomePhoneID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "Phone_Number_on_Notification__c": {
+                "label": "Phone Number on Notification",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "PagerID__c": {
+                "label": "PagerID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            }
+        },
+        "CR": {
+            "Company1__c": {
+                "label": "Company1",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Company4__c": {
+                "label": "Company4",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Title1__c": {
+                "label": "Title1",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "ACAT Contact",
+                    "AMA Services",
+                    "Banking Contact",
+                    "Buy-Ins Contact",
+                    "CCO",
+                    "CEO",
+                    "CFO",
+                    "Compliance Contact",
+                    "Conversion Contact",
+                    "Corp Actions Contact",
+                    "Customer Service",
+                    "Dealer Cashiering Contact",
+                    "Dividends Contact",
+                    "DK Notices",
+                    "Domestic Settlements Contact",
+                    "Emergency",
+                    "Fixed Income Operations",
+                    "FTP Contact",
+                    "Institutional",
+                    "International Settlements Contact",
+                    "IRA Contact",
+                    "IT Support",
+                    "Margins Contact",
+                    "Mutual Fund Contact",
+                    "New Accts Contact",
+                    "Office Manager",
+                    "Office Owner",
+                    "Operations Contact",
+                    "Operations Manager",
+                    "P&S Contact",
+                    "President",
+                    "Primary Relationship Contact",
+                    "Risk Contact",
+                    "Settlements Contact",
+                    "Stock Loan Contact",
+                    "Stock Receipts Contact",
+                    "Tax",
+                    "Technology Contact",
+                    "Trading Contact",
+                    "Upload Contact"
+                ]
+            },
+            "Title4__c": {
+                "label": "Title4",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "ACAT Contact",
+                    "AMA Services",
+                    "Banking Contact",
+                    "Buy-Ins Contact",
+                    "CCO",
+                    "CEO",
+                    "CFO",
+                    "Compliance Contact",
+                    "Conversion Contact",
+                    "Corp Actions Contact",
+                    "Customer Service",
+                    "Dealer Cashiering Contact",
+                    "Dividends Contact",
+                    "DK Notices",
+                    "Domestic Settlements Contact",
+                    "Emergency",
+                    "Fixed Income Operations",
+                    "FTP Contact",
+                    "Institutional",
+                    "International Settlements Contact",
+                    "IRA Contact",
+                    "IT Support",
+                    "Margins Contact",
+                    "Mutual Fund Contact",
+                    "New Accts Contact",
+                    "Office Manager",
+                    "Office Owner",
+                    "Operations Contact",
+                    "Operations Manager",
+                    "P&S Contact",
+                    "President",
+                    "Primary Relationship Contact",
+                    "Risk Contact",
+                    "Settlements Contact",
+                    "Stock Loan Contact",
+                    "Stock Receipts Contact",
+                    "Tax",
+                    "Technology Contact",
+                    "Trading Contact",
+                    "Upload Contact"
+                ]
+            },
+            "AuthorizedSigner1__c": {
+                "label": "AuthorizedSigner1",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "AuthorizedSigner4__c": {
+                "label": "AuthorizedSigner4",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "CorrespondentLevel1__c": {
+                "label": "CorrespondentLevel1",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "CorrespondentLevel4__c": {
+                "label": "CorrespondentLevel4",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "Company2__c": {
+                "label": "Company2",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Company5__c": {
+                "label": "Company5",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Title2__c": {
+                "label": "Title2",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "ACAT Contact",
+                    "AMA Services",
+                    "Banking Contact",
+                    "Buy-Ins Contact",
+                    "CCO",
+                    "CEO",
+                    "CFO",
+                    "Compliance Contact",
+                    "Conversion Contact",
+                    "Corp Actions Contact",
+                    "Customer Service",
+                    "Dealer Cashiering Contact",
+                    "Dividends Contact",
+                    "DK Notices",
+                    "Domestic Settlements Contact",
+                    "Emergency",
+                    "Fixed Income Operations",
+                    "FTP Contact",
+                    "Institutional",
+                    "International Settlements Contact",
+                    "IRA Contact",
+                    "IT Support",
+                    "Margins Contact",
+                    "Mutual Fund Contact",
+                    "New Accts Contact",
+                    "Office Manager",
+                    "Office Owner",
+                    "Operations Contact",
+                    "Operations Manager",
+                    "P&S Contact",
+                    "President",
+                    "Primary Relationship Contact",
+                    "Risk Contact",
+                    "Settlements Contact",
+                    "Stock Loan Contact",
+                    "Stock Receipts Contact",
+                    "Tax",
+                    "Technology Contact",
+                    "Trading Contact",
+                    "Upload Contact"
+                ]
+            },
+            "Title5__c": {
+                "label": "Title5",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "ACAT Contact",
+                    "AMA Services",
+                    "Banking Contact",
+                    "Buy-Ins Contact",
+                    "CCO",
+                    "CEO",
+                    "CFO",
+                    "Compliance Contact",
+                    "Conversion Contact",
+                    "Corp Actions Contact",
+                    "Customer Service",
+                    "Dealer Cashiering Contact",
+                    "Dividends Contact",
+                    "DK Notices",
+                    "Domestic Settlements Contact",
+                    "Emergency",
+                    "Fixed Income Operations",
+                    "FTP Contact",
+                    "Institutional",
+                    "International Settlements Contact",
+                    "IRA Contact",
+                    "IT Support",
+                    "Margins Contact",
+                    "Mutual Fund Contact",
+                    "New Accts Contact",
+                    "Office Manager",
+                    "Office Owner",
+                    "Operations Contact",
+                    "Operations Manager",
+                    "P&S Contact",
+                    "President",
+                    "Primary Relationship Contact",
+                    "Risk Contact",
+                    "Settlements Contact",
+                    "Stock Loan Contact",
+                    "Stock Receipts Contact",
+                    "Tax",
+                    "Technology Contact",
+                    "Trading Contact",
+                    "Upload Contact"
+                ]
+            },
+            "AuthorizedSigner2__c": {
+                "label": "AuthorizedSigner2",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "AuthorizedSigner5__c": {
+                "label": "AuthorizedSigner5",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "CorrespondentLevel2__c": {
+                "label": "CorrespondentLevel2",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "CorrespondentLevel5__c": {
+                "label": "CorrespondentLevel5",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "Company3__c": {
+                "label": "Company3",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Company6__c": {
+                "label": "Company6",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Title3__c": {
+                "label": "Title3",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "ACAT Contact",
+                    "AMA Services",
+                    "Banking Contact",
+                    "Buy-Ins Contact",
+                    "CCO",
+                    "CEO",
+                    "CFO",
+                    "Compliance Contact",
+                    "Conversion Contact",
+                    "Corp Actions Contact",
+                    "Customer Service",
+                    "Dealer Cashiering Contact",
+                    "Dividends Contact",
+                    "DK Notices",
+                    "Domestic Settlements Contact",
+                    "Emergency",
+                    "Fixed Income Operations",
+                    "FTP Contact",
+                    "Institutional",
+                    "International Settlements Contact",
+                    "IRA Contact",
+                    "IT Support",
+                    "Margins Contact",
+                    "Mutual Fund Contact",
+                    "New Accts Contact",
+                    "Office Manager",
+                    "Office Owner",
+                    "Operations Contact",
+                    "Operations Manager",
+                    "P&S Contact",
+                    "President",
+                    "Primary Relationship Contact",
+                    "Risk Contact",
+                    "Settlements Contact",
+                    "Stock Loan Contact",
+                    "Stock Receipts Contact",
+                    "Tax",
+                    "Technology Contact",
+                    "Trading Contact",
+                    "Upload Contact"
+                ]
+            },
+            "Title6__c": {
+                "label": "Title6",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "ACAT Contact",
+                    "AMA Services",
+                    "Banking Contact",
+                    "Buy-Ins Contact",
+                    "CCO",
+                    "CEO",
+                    "CFO",
+                    "Compliance Contact",
+                    "Conversion Contact",
+                    "Corp Actions Contact",
+                    "Customer Service",
+                    "Dealer Cashiering Contact",
+                    "Dividends Contact",
+                    "DK Notices",
+                    "Domestic Settlements Contact",
+                    "Emergency",
+                    "Fixed Income Operations",
+                    "FTP Contact",
+                    "Institutional",
+                    "International Settlements Contact",
+                    "IRA Contact",
+                    "IT Support",
+                    "Margins Contact",
+                    "Mutual Fund Contact",
+                    "New Accts Contact",
+                    "Office Manager",
+                    "Office Owner",
+                    "Operations Contact",
+                    "Operations Manager",
+                    "P&S Contact",
+                    "President",
+                    "Primary Relationship Contact",
+                    "Risk Contact",
+                    "Settlements Contact",
+                    "Stock Loan Contact",
+                    "Stock Receipts Contact",
+                    "Tax",
+                    "Technology Contact",
+                    "Trading Contact",
+                    "Upload Contact"
+                ]
+            },
+            "AuthorizedSigner3__c": {
+                "label": "AuthorizedSigner3",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "AuthorizedSigner6__c": {
+                "label": "AuthorizedSigner6",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "CorrespondentLevel3__c": {
+                "label": "CorrespondentLevel3",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "CorrespondentLevel6__c": {
+                "label": "CorrespondentLevel6",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "MisMatch_but_Verified__c": {
+                "label": "MisMatch but Verified",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            }
+        }
+    },
+    "account": {
+        "Account Information": {
+            "Name": {
+                "label": "Account Name",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Firm__c": {
+                "label": "Firm #",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "07 (Penson US)",
+                    "10 (Client 10)",
+                    "08 (Penson Canada)",
+                    "15",
+                    "66 (VMD)",
+                    "79 (TD)",
+                    "87 (Penson UK)",
+                    "88 (CBOE)"
+                ]
+            },
+            "Status__c": {
+                "label": "Status",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Active",
+                    "Net Cap Violation",
+                    "Inactive",
+                    "Suspended",
+                    "Closed"
+                ]
+            },
+            "Relationship_Manager__c": {
+                "label": "Relationship Manager",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Alan Ramsey",
+                    "Amy McLean",
+                    "Ben Lee",
+                    "Bob Benazzi",
+                    "Cliff Doungdara",
+                    "Frank Hess",
+                    "Jim Cott",
+                    "Joseph Bonarrigo",
+                    "Josh Oldham",
+                    "Karen Snow",
+                    "Keith Seager",
+                    "Llynal Carey",
+                    "Mark Fawver",
+                    "Michael Combs",
+                    "Michael Lanyon",
+                    "Michael Scaplen",
+                    "Milan Doshi",
+                    "Nelson Whipple",
+                    "Paige Leija",
+                    "Pat Hasselmann",
+                    "Ryan Dill",
+                    "Scott Wood",
+                    "Sean Halayko",
+                    "Warren Bunting",
+                    "Yvette Gomez",
+                    "Zeke Heninger"
+                ]
+            },
+            "Primary_Contact__c": {
+                "label": "Primary Contact",
+                "required": false,
+                "editable": false,
+                "datatype": "reference"
+            },
+            "Secondary_RM__c": {
+                "label": "Secondary RM",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Alan Ramsey",
+                    "Amy McLean",
+                    "Ben Lee",
+                    "Bob Benazzi",
+                    "Cliff Doungdara",
+                    "Frank Hess",
+                    "Jim Cott",
+                    "Joseph Bonarrigo",
+                    "Josh Oldham",
+                    "Karen Snow",
+                    "Keith Seager",
+                    "Llynal Carey",
+                    "Michael Combs",
+                    "Michael Lanyon",
+                    "Michael Scaplen",
+                    "Milan Doshi",
+                    "Nelson Whipple",
+                    "Pat Hasselmann",
+                    "Ryan Dill",
+                    "Scott Wood",
+                    "Sean Halyko",
+                    "Warren Bunting",
+                    "Yvetter Gomez"
+                ]
+            },
+            "Conversion_Date__c": {
+                "label": "Conversion Date",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "must be populated to each office, date required if converting. Must be a date string as mm/dd/yyyy."
+            },
+            "Sales_Person__c": {
+                "label": "Sales Person",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Chris Chen",
+                    "Doug Throckmorton",
+                    "Frank Kost",
+                    "Jack Boyle",
+                    "Jean Quesnel",
+                    "Jeff Bega",
+                    "Jessica Thompson",
+                    "John Duffy",
+                    "Karen Wills",
+                    "Kat Cook",
+                    "Ken Jones",
+                    "Kevin Vanderheyden",
+                    "Kristin Mologousis",
+                    "Lise Catterall",
+                    "Llynal Carey",
+                    "Mark Munoz",
+                    "Michael Scaplen",
+                    "Michelle Withrington",
+                    "Mike Ward",
+                    "Peadar Duignan",
+                    "Peter Wind",
+                    "Sandra Cardoso",
+                    "Sean Malloy",
+                    "Sharron Davey",
+                    "Shaun Crowley",
+                    "Sruli Schorr",
+                    "Stephen Cosburn",
+                    "Stuart Lawler",
+                    "Thomas Singley",
+                    "Tim Weiss",
+                    "Tom Myers",
+                    "Vincent Traina",
+                    "Warren Bunting"
+                ]
+            },
+            "Happy_Factor__c": {
+                "label": "Happy Factor",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Completely Happy",
+                    "Outstanding issues and not happy with time for completion, not exactly Happy",
+                    "Outstanding issues but patiently waiting, Happy",
+                    "RM needs to call this client to discuss issue, Critically Unhappy",
+                    "Very unhappy"
+                ]
+            },
+            "Deposit_Release_Date__c": {
+                "label": "Deposit Release Date",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "Closed_Correspondent__c": {
+                "label": "Closed Correspondent",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "BDW",
+                    "Terminated - Voluntary",
+                    "Terminated - Involuntary"
+                ]
+            },
+            "Deposit_Amount_Released__c": {
+                "label": "Deposit Amount Released",
+                "required": false,
+                "editable": false,
+                "datatype": "currency"
+            },
+            "Ridge_Correspondent__c": {
+                "label": "Ridge Correspondent",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean",
+                "hint": "Please check the box if this account belongs to Ridge."
+            },
+            "Reason_For_Termination__c": {
+                "label": "Reason For Termination",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "BDW",
+                    "Broker Dealer Suspended",
+                    "Correspondent Terminated",
+                    "Penson Terminated"
+                ]
+            },
+            "Date_Correspondent_Closed__c": {
+                "label": "Date Correspondent Closed",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "Termination_Effective_Date__c": {
+                "label": "Termination Effective Date",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "Contact_Sheet_Link__c": {
+                "label": "Contact Sheet Link",
+                "required": false,
+                "editable": false,
+                "datatype": "url"
+            },
+            "Termination_Notes__c": {
+                "label": "Termination Notes",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea"
+            },
+            "Ridge_Branch__c": {
+                "label": "Ridge Branch #",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea"
+            },
+            "FTP_Login__c": {
+                "label": "FTP Login",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "FTP_Date_Ticket__c": {
+                "label": "FTP Date/Ticket#",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea"
+            },
+            "Conversion_Wave__c": {
+                "label": "Conversion_Wave",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            "End_of_Day_Trade_File__c": {
+                "label": "End of Day Trade File",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Contact_sending_EOD_file__c": {
+                "label": "Contact sending EOD file",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Contact_for_End_of_Day_File__c": {
+                "label": "Contact for End of Day File",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            }
+        },
+        "RMDB Info": {
+            "R_Net_Capital_Requirement__c": {
+                "label": "Net Capital Requirement",
+                "required": false,
+                "editable": false,
+                "datatype": "currency",
+                "hint": "Ridge Legacy Net Capital Requirement"
+            },
+            "R_Designated_Exam_Auth__c": {
+                "label": "Designated Exam Auth",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy Designated_Exam_Auth"
+            },
+            "FOCUS_Filing_Frequency__c": {
+                "label": "FOCUS Filing Frequency",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "None",
+                    "Monthly",
+                    "Quarterly"
+                ],
+                "hint": "How often correspondent files FOCUS Reorts.  CreditRisk@penson.com can verify the filing frequency"
+            },
+            "Location__c": {
+                "label": "Location #",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "BTS Location#  created for each firm during the onboarding process"
+            },
+            "R_Loc_Num__c": {
+                "label": "Loc Num",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy Loc_Num"
+            },
+            "ValetAccounts__c": {
+                "label": "Valet Accounts",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Legacy Ridge Valet Accounts"
+            },
+            "TaxID_EIN__c": {
+                "label": "TaxID_EIN",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Company Employer Identification number or Tax ID"
+            },
+            "Year_Estbl_with_Ridge__c": {
+                "label": "Year Established with Ridge",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Legacy Year Established with Ridge"
+            },
+            "ContractDate__c": {
+                "label": "Contract Date",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Legacy Ridge Contract Date"
+            },
+            "R_Business_Line_Other__c": {
+                "label": "BusinessLineOther",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Legacy Ridge Business Line Other Description"
+            },
+            "ContractTerms__c": {
+                "label": "Contract Terms",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Legacy Ridge Contract Terms"
+            },
+            "R_Year_Company_Founded__c": {
+                "label": "Year_Company_Founded",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Legacy Ridge Year Company Founded"
+            },
+            "RM_EMAIL__c": {
+                "label": "RM Email for Notification",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "OWDB_Corres_ID_N__c": {
+                "label": "OWDB Corres ID Num",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "R_Fee_Service__c": {
+                "label": "Fee_Service",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy Service for Fees"
+            }
+        },
+        "Services/Products": {
+            "Services_Products_Subscriptions__c": {
+                "label": "Services/Products Subscriptions",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "Advantage Managed Accounts",
+                    "AOM",
+                    "Ascendis - ACATS",
+                    "Ascendis - Cash Management",
+                    "Ascendis - Margin",
+                    "Ascendis - New Accounts",
+                    "BPS 3270",
+                    "BR-Track",
+                    "Client Resource Center (CRC)",
+                    "ColdWeb",
+                    "DIVI",
+                    "DK/Reclaim System",
+                    "e-Accounts",
+                    "eDocs (Custom)",
+                    "eReports",
+                    "ETF",
+                    "FDIC Sweep",
+                    "FIFE",
+                    "FITradeLINX",
+                    "Foreign Exchange",
+                    "Forms On-Demand",
+                    "FundQuest",
+                    "Green Screen",
+                    "Image First (IFO)",
+                    "Imaging/Virtual Files",
+                    "Incoming Files",
+                    "Independent Research",
+                    "IRA Checkwriting",
+                    "ITE",
+                    "ITMS",
+                    "MTS",
+                    "Muni Center",
+                    "MyDocs",
+                    "One-Click",
+                    "Open Advantage",
+                    "PostEdge",
+                    "Provisor",
+                    "Provisor Wealth",
+                    "Real-time R&D",
+                    "Remote Deposit Service",
+                    "RidgeConnect",
+                    "SDD File Downloads",
+                    "SPS",
+                    "SSA Reclaims",
+                    "Stock Loan File/ETB",
+                    "TLE",
+                    "TMS/FIFE",
+                    "TMS Web",
+                    "Valet Accounts",
+                    "Vantra",
+                    "Vantra+Trading",
+                    "Vantra Private",
+                    "Vault Processing System (VPS)",
+                    "Wealth Management",
+                    "Web-Services",
+                    "Web-Services 3.0"
+                ]
+            },
+            "Indemnification_Form__c": {
+                "label": "Indemnification Form",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Yes",
+                    "No"
+                ]
+            },
+            "FRMSLS__c": {
+                "label": "FRMSLS",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea",
+                "hint": "Salesgroups in Phase3 used in conjunction with FRMUSR"
+            },
+            "Last_Review_on_Indemnification_Form__c": {
+                "label": "Last Review on Indemnification Form",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            }
+        },
+        "Clearing Details": {
+            "Sponsored_Access_MPID__c": {
+                "label": "Sponsored Access MPID",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Dual_Clearing_1__c": {
+                "label": "Dual Clearing 1",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "DTC_B_D__c": {
+                "label": "DTC B/D#:",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Dual_Clearing_2__c": {
+                "label": "Dual Clearing 2",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "SEC__c": {
+                "label": "SEC #",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Required_Deposit__c": {
+                "label": "Required Deposit",
+                "required": false,
+                "editable": false,
+                "datatype": "currency"
+            },
+            "CRD__c": {
+                "label": "CRD#",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Actual_Deposit__c": {
+                "label": "Actual Deposit",
+                "required": false,
+                "editable": false,
+                "datatype": "currency"
+            },
+            "Omgeo_Acronym__c": {
+                "label": "Omgeo Acronym",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Contract_Periods_Months__c": {
+                "label": "Contract Periods (Months)",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "Client__c": {
+                "label": "Client #",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Client Number for Correspondent"
+            },
+            "Piggyback_Office__c": {
+                "label": "Piggyback Office",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "CORBIL__c": {
+                "label": "CORBIL",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Piggyback_Firm_Name__c": {
+                "label": "Piggyback Firm Name",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Mnemonics__c": {
+                "label": "Mnemonics",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea"
+            },
+            "Postage_Fee__c": {
+                "label": "Postage Fee",
+                "required": false,
+                "editable": false,
+                "datatype": "currency"
+            },
+            "Executing_Mnemonics__c": {
+                "label": "Executing Mnemonics",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            }
+        },
+        "Nexa Specific": {
+            "Trading_Platforms__c": {
+                "label": "Trading Platforms",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "ABS",
+                    "AxisPro",
+                    "Bloomberg",
+                    "Bontrade",
+                    "BRASS",
+                    "Cyber",
+                    "Execute Direct",
+                    "EXX",
+                    "Fidessa",
+                    "GT Pro",
+                    "Hydratrade",
+                    "Instaquote",
+                    "J Trader",
+                    "Knight",
+                    "Lava",
+                    "Meridian",
+                    "MIXIT",
+                    "Neovest",
+                    "OmniPro",
+                    "Orbis Financial Systems",
+                    "Other",
+                    "Penson Connection",
+                    "Pentrader",
+                    "Propietary",
+                    "Radius Advantage",
+                    "RadiusPro",
+                    "Schonfeld SSLLC",
+                    "Silexx",
+                    "Speedtrader",
+                    "Sterling",
+                    "Think or Swim",
+                    "Townsend (Realtick)",
+                    "ViewTrade level 1"
+                ]
+            },
+            "Component__c": {
+                "label": "Addt'l Component",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "None",
+                    "Online Application",
+                    "News Feed",
+                    "Multi-Language",
+                    "Multi-Currencies",
+                    "Trade CAD securities",
+                    "Futures",
+                    "Mutual Funds",
+                    "Single Login",
+                    "Links to Penson",
+                    "VPN",
+                    "Pentrader environment",
+                    "VMD environment",
+                    "TD environment",
+                    "Monex ES environment",
+                    "CBOE environment",
+                    "Zecco environment",
+                    "Pentrader DB environment",
+                    "MNGD",
+                    "Execution Server - Firm 08"
+                ]
+            },
+            "Products__c": {
+                "label": "Products",
+                "required": false,
+                "editable": false,
+                "datatype": "multipicklist",
+                "picklist": [
+                    "AOM",
+                    "Aspect TMS",
+                    "Aspire",
+                    "Axis 2.0",
+                    "Axis 3.0",
+                    "AxisPro",
+                    "AxisPro Global",
+                    "Belzberg",
+                    "BondTrader",
+                    "Custom Product",
+                    "Disnat 5",
+                    "FastPath",
+                    "Fidessa",
+                    "FIX",
+                    "Iress",
+                    "Meridian",
+                    "Ndex",
+                    "Nexa",
+                    "OmniPro",
+                    "Omni Retail",
+                    "OTHER",
+                    "Penson Connection",
+                    "PensonFX",
+                    "Position Watch",
+                    "Proprietary System",
+                    "Provisor",
+                    "Radius",
+                    "RadiusPro",
+                    "Sterling",
+                    "TD Active Trader Products",
+                    "Tick Data - Euronext",
+                    "Tick Data - Futures",
+                    "Tick Data - LSE",
+                    "Tick Data - TSX",
+                    "Tick Data - US EQ - 1min",
+                    "Tick Data - US EQ - Tick",
+                    "Tickstream",
+                    "TI Sales",
+                    "TMS",
+                    "XML API (Meridian)"
+                ]
+            }
+        },
+        "CMT": {
+            "Address_Line_1__c": {
+                "label": "Address Line 1",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Address_Line_2__c": {
+                "label": "Address Line 2",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "City__c": {
+                "label": "City",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Emergency_Phone__c": {
+                "label": "Emergency Phone",
+                "required": false,
+                "editable": false,
+                "datatype": "phone"
+            },
+            "State__c": {
+                "label": "State",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Alabama",
+                    "Alaska",
+                    "Arizona",
+                    "Arkansas",
+                    "California",
+                    "Colorado",
+                    "Connecticut",
+                    "Delaware",
+                    "District of Columbia",
+                    "Florida",
+                    "Georgia",
+                    "Hawaii",
+                    "Idaho",
+                    "Illinois",
+                    "Indiana",
+                    "Iowa",
+                    "Kansas",
+                    "Kentucky",
+                    "Louisiana",
+                    "Maine",
+                    "Maryland",
+                    "Massachusetts",
+                    "Michigan",
+                    "Minnesota",
+                    "Mississippi",
+                    "Missouri",
+                    "Montana",
+                    "Nebraska",
+                    "Nevada",
+                    "New Hampshire",
+                    "New Jersey",
+                    "New Mexico",
+                    "New York",
+                    "North Carolina",
+                    "North Dakota",
+                    "Ohio",
+                    "Oklahoma",
+                    "Oregon",
+                    "Pennsylvania",
+                    "Puerto Rico",
+                    "Rhode Island",
+                    "South Carolina",
+                    "South Dakota",
+                    "Tennessee",
+                    "Texas",
+                    "Utah",
+                    "Vermont",
+                    "Virginia",
+                    "Washington",
+                    "West Virginia",
+                    "Wisconsin",
+                    "Wyoming"
+                ]
+            },
+            "LanguageID__c": {
+                "label": "LanguageID",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "1-English (United States)",
+                    "2-English (United Kingdom)",
+                    "3-English (Canada)"
+                ]
+            },
+            "Zip_Code__c": {
+                "label": "Zip Code",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "CurrencyCode__c": {
+                "label": "CurrencyCode",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "ADP-Andorran Peseta",
+                    "ARS-Argentine Peso",
+                    "ATS-Austrian Shilling",
+                    "AUD-Australian Dollar",
+                    "BEF-Belgian Franc",
+                    "BRL-Brazilian Real",
+                    "CAD-Canadian Dollar",
+                    "CHF-Swiss Franc",
+                    "CNY-China Yuan Renminbi",
+                    "CYP-Cyprus Pound",
+                    "DEM-Deutch Mark",
+                    "DKK-Danish Krone",
+                    "ESP-Spanish Peseta",
+                    "EUR-Euro",
+                    "FIM-Finnish Markka",
+                    "FRF-French Franc",
+                    "GBP-Great Britain Pound",
+                    "GRD-Greek Drachma",
+                    "HKD-Hong Kong Dollar",
+                    "HUF-Hungary Forint",
+                    "IDR-Indonesian Rupiah",
+                    "IEP-Irish Pound",
+                    "ILS-Isreali New Shekel",
+                    "INR-Indian Rupee",
+                    "ITL-Italian Lira",
+                    "JPY-Japanese Yen",
+                    "KRW-South Korean Won",
+                    "KYD-Cayman Islands Dollar",
+                    "LUF-Luxembourg Franc",
+                    "MNP-Mexican Nuevo Peso",
+                    "MXN-Mexican Peso",
+                    "MYR-Malaysian Ringgit",
+                    "NLG-Netherlands Guilder",
+                    "NOK-Norwegian Krone",
+                    "NZD-New Zealand Dollar",
+                    "PEI-Afghanistan Afghani",
+                    "PEN-Peruvian Nuevo Sol",
+                    "PHP-Philippine Peso",
+                    "PLN-Poland Zlotych",
+                    "PTE-Portuguese Escudo",
+                    "RUR-Russian ruble",
+                    "SEK-Swedish Krona",
+                    "SGD-Singapore Dollar",
+                    "THB-Thailand Baht",
+                    "TRL-Turkish Lira",
+                    "TRY-Turkish New Lira",
+                    "TWD-New Taiwanese Dollar",
+                    "USD-US Dollar",
+                    "ZAR-South Africa Rand",
+                    "ZMK-Zambian Kwacha",
+                    "ZWD-Zimbabwe Dollar"
+                ]
+            },
+            "Country__c": {
+                "label": "Country",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "AFGHANISTAN",
+                    "ALBANIA",
+                    "ALGERIA",
+                    "AMERICAN SAMOA",
+                    "ANDORRA",
+                    "ANGOLA",
+                    "ANGUILLA",
+                    "ANTARTICA",
+                    "ANTIQUA & BARBUDA",
+                    "ARGENTINA",
+                    "ARMENIA",
+                    "ARUBA",
+                    "ASHMORE & CARTIER ISLANDS",
+                    "AUSTRALIA",
+                    "AUSTRIA",
+                    "AZERBAIJAN",
+                    "AZORES",
+                    "BAHAMAS",
+                    "BAHRAIN",
+                    "BAKER ISLAND",
+                    "BANGLADESH",
+                    "BARBADOS",
+                    "BASSAS DA INDIA",
+                    "BELARUS",
+                    "BELGIUM",
+                    "BELIZE",
+                    "BENIN",
+                    "BERMUDA",
+                    "BHUTAN",
+                    "BOLIVIA",
+                    "BOSNIA AND HERZEGOVINA",
+                    "BOTSWANA",
+                    "BOUVET ISLAND",
+                    "BRAZIL",
+                    "BRITISH INDIAN OCEAN TERRITORY",
+                    "BRUNEI",
+                    "BULGARIA",
+                    "BURKINA -UPPER VOLTA",
+                    "BURMA",
+                    "BURUNDI",
+                    "CAMBODIA",
+                    "CAMEROON",
+                    "CANADA",
+                    "CAPE VERDE",
+                    "CAYMAN ISLANDS",
+                    "CENTRAL AFRICAN REPUBLIC",
+                    "CHAD",
+                    "CHILE",
+                    "CHINA",
+                    "CHRISTMAS ISLAND",
+                    "CLIPPERTON ISLAND",
+                    "COCOS (KEELING) ISLANDS",
+                    "COLOMBIA",
+                    "COMOROS",
+                    "CONGO",
+                    "COOK ISLANDS",
+                    "CORAL SEA ISLANDS TERRITORY",
+                    "COSTA RICA",
+                    "COTE D'IVOIRE",
+                    "CROATIA",
+                    "CUBA",
+                    "CYPRUS",
+                    "CZECH REPUBLIC",
+                    "DENMARK",
+                    "DJIBOUTI",
+                    "DOMINICA",
+                    "DOMINICAN REPUBLIC",
+                    "EAST TIMOR",
+                    "ECUADOR",
+                    "EGYPT",
+                    "EL SALVADOR",
+                    "EQUATORIAL GUINEA",
+                    "ERITHEA",
+                    "ESTONIA",
+                    "ETHIOPIA",
+                    "EUROPA ISLANDS",
+                    "FALKLAND ISLANDS",
+                    "FAROE ISLANDS",
+                    "FIJI",
+                    "FINLAND",
+                    "FRANCE",
+                    "FRANCE, METROPOLITAN",
+                    "FRENCH GUIANA",
+                    "FRENCH POLYNESIA",
+                    "FR SOUTHERN & ANTARTIC LANDS",
+                    "GABON",
+                    "GAMBIA",
+                    "GAZA STRIP",
+                    "GEORGIA",
+                    "GERMANY",
+                    "GHANA",
+                    "GIBRALTAR",
+                    "GLORIOSO ISLANDS",
+                    "GREECE",
+                    "GREENLAND",
+                    "GRENADA",
+                    "GUADELOUPE",
+                    "GUAM",
+                    "GUATEMALA",
+                    "GUERNSEY",
+                    "GUINEA",
+                    "GUINEA-BISSAU",
+                    "GUYANA",
+                    "HAITI",
+                    "HEARD ISLAND AND MCDONALD ISLAND",
+                    "HONDURAS",
+                    "HONG KONG",
+                    "HOWLAND ISLAND",
+                    "HUNGARY",
+                    "ICELAND",
+                    "INDIA",
+                    "INDONESIA",
+                    "IRAN",
+                    "IRAQ",
+                    "IRAQ SAUDI ARABIA NEUTRAL ZONE",
+                    "IRELAND",
+                    "ISLE OF MAN",
+                    "ISRAEL",
+                    "ITALY",
+                    "IVORY COAST",
+                    "JAMAICA",
+                    "JAN MAYEN",
+                    "JAPAN",
+                    "JERSEY",
+                    "JOHNSTON ATOLL",
+                    "JORDAN",
+                    "JUAN DE NOVA ISLAND",
+                    "KAZAKHSTAN",
+                    "KENYA",
+                    "KINGMAN REEF",
+                    "KIRIBATI",
+                    "KOREA,DEMOCRATIC PEOPLES REPUBLIC",
+                    "KOREA, REPUBLIC OF SOUTH",
+                    "KUWAIT",
+                    "KYRGYZSTAN",
+                    "LAOS",
+                    "LATVIA",
+                    "LEBANON",
+                    "LESOTHO",
+                    "LIBERIA",
+                    "LIBYA",
+                    "LIECHTENSTEIN",
+                    "LITHUANIA",
+                    "LUXEMBOURG",
+                    "MACAO",
+                    "MACEDONIA",
+                    "MADAGASCAR",
+                    "MALAWI",
+                    "MALAYSIA",
+                    "MALDIVES",
+                    "MALI",
+                    "MALTA",
+                    "MARSHALL ISLANDS",
+                    "MARTINIQUE",
+                    "MAURITANIA",
+                    "MAURITIUS",
+                    "MAYOTTE",
+                    "MEXICO",
+                    "MICRONESIA, FEDERATED STATES OF",
+                    "MIDWAY ISLANDS",
+                    "MOLDOVA",
+                    "MONACO",
+                    "MONGOLIA",
+                    "MONTENEGRO",
+                    "MONTSERRAT",
+                    "MOROCCO",
+                    "MOZAMBIQUE",
+                    "MYANMAR",
+                    "NAMIBIA",
+                    "NAURU",
+                    "NAVASSA ISLAND",
+                    "NEPAL",
+                    "NETHERLANDS",
+                    "NETHERLANDS ANTILLES",
+                    "NEW CALEDONIA",
+                    "NEW ZEALAND",
+                    "NICARAGUA",
+                    "NIGER",
+                    "NIGERIA",
+                    "NIUE",
+                    "NORFOLK ISLAND",
+                    "NORTHERN MARIANA ISLANDS",
+                    "NORWAY",
+                    "OMAN",
+                    "PAKISTAN",
+                    "PALAU",
+                    "PALESTINE",
+                    "PALMYRA ATOLL",
+                    "PANAMA",
+                    "PAPUA NEW GUINEA",
+                    "PARACEL ISLANDS",
+                    "PARAGUAY",
+                    "PERU",
+                    "PHILIPPINES",
+                    "PITCAIRN ISLANDS",
+                    "POLAND",
+                    "PORTUGAL",
+                    "PUERTO RICO",
+                    "QATAR",
+                    "REUNION",
+                    "ROMANIA",
+                    "RUSSIAN FEDERATION",
+                    "RWANDA",
+                    "SAINT KITTS AND NEVIS",
+                    "SAMOA",
+                    "SAN MARINO",
+                    "SAO TOME & PRINCIPE",
+                    "SAUDI ARABIA",
+                    "SENEGAL",
+                    "SERBIA",
+                    "SEYCHELLES",
+                    "SIERRA LEONE",
+                    "SINGAPORE",
+                    "SLOVAKIA",
+                    "SLOVENIA",
+                    "SOGEORGIA AND SOSANDWICH ISL",
+                    "SOLOMON ISLANDS",
+                    "SOMALIA",
+                    "SOUTH AFRICA",
+                    "SPAIN",
+                    "SPRATLY ISLANDS",
+                    "SRI LANKA",
+                    "ST HELENA",
+                    "ST LUCIA",
+                    "ST PIERRE & MIQUELON",
+                    "ST VINCENT AND THE GRENADINES",
+                    "SUDAN",
+                    "SURINAME",
+                    "SVALBARD",
+                    "SWAZILAND",
+                    "SWEDEN",
+                    "SWITZERLAND",
+                    "SYRIA",
+                    "TAIWAN",
+                    "TAJIKISTAN",
+                    "TANZANIA",
+                    "THAILAND",
+                    "TOGO",
+                    "TOKELAU ISLANDS",
+                    "TONGA",
+                    "TRINIDAD & TOBAGO",
+                    "TROMELIN ISLAND",
+                    "TRUST TERRITORY OF THE PACIFIC",
+                    "TUNISIA",
+                    "TURKEY",
+                    "TURKMENISTAN",
+                    "TURKS & CAICOS ISLANDS",
+                    "TUVALU",
+                    "UGANDA",
+                    "UKRAINE",
+                    "UNITED ARAB EMIRATES",
+                    "UNITED KINGDOM",
+                    "UNITED STATES",
+                    "URUGUAY",
+                    "UZBEKISTAN",
+                    "VANUATU",
+                    "VATICAN CITY",
+                    "VENEZUELA",
+                    "VIETNAM",
+                    "VIRGIN ISLANDS - BRITISH",
+                    "VIRGIN ISLANDS - UNITED STATES",
+                    "WAKE ISLAND",
+                    "WALLIS & FUTUNA ISLANDS",
+                    "WEST BANK",
+                    "WESTERN SAHARA",
+                    "WESTERN SAMOA",
+                    "YEMEN",
+                    "YUGOSLAVIA",
+                    "ZAIRE",
+                    "ZAMBIA",
+                    "ZIMBABWE"
+                ]
+            },
+            "R_Active_Accounts__c": {
+                "label": "Active Accounts",
+                "required": false,
+                "editable": false,
+                "datatype": "double",
+                "hint": "Ridge Legacy Active_Accounts"
+            },
+            "R_Active_Date__c": {
+                "label": "Active Date",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy Active Date"
+            },
+            "R_Active_brokers__c": {
+                "label": "Active Brokers",
+                "required": false,
+                "editable": false,
+                "datatype": "double",
+                "hint": "Ridge Legacy Active brokers"
+            },
+            "Agreements_signed__c": {
+                "label": "Agreements signed",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "Branded_Product_URL__c": {
+                "label": "Branded Product(s) / URL",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Client_Since__c": {
+                "label": "Client Since",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "R_DK_Rate__c": {
+                "label": "DK Rate",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy DK_Rate"
+            },
+            "R_Active_investors__c": {
+                "label": "Active Investors",
+                "required": false,
+                "editable": false,
+                "datatype": "double",
+                "hint": "Ridge Legacy  Active investors"
+            },
+            "R_Base_Rate_Code__c": {
+                "label": "Base Rate Code",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy Base Rate Code"
+            },
+            "R_Total_Assets__c": {
+                "label": "Total Assets",
+                "required": false,
+                "editable": false,
+                "datatype": "currency",
+                "hint": "Ridge Legacy Total_Assets"
+            },
+            "Daily_Volume__c": {
+                "label": "Daily Volume",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "R_Daily_Factor__c": {
+                "label": "Daily Factor",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy Daily Factor"
+            },
+            "R_BPS__c": {
+                "label": "BPS",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "Ridge Legacy BPS"
+            },
+            "R_DK_Fee__c": {
+                "label": "DK Fee",
+                "required": false,
+                "editable": false,
+                "datatype": "currency"
+            }
+        },
+        "CMT - Correspondent": {
+            "GLCode__c": {
+                "label": "GLCode",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "MPIDs__c": {
+                "label": "CorrespondentCode",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            }
+        },
+        "CMT - Office & Branch": {
+            "Office_Code__c": {
+                "label": "Office Code",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "TraditionalTrader__c": {
+                "label": "TraditionalTrader",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "Office_MPID__c": {
+                "label": "Office MPID",
+                "required": false,
+                "editable": false,
+                "datatype": "string",
+                "hint": "The MPID of this office. This field is used only for Office, not for Correspondent."
+            },
+            "DayTrader__c": {
+                "label": "DayTrader",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "Tradeing_Systems__c": {
+                "label": "Trading Systems",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Other",
+                    "Townsend",
+                    "OmniPro",
+                    "Penson Connection",
+                    "Silexx"
+                ]
+            },
+            "InternetTrader__c": {
+                "label": "InternetTrader",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "Branch_Code__c": {
+                "label": "Branch Code",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Old_Offices__c": {
+                "label": "Old_Offices",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            }
+        },
+        "Account Information (cont.)": {
+            "Website": {
+                "label": "Website",
+                "required": false,
+                "editable": false,
+                "datatype": "url"
+            },
+            "Industry": {
+                "label": "Industry",
+                "required": false,
+                "editable": false,
+                "datatype": "picklist",
+                "picklist": [
+                    "Active Trading B/D",
+                    "Asset Manager",
+                    "Bank",
+                    "Black Box",
+                    "Bond trading",
+                    "DMA",
+                    "Full Service Brokerage",
+                    "FX trading",
+                    "Hedge Fund",
+                    "IB",
+                    "PM",
+                    "Institutional B/D",
+                    "Market Making B/D",
+                    "Propietary Trading",
+                    "Quote Provider",
+                    "Retail",
+                    "Securities Lending",
+                    "Trading Technology",
+                    "Other"
+                ]
+            },
+            "TickerSymbol": {
+                "label": "Ticker Symbol",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "AnnualRevenue": {
+                "label": "Annual Revenue",
+                "required": false,
+                "editable": false,
+                "datatype": "currency"
+            },
+            "Training__c": {
+                "label": "Date of Training",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "completed_Check_List__c": {
+                "label": "Ops Check List completed",
+                "required": false,
+                "editable": false,
+                "datatype": "boolean"
+            },
+            "Demo_Review_Date__c": {
+                "label": "Demo Review Date",
+                "required": false,
+                "editable": false,
+                "datatype": "date"
+            },
+            "Office_Codes__c": {
+                "label": "Office Codes",
+                "required": false,
+                "editable": false,
+                "datatype": "string"
+            },
+            "Launch_Date__c": {
+                "label": "Launch Date",
+                "required": false,
+                "editable": false,
+                "datatype": "date",
+                "hint": "Expected live date. If launch date in future, account will not receive PIN notices."
+            },
+            "ParentCorrespondentID__c": {
+                "label": "ParentCorrespondentID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "CorrespondentID__c": {
+                "label": "CorrespondentID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "CorrespondentOfficeID__c": {
+                "label": "CorrespondentOfficeID",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "CorrespondentID_old__c": {
+                "label": "CorrespondentID_old",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            },
+            "CorrespondentOfficeID_old__c": {
+                "label": "CorrespondentOfficeID_old",
+                "required": false,
+                "editable": false,
+                "datatype": "double"
+            }
+        },
+        "Description Information": {
+            "Comments__c": {
+                "label": "Comments",
+                "required": false,
+                "editable": false,
+                "datatype": "textarea",
+                "hint": "Ridge Legacy Comments high level description of the Client business \u2013 used for executive visits and Key Heads \u2013Up notes"
+            }
+        },
+        "System Information": {
+            
+        }
+    }
+}

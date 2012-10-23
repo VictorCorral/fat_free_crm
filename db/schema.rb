@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017150828) do
+ActiveRecord::Schema.define(:version => 20121019233351) do
 
   create_table "account_contacts", :force => true do |t|
     t.integer  "account_id"
@@ -159,9 +159,9 @@ ActiveRecord::Schema.define(:version => 20121017150828) do
     t.string   "source",           :limit => 32
     t.string   "email",            :limit => 64
     t.string   "alt_email",        :limit => 64
-    t.string   "phone",            :limit => 32
-    t.string   "mobile",           :limit => 32
-    t.string   "fax",              :limit => 32
+    t.text     "phone"
+    t.text     "mobile"
+    t.text     "fax"
     t.string   "blog",             :limit => 128
     t.string   "linkedin",         :limit => 128
     t.string   "facebook",         :limit => 128
@@ -174,9 +174,11 @@ ActiveRecord::Schema.define(:version => 20121017150828) do
     t.string   "background_info"
     t.string   "skype",            :limit => 128
     t.text     "subscribed_users"
+    t.string   "salesforce_id"
   end
 
   add_index "contacts", ["assigned_to"], :name => "index_contacts_on_assigned_to"
+  add_index "contacts", ["salesforce_id"], :name => "index_contacts_on_salesforce_id", :unique => true
   add_index "contacts", ["user_id", "last_name", "deleted_at"], :name => "id_last_name_deleted", :unique => true
 
   create_table "emails", :force => true do |t|
