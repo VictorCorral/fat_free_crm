@@ -5,6 +5,6 @@ timeout 30         # restarts workers that hang for 30 seconds
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "#{Rails.root}/log/unicorn.stderr.log"
-stdout_path "#{Rails.root}/log/unicorn.stdout.log"
+stderr_path "#{File.dirname __FILE__}/../log/unicorn.stderr.log"
+stdout_path "#{File.dirname __FILE__}/../log/unicorn.stdout.log"
 listen 4000
