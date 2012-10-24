@@ -8,7 +8,7 @@ TIMEOUT=${TIMEOUT-60}
 FILE_ROOT=`dirname $(readlink -f $0)`
 APP_ROOT="$FILE_ROOT/.."
 PID=$APP_ROOT/tmp/pids/unicorn.pid
-CMD="/usr/bin/unicorn -D -c $APP_ROOT/config/unicorn.rb"
+CMD="unicorn -D -c $APP_ROOT/config/unicorn.rb"
 INIT_CONF=$APP_ROOT/config/init.conf
 action="$1"
 set -u
