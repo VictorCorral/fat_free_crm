@@ -5,7 +5,7 @@ set -e
 
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
-FILE_ROOT=dirname $(readlink -f $0)
+FILE_ROOT=`dirname $(readlink -f $0)`
 APP_ROOT="$FILE_ROOT/.."
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="/usr/bin/unicorn -D -c $APP_ROOT/config/unicorn.rb"
