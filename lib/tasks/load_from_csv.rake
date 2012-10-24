@@ -1,4 +1,3 @@
-require 'hasherize_csv' 
 require 'fileutils'
 
 def loadActiveRecord( items )
