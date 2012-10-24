@@ -1,5 +1,6 @@
 config/*.yml
-config/deploy.rb
+!config/deploy.rb
+!config/deploy.example.rb
 !config/database.yml
 !config/settings.yml
 !config/settings.default.yml
