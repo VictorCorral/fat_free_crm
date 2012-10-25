@@ -92,8 +92,19 @@ class User < ActiveRecord::Base
     c.merge_validates_format_of_login_field_options(:with => /[a-zA-Z0-9_-]+/)
 
     c.validates_uniqueness_of_email_field_options = { :message => :email_in_use }
-    c.validates_length_of_password_field_options  = { :minimum => 0, :allow_blank => true, :if => :require_password? }
-    c.ignore_blank_passwords = true
+    #c.validates_length_of_password_field_options  = { :minimum => 0, :allow_blank => true, :if => :require_password? }
+    #c.ignore_blank_passwords = true
+    #c.login_field = :email
+    c.validate_password_field = false
+  end
+
+  def self.from_ad(ad_user)
+    logger.info(ad_user)
+    user = User.find_by_username(ad_user.username)
+    if user.nil?
+      user = User.create!(:username => ad_user.username, :email => ad_user.email, :first_name => ad_user.first_name, :last_name => ad_user.last_name)
+    end
+    return user
   end
 
   # Store current user in the class so we could access it from the activity
@@ -151,6 +162,17 @@ class User < ActiveRecord::Base
   def group_ids=(value)
     value = value.join.split(',').map(&:to_i) if value.map{|v| v.to_s.include?(',')}.any?
     super(value)
+  end
+
+  protected
+
+  def valid_ldap_credentials?(password)
+    ldap = Net::LDAP.new
+    ldap.host = '10.180.4.11'
+    ldap.port = 389
+    ldap.auth self.username, password
+    ldap.bind
+    true
   end
 
   private

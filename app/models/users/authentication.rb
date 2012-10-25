@@ -18,9 +18,18 @@
 class Authentication < Authlogic::Session::Base # NOTE: This is not ActiveRecord model.
   authenticate_with User
   after_save :check_if_suspended
-
+  #verify_password_method :valid_ldap_credentials?
   def to_key
     id ? id : nil
+  end
+
+  def self.new_from_ad(params)
+    ad_user = ActiveDirectoryUser.authenticate(params[:username], params[:password])
+    return nil if ad_user.nil?
+ 
+    @current_user = User.from_ad(ad_user)
+    @authentication = Authentication.create!(@current_user)
+    return @authentication
   end
 
   private

@@ -8,6 +8,7 @@ gem 'pg', '~> 0.13.2'
 gem "activerecord-import", "~> 0.2.11"
 gem 'unicorn'
 gem 'unicorn-rails'
+gem 'net-ldap'
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
 # See README for more info at: https://github.com/ndbroadbent/bundler_local_development
