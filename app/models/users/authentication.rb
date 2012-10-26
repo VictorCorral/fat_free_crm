@@ -18,7 +18,7 @@
 class Authentication < Authlogic::Session::Base # NOTE: This is not ActiveRecord model.
   authenticate_with User
   after_save :check_if_suspended
-  #verify_password_method :valid_ldap_credentials?
+
   def to_key
     id ? id : nil
   end
