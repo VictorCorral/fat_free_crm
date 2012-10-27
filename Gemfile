@@ -61,6 +61,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver', '~> 2.25.0'
   gem 'spork'
   gem 'database_cleaner'
   gem 'fuubar'

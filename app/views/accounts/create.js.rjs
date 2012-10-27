@@ -1,3 +1,4 @@
+
 if @account.valid?
   page[:create_account_arrow].replace_html "&#9658;"
   page[:create_account_title].replace_html t(:accounts)
@@ -13,3 +14,4 @@ else
   page[:create_account].visual_effect :shake, :duration => 0.25, :distance => 6
   page[:account_name].focus
 end
+

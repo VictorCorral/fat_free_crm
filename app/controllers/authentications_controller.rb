@@ -32,8 +32,8 @@ class AuthenticationsController < ApplicationController
 
   #----------------------------------------------------------------------------
   def create
-    @authentication = Authentication.new_from_ad(params[:authentication])
-    if @authentication.nil?
+    @authentication = Authentication.new_from_ad(params[:authentication]) unless Rails.env.test?
+    if !@authentication
       @authentication = Authentication.new(params[:authentication])
     end
 
