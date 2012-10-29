@@ -25,6 +25,7 @@
     %table
       %tr
         %td
+        .label #{t :parent_account}:
         = parent_account_select(f)
 
       - if Setting.background_info && Setting.background_info.include?(:account)
