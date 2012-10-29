@@ -54,10 +54,11 @@ module AccountsHelper
   def parent_account_select(form, options = {})
       # Generates a select list with the first 25 accounts,
       # and prepends the currently selected account, if available
+      options[:include_blank] = true
       accounts = ( Account.limit(25)).compact.uniq
       form.collection_select  :parent_account_id, accounts, :id, :name, options,
                         {:"data-placeholder" => t(:select_an_account),
-                         :style => "width:330px;" }
+                         :style => "width:330px; display:none;" }
   end
 
   
