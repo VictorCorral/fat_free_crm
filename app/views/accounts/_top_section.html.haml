@@ -22,12 +22,12 @@
         -#%td
           -#.label #{t "Parent account"}:
           -#= f.select :parent_account_id, Account.except(@account).collect { |a| [a.name, a.id] }, {:include_blank => 'None'} 
-    %table
-      %tr
-        %td
-        .label #{t :parent_account}:
-        = parent_account_select(f)
-
+    -if !Rails.env.test?
+      %table
+        %tr
+          %td
+          .label #{t :parent_account}:
+          = parent_account_select(f)
       - if Setting.background_info && Setting.background_info.include?(:account)
         %tr
           %td(colspan="5")
