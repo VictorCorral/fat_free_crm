@@ -58,7 +58,7 @@ module AccountsHelper
       accounts = ( Account.limit(25)).compact.uniq
       form.collection_select  :parent_account_id, accounts, :id, :name, options,
                         {:"data-placeholder" => t(:select_an_account),
-                         :style => "width:330px; display:none;" }
+                         :style => "width:330px;" }
   end
 
   
