@@ -39,6 +39,8 @@ namespace :ffcrm do
       ActiveRecord::Base.establish_connection(Rails.env)
       if ActiveRecord::Base.connection.adapter_name.downcase == "sqlite"
         ActiveRecord::Base.connection.execute("DELETE FROM settings")
+      elsif ActiveRecord::Base.connection.adapter_name.downcase == "sqlserver"
+        ActiveRecord::Base.connection.execute("TRUNCATE TABLE settings")
       else # mysql and postgres
         ActiveRecord::Base.connection.execute("TRUNCATE settings")
       end

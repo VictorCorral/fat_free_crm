@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "assigned_to"
-    t.text     "name",                              :default => "",       :null => false
+    t.string   "name"
     t.string   "access",               :limit => 8, :default => "Public"
     t.text     "website"
     t.text     "toll_free_phone"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
     t.string   "status",              :limit => 64
     t.decimal  "budget",                            :precision => 12, :scale => 2
     t.integer  "target_leads"
-    t.float    "target_conversion"
+    t.float    "target_conversion",   :limit => 24
     t.decimal  "target_revenue",                    :precision => 12, :scale => 2
     t.integer  "leads_count"
     t.integer  "opportunities_count"
@@ -434,7 +434,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   create_table "versions", :force => true do |t|
     t.string   "item_type",                     :null => false
     t.integer  "item_id",                       :null => false
-    t.string   "event",          :limit => 512, :null => false
+    t.string   "event",          :limit => 512
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"

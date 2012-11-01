@@ -5,6 +5,8 @@ class RemoveDefaultValueAndClearSettings < ActiveRecord::Migration
     # Truncate settings table
     if connection.adapter_name.downcase == "sqlite"
       execute("DELETE FROM settings")
+    elsif connection.adapter_name.downcase == "sqlserver"
+      execute("TRUNCATE TABLE settings")
     else # mysql and postgres
       execute("TRUNCATE settings")
     end

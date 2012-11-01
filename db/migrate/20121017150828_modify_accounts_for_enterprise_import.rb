@@ -1,6 +1,7 @@
 class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
   def up
-    change_column :accounts, :name, :text
+    remove_index "accounts", ["user_id", "name", "deleted_at"]
+    change_column :accounts, :name, :string, :length => 255
     change_column :accounts, :website, :text
     change_column :accounts, :email, :text
     change_column :accounts, :category, :text
@@ -11,9 +12,11 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     add_column :accounts, :salesforce_parent_id, :string, :length => 20
     add_index :accounts, :salesforce_id, :unique => true 
     add_index :accounts, :salesforce_parent_id, :unique => false 
+    add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at", :unique => true
   end
 
   def down
+    remove_index "accounts", ["user_id", "name", "deleted_at"]
     change_column :accounts, :name, :string
     change_column :accounts, :website, :string
     change_column :accounts, :email, :string
@@ -23,5 +26,6 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     change_column :accounts, :fax, :string
     remove_column :accounts, :salesforce_id
     remove_column :accounts, :salesforce_parent_id
+    add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at", :unique => true
   end
 end

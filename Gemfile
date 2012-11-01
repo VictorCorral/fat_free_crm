@@ -5,10 +5,12 @@ source :rubygems
 # gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
 gem 'pg', '~> 0.13.2'
-gem "activerecord-import", "~> 0.2.11"
+#gem "activerecord-import", "~> 0.2.11"
 gem 'unicorn'
 gem 'unicorn-rails'
 gem 'net-ldap'
+gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter'
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
 # See README for more info at: https://github.com/ndbroadbent/bundler_local_development
