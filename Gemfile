@@ -2,15 +2,20 @@ source :rubygems
 
 # Uncomment the database that you have configured in config/database.yml
 # ----------------------------------------------------------------------
+platforms :ruby do
+  gem 'sqlite3'
+  gem 'tiny_tds'
+  gem 'activerecord-sqlserver-adapter'
+  gem 'pg', '~> 0.13.2'
+end
+
+gem 'jruby-openssl'
+gem 'activerecord-jdbc-adapter'
+gem 'activerecord-jdbcmssql-adapter'
 # gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
-gem 'pg', '~> 0.13.2'
 #gem "activerecord-import", "~> 0.2.11"
-gem 'unicorn'
-gem 'unicorn-rails'
 gem 'net-ldap'
-gem 'tiny_tds'
-gem 'activerecord-sqlserver-adapter'
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
 # See README for more info at: https://github.com/ndbroadbent/bundler_local_development

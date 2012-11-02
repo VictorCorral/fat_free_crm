@@ -10,7 +10,7 @@ class CreateCampaigns < ActiveRecord::Migration
       t.decimal     :budget, :precision => 12, :scale => 2
       # Target metrics.
       t.integer     :target_leads
-      t.float       :target_conversion # leads-to-opportunities conversion ratio (%)
+      t.decimal      :target_conversion # leads-to-opportunities conversion ratio (%)
       t.decimal     :target_revenue, :precision => 12, :scale => 2
       # Actual metrics.
       t.integer     :leads_count
