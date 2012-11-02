@@ -9,7 +9,7 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     change_column :accounts, :fax, :text
     add_column :accounts, :salesforce_id, :string, :length => 20
     add_column :accounts, :salesforce_parent_id, :string, :length => 20
-    add_index :accounts, :salesforce_id, :unique => true 
+    add_index :accounts, :salesforce_id, :unique => false 
     add_index :accounts, :salesforce_parent_id, :unique => false 
   end
 
