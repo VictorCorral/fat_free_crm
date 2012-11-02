@@ -1,527 +1,29 @@
+---
 en-US:
-  language: English
-
-  # Generic terms.
-  #----------------------------------------------------------------------------
-  all: All
-  at: at
-  here: here
-  no_button: 'No'
-  not_implemented: Not implemented yet.
-  or: or
-  select_none: '-- None --'
-  select_blank: '-- Select --'
-  yes_button: 'Yes'
-
-
-  # Settings.
-  #----------------------------------------------------------------------------
-  tab_dashboard: Dashboard
-  tab_tasks: Tasks
-  tab_campaigns: Campaigns
-  tab_leads: Leads
-  tab_accounts: Accounts
-  tab_contacts: Contacts
-  tab_opportunities: Opportunities
-
-  admin_tab_groups: Groups
-  admin_tab_users: Users
-  admin_tab_fields: Custom Fields
-  admin_tab_tags: Tags
-  admin_tab_settings: Settings
-  admin_tab_plugins: Plugins
-
-  affiliate: Affiliate
-  competitor: Competitor
-  customer: Customer
-  partner: Partneradm
-  reseller: Reseller
-  vendor: Vendor
-
-  # Custom Account Categories defined in settings.yml
-  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  office: Office
-  correspondent_pfsl: Correspondent PFSL
-  correspondent_type_1: Correspondent Type 1
-  correspondent_type_2: Correspondent Type 2
-  correspondent_type_3: Correspondent Type 3
-  correspondent_type_4: Correspondent Type 4
-  other_pfsc: Other PFSC
-  branch: Branch
-  pm: PM
-  pfsi_internal: PFSI Internal
-  prospect_pfsc: Prospect PFSC
-  tick_data: Tick Data
-  customer: Customer
-  nexa: Nexa
-  correspondent: Correspondent
-  type: Type
-  competitor: Competitor
-  press: Press
-  omnibus_pfsc: Omnibus PFSC
-  other: Other
-  "3rd_party": 3rd Party
-  service_provider: Service Provider
-  dma: DMA
-  fx_business: FX Business
-  partner: Partner
-  prospect: Prospect
-  # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-  planned: Planned
-  started: Started
-  on_hold: On Hold
-  completed: Completed
-  called_off: Called Off
-
-  new: New
-  contacted: Contacted
-  converted: Converted
-  rejected: Rejected
-
-  cold_call: Cold Call
-  conference: Conference
-  online: Online Marketing
-  referral: Referral
-  self: Self Generated
-  web: Website
-  word_of_mouth: Word of Mouth
-  other: Other
-
-  prospecting: Prospecting
-  analysis: Analysis
-  presentation: Presentation
-  proposal: Proposal
-  negotiation: Negotiation
-  final_review: Final Review
-  won: Closed/Won
-  lost: Closed/Lost
-
-  call: Call
-  email: Email
-  follow_up: Follow-up
-  lunch: Lunch
-  meeting: Meeting
-  money: Money
-  presentation: Presentation
-  trip: Trip
-
-  overdue: Overdue
-  due_asap: As Soon As Possible
-  due_today: Today
-  due_tomorrow: Tomorrow
-  due_this_week: This Week
-  due_next_week: Next Week
-  due_later: Sometime Later
-  due_specific_date: On Specific Date...
-
-  completed_today: Today
-  completed_yesterday: Yesterday
-  completed_last_week: Last week
-  completed_this_month: This month
-  completed_last_month: Last month
-
-  # Models/Activity.
-  #----------------------------------------------------------------------------
-  one_hour: One Hour
-  one_day: One Day
-  two_days: Two Days
-  one_week: One Week
-  two_weeks: Two Weeks
-  one_month: One Month
-
-  # Model Validations.
-  #----------------------------------------------------------------------------
-  activerecord:
-    errors:
-      models:
-        authentication:
-          attributes:
-            login_field:
-              is_not_valid: is not valid
-            password_field:
-              is_not_valid: is not valid
-        account:
-          attributes:
-            name:
-              missing_account_name: "^Please specify account name."
-            access:
-              share_account: "^Please specify users to share the account with."
-        campaign:
-          attributes:
-            name:
-              missing_campaign_name: "^Please specify campaign name."
-            ends_on:
-              dates_not_in_sequence: "^Please make sure the campaign end date is after the start date."
-            access:
-              share_campaign: "^Please specify users to share the campaign with."
-        contact:
-          attributes:
-            first_name:
-              missing_first_name: "^Please specify first name."
-            last_name:
-              missing_last_name: "^Please specify last name."
-            access:
-              share_contact: "^Please specify users to share the contact with."
-        lead:
-          attributes:
-            first_name:
-              missing_first_name: "^Please specify first name."
-            last_name:
-              missing_last_name: "^Please specify last name."
-            access:
-              share_lead: "^Please specify users to share the lead with."
-        opportunity:
-          attributes:
-            name:
-              missing_opportunity_name: "^Please specify opportunity name."
-            access:
-              share_opportunity: "^Please specify users to share the opportunity with."
-        task:
-          attributes:
-            name:
-              missing_task_name: "^Please specify task name."
-            calendar:
-              invalid_date: "^Please specify valid date."
-        user:
-          attributes:
-            username:
-              missing_username: "^Please specify username."
-              username_taken: "^This username is already taken."
-            email:
-              missing_email: "^Please specify email address."
-              email_in_use: "^There is another user with the same email."
-        custom_field:
-          required: "^%{field} is required."
-          maxlength: "^%{field} is too long."
-          endbeforestart: "^%{field} cannot end before it begins."
-
-
-  msg_account_suspended: User account has been suspended.
-  password_reset_instruction: password reset instructions
-
-  # Controllers.
-  #----------------------------------------------------------------------------
-  msg_account_created: Your account has been created and is awaiting approval by the system administrator.
-  msg_account_not_approved: Your account has not been approved yet.
-  msg_asset_deleted: "%{value} has been deleted."
-  msg_asset_not_available: This %{value} is no longer available.
-  msg_asset_not_authorized: You are not authorized to view this %{value}.
-  msg_assets_not_available: The %{value} are not available.
-  msg_asset_rejected: "%{value} has been rejected."
-  msg_bad_image_file: "^Could't upload or resize the image file you specified."
-  msg_cant_create_related: "Can't create the %{asset} since the %{related} is no longer available."
-  msg_cant_delete_user: "^Couldn't delete the user since %{value} has related assets present."
-  msg_cant_do: "Can't %{action} the %{asset} since it's no longer available."
-  msg_email_not_found: No user was found with that email address.
-  msg_enter_new_password: Please enter your new password.
-  msg_goodbye: You have been logged out. Thank you for using Fat Free CRM!
-  msg_invalid_password: "^Please specify valid current password"
-  msg_invalig_login: Invalid username or password.
-  msg_last_login: Your last login was on %{value}.
-  msg_login_needed: You must be logged in to access this page.
-  msg_logout_needed: You must be logged out to access this page.
-  msg_password_changed: Your password has been changed.
-  msg_password_not_changed: Your password has not been changed.
-  msg_password_updated: Password was successfully updated.
-  msg_pwd_instructions_sent: Instructions to reset your password have been sent to you. Please check your email.
-  msg_require_admin: You must be Administrator to access this page.
-  msg_successful_signup: Successful signup, welcome to Fat Free CRM!
-  msg_welcome: Welcome to Fat Free CRM!
-
-  # Options.
-  #----------------------------------------------------------------------------
-  "option_amount*probability": weighted amount
-  activity_options: Show %{models} %{action_type} performed by %{user} in the past %{period}.
-  all_users: all users
-  option_after: after
-  option_all: all
-  option_all_users: All Users
-  option_amount: amount
-  option_before: before
-  option_brief: brief
-  option_closes_on: close date
-  option_company: company
-  option_created_at: date created
-  option_ends_on: end date
-  option_first_name: first name
-  option_last_name: last name
-  option_leads_count: actual leads
-  option_long: long
-  option_name: name
-  option_probability: probability
-  option_rating: rating
-  option_revenue: actual revenue
-  option_starts_on: start date
-  option_target_leads: target leads
-  option_target_revenue: target revenue
-  option_updated_at: date updated
-  show_per_page: Show %{number} %{models} per page using %{fmt} format.
-  sort_by: Sort %{models} by %{field}.
-  sort_by_displaying: Sort %{models} by %{field} displaying first name %{position} last name.
-
-  # Views -> Profile.
-  #----------------------------------------------------------------------------
-  aim: AOL IM
-  already_signed_up: Already signed up?
-  alt_email: Alternative email
-  avatar: Avatar
-  change_password: Change Password
-  company: Company
-  contact_info: Contact Information
-  current_password: Current password
-  edit_profile: Edit Profile
-  # email: Email # <-- Already defined as the task type if Settings.
-  first_name: First name
-  google: Google IM
-  gravatar_help: Not familiar with Gravatars? Learn about Gravatars
-  image_file: Image file
-  image_help: The image file you upload will be automatically resized to 75 x 75 pixels. Supported formats are GIF, JPG, and PNG.
-  job_title: Title
-  last_name: Last name
-  login_now_link: Login Now!
-  mobile: Mobile
-  my_profile: My Profile
-  new_password: New password
-  password: Password
-  password_confirmation: Confirm new password
-  phone: Phone
-  profile: Profile
-  profile_language: Language
-  save_profile: Save Profile
-  sign_up: Sign Up
-  sign_up_button: Sign Up
-  skype: Skype
-  upload_picture: Upload Picture
-  use_gravatar: Use Gravatar
-  user: User
-  username: Username
-  yahoo: Yahoo IM
-  born_on: Born on
-  reports_to: Reports to
+  3rd_party: "3rd Party"
+  about: About
+  about_dev_group: "Discussion group for developers"
+  about_features: "Features and bugs"
+  about_ffc: "About Fat Free CRM"
+  about_ffc_resources: "Fat Free CRM resources (links open a new window)"
+  about_ffc_version: "Fat Free CRM version"
+  about_home_page: "Home page"
+  about_project_page: "Project page"
+  about_thank_you: "Thank you for using Fat Free CRM! We appreciate your business and hope you enjoy using the software."
+  about_twitter: "Twitter commit updates"
+  about_user_group: "Discussion group for users"
   access: Access
-  contacts_account: Contact's account
-
-  # Views -> Authenticate.
-  #----------------------------------------------------------------------------
-  forgot_password: Forgot Password
-  login: Login
-  no_account: Do not have an account?
-  remember_me: Remember Me
-  sign_up_now: Sign Up Now!
-
-  # Views -> Accounts.
-  #----------------------------------------------------------------------------
   account: Account
-  select_an_account: Select an Account
   account_small: account
-  account_summary: Account Summary
+  account_summary: "Account Summary"
   accounts: Accounts
-  accounts_options: Accounts Options
+  accounts_advanced_search: "Accounts Advanced search"
+  accounts_options: "Accounts Options"
   accounts_small: accounts
-  assigned_to: Assigned to
-  billing_address: Billing address
-  child_accounts: Child Accounts
-  create_account: Create Account
-  date_created: Date Created
-  date_updated: Date Updated
-  fax: Fax
-  intro: You can add %{value} information later.
-  keep_private: Keep it private, do not share with others
-  mail_to: Mail to %{value}
-  make_public: Share it with everyone
-  mobile_small: mobile
-  open_in_window: Open %{value} in a new window
-  parent_account: Parent Account
-  phone_small: phone
-  phone_toll_free: Toll-free
-  pipeline: Pipeline
-  same_as_billing: same as billing
-  save_account: Save Account
-  share_with: Share it with the following people
-  shipping_address: Shipping address
-  total_accounts: Total Accounts
-  website: Website
-
-  # Views -> Campaigns.
-  #----------------------------------------------------------------------------
-  actual: Actual
-  actual_performance: Actual Performance
-  budget: Budget
-  budget_label: Budget ($)
-  campaign: Campaign
-  campaign_and_leads: campaign and its leads
-  campaign_small: campaign
-  campaign_summary: Campaign Summary
-  campaign_targets: Campaign Targets
-  campaigns: Campaigns
-  campaigns_options: Campaigns Options
-  campaigns_small: campaigns
-  conversion: Conversion
-  conversion_label: Conversion (%)
-  conversion_number: "%{value} conversion"
-  target_conversion: Targe conversion
-  create_campaign: Create Campaign
-  end_date: End date
-  finished_on: completed on %{value}
-  finishes_in: finishes in %{value}
-  no_start_date: no start date specified
-  number_of_leads: Number of leads
-  objectives: Objectives
-  objectives_help: Please specify target number of leads, expected leads-to-opportunities conversion ratio, target revenue, and campaign budget. These numbers will let you track actual campaign performance.
-  objectives_small: campaign objectives
-  revenue: Revenue
-  revenue_label: Revenue ($)
-  revenue_number: "%{value} in revenue"
-  save_campaign: Save Campaign
-  start_date: Start date
-  started_ago: started %{value} ago
-  starts_in: starts in %{value}
-  starts_today: starts today!
-  target: Target
-  total_campaigns: Total Campaigns
-  was_supposed_to_finish: was supposed to finish on %{value}
-  was_supposed_to_start: was supposed to start %{time_ago} ago on %{start_date}
-  was_supposed_to_start_in: was supposed to start in %{starts_in} on %{start_date}
-
-  # Views -> Contacts.
-  #----------------------------------------------------------------------------
-  alt_email_small: Other
-  blog: Website/Blog
-  contact: Contact
-  contact_small: contact
-  contacts: Contacts
-  contacts_options: Contacts Options
-  contacts_small: contacts
-  create_contact: Create Contact
-  department: Department
-  department_small: '%{value} department'
-  do_not_call: Do not call
-  extra_info: Extra Information
-  extra_info_small: extra contact
-  facebook: Facebook
-  linked_in: LinkedIn
-  myself: Myself
-  permissions_intro_private: By default only you will have access to the %{value}. You can change permissions later.
-  permissions_intro_public: By default all users will have access to the %{value}. You can change permissions later.
-  permissions_intro_shared: By default only the selected users will have access to the %{value}. You can change permissions later.
-  referred_by: Referred by
-  referred_by_small: referred by
-  save_contact: Save Contact
-  skype: Skype
-  twitter: Twitter
-  unassigned: Unassigned
-  web_presence: Web Presence
-  web_presence_small: web presence
-  works_at: "%{job_title} at %{company}"
-
-  # Views -> Leads.
-  #----------------------------------------------------------------------------
-  convert: Convert
-  convert_lead: Convert Lead
-  convert_lead_permissions_intro: Contact permissions will be copied from the lead being converted. You can change contact permissions later.
-  convert_lead_text: By converting the lead %{value} will become a contact associated with the existing or newly created account. Lead status will be automatically set to converted.
-  create_lead: Create Lead
-  create_opp_for_contact: You can optionally create an opportunity for the %{value} contact by specifying the name, current stage, estimated closing date, sale probability, amount of the deal, and the discount offered.
-  lead: Lead
-  lead_info_small: lead contact
-  lead_permissions_intro_private: By default permissions will be copied from the campaign or set to private. You can change lead permissions later.
-  lead_permissions_intro_public: By default permissions will be copied from the campaign or set to public. You can change lead permissions later.
-  lead_permissions_intro_shared: By default permissions will be copied from the campaign or shared with the specified users. You can change lead permissions later.
-  lead_small: lead
-  lead_status_small: lead status
-  lead_summary: Lead Summary
-  leads: Leads
-  leads_options: Leads Options
-  leads_small: leads
-  none: None
-  rating: Rating
-  reject: Reject
-  reject_lead_confirm: Are you sure you want to reject this lead?
-  save_lead: Save Lead
-  source: Source
-  status: Status
-  total_leads: Total Leads
-
-  # Views -> Opportunities.
-  #----------------------------------------------------------------------------
-  amount: Amount
-  close_date: Close date
-  closes_on: Closes on
-  closed_ago_on: closed %{time_ago} ago on %{date}
-  closes_today: expected to close today!
-  closing_date: closing date is %{value}
-  create_opportunity: Create Opportunity
-  currency: ($)
-  days_late: Late by
-  days_left: Days left
-  discount: Discount
-  discount_number: with %{value} discount
-  expected_to_close: expected to close in %{time} on %{date}
-  from: from
-  no_closing_date: no expected closing date
-  no_discount: with no discount
-  opportunities: Opportunities
-  opportunities_options: Opportunities Options
-  opportunities_small: opportunities
-  opportunity: Opportunity
-  opportunity_small: opportunity
-  opportunity_summary: Opportunity At a Glance
-  opportunity_summary_text: "%{amount} with %{discount} discount and %{probability} probability"
-  past_due: past due, was expected to close %{value} ago
-  probability: Probability
-  probability_number: and %{value} probability
-  save_opportunity: Save Opportunity
-  stage: Stage
-  total_opportunities: Total Opportunities
-  weighted_amount: Weighted amount
-
-  # Views -> Tasks.
-  #----------------------------------------------------------------------------
-  task: Task
-  task_small: task
-  tasks: Tasks
-  tasks_small: tasks
-  assign_to: Assign to
-  assigned_tab: Assigned
-  assigned_tasks: Assigned Tasks
-  category: Category
-  completed_tab: Completed
-  completed_tasks: Completed Tasks
-  create_task: Create Task
-  create_task_small: create new task
-  due: Due
-  feel_free: Feel free to
-  move_to: move to
-  no_tasks: "You don't have any %{value} tasks"
-  no_tasks_pending: pending
-  no_tasks_assigned: assigned
-  no_tasks_completed: completed
-  pending_tab: Pending
-  pending_tasks: Pending Tasks
-  related: 're:'
-  save_task: Save Task
-  task_assigned: The task has been assigned to %{value}
-  task_assigned_to: and assigned to %{value}
-  task_completed: completed
-  task_completed_ago: completed %{value} ago
-  task_completed_by: completed %{time_ago} ago (%{date}) by %{user}
-  task_created: The task has been created
-  task_due_in: due in %{value}
-  task_due_later: due sometime soon
-  task_due_now: due now
-  task_due_today: due today
-  task_from: From %{value}
-  task_overdue: late, was due on
-  task_pending: The task has been moved to pending tasks
-  total_tasks: Total %{value}
-  view_assigned_tasks: view assigned tasks
-  view_pending_tasks: view pending tasks
-
-  # Views -> Home.
-  #----------------------------------------------------------------------------
   action_completed: completed
   action_create: created
+  action_create_comment:
+    - "%{comment}"
   action_destroy: deleted
   action_reassigned: reassigned
   action_rejected: rejected
@@ -529,386 +31,728 @@ en-US:
   action_update: updated
   action_view: viewed
   action_won: won
+  activerecord:
+    errors:
+      models:
+        account:
+          attributes:
+            access:
+              share_account: "^Please specify users to share the account with."
+            name:
+              missing_account_name: "^Please specify account name."
+        authentication:
+          attributes:
+            login_field:
+              is_not_valid: "is not valid"
+            password_field:
+              is_not_valid: "is not valid"
+        campaign:
+          attributes:
+            access:
+              share_campaign: "^Please specify users to share the campaign with."
+            ends_on:
+              dates_not_in_sequence: "^Please make sure the campaign end date is after the start date."
+            name:
+              missing_campaign_name: "^Please specify campaign name."
+        contact:
+          attributes:
+            access:
+              share_contact: "^Please specify users to share the contact with."
+            first_name:
+              missing_first_name: "^Please specify first name."
+            last_name:
+              missing_last_name: "^Please specify last name."
+        custom_field:
+          endbeforestart: "^%{field} cannot end before it begins."
+          maxlength: "^%{field} is too long."
+          required: "^%{field} is required."
+        lead:
+          attributes:
+            access:
+              share_lead: "^Please specify users to share the lead with."
+            first_name:
+              missing_first_name: "^Please specify first name."
+            last_name:
+              missing_last_name: "^Please specify last name."
+        opportunity:
+          attributes:
+            access:
+              share_opportunity: "^Please specify users to share the opportunity with."
+            name:
+              missing_opportunity_name: "^Please specify opportunity name."
+        task:
+          attributes:
+            calendar:
+              invalid_date: "^Please specify valid date."
+            name:
+              missing_task_name: "^Please specify task name."
+        user:
+          attributes:
+            email:
+              email_in_use: "^There is another user with the same email."
+              missing_email: "^Please specify email address."
+            username:
+              missing_username: "^Please specify username."
+              username_taken: "^This username is already taken."
   activities: Activities
-  no_activity_records: No activity records found.
-  recent_activity: Recent Activity
-  recent_activity_options: Recent Activity Options
+  activity_options: "Show %{models} %{action_type} performed by %{user} in the past %{period}."
+  actual: Actual
+  actual_performance: "Actual Performance"
+  add_note: "Add Note"
+  add_note_help: "Add a new note..."
+  added_ago: "added %{value} ago"
+  added_by: "added %{time_ago} ago by %{user}"
+  address: Address
+  admin: Admin
+  admin_fields_info: |
+      Custom fields are displayed in groups.
+      Create a new field group, or add fields to one of the groups below.<br />
+      You can drag and drop fields to change their display order or move them between field groups.
+  admin_tab_fields: "Custom Fields"
+  admin_tab_groups: Groups
+  admin_tab_plugins: Plugins
+  admin_tab_settings: Settings
+  admin_tab_tags: Tags
+  admin_tab_users: Users
+  advanced_search: "Advanced search"
+  advanced_search_add_condition: "Add a filter"
+  advanced_search_add_group: "Add a group of filters"
+  advanced_search_group_first: "Show results where %{combinator} of the following match"
+  advanced_search_group_rest: "...and where %{combinator} of the following match"
+  advanced_search_remove_condition: "Remove filter"
+  advanced_search_submit: Search
+  affiliate: Affiliate
+  aim: "AOL IM"
+  all: All
+  all_events_past_participle: Activities
+  all_users: "all users"
+  already_signed_up: "Already signed up?"
+  alt_email: "Alternative email"
+  alt_email_small: Other
+  amount: Amount
+  analysis: Analysis
+  approve: Approve
+  assign_to: "Assign to"
+  assigned_tab: Assigned
+  assigned_tasks: "Assigned Tasks"
+  assigned_to: "Assigned to"
+  at: at
+  avatar: Avatar
+  back: Back
+  back_to_crm: "Back to Fat Free CRM"
+  background_info: Background
+  billing_address: "Billing address"
+  blog: Website/Blog
+  body: Body
+  born_on: "Born on"
+  branch: Branch
+  budget: Budget
+  budget_label: "Budget ($)"
+  call: Call
+  called_off: "Called Off"
+  campaign: Campaign
+  campaign_and_leads: "campaign and its leads"
+  campaign_small: campaign
+  campaign_summary: "Campaign Summary"
+  campaign_targets: "Campaign Targets"
+  campaigns: Campaigns
+  campaigns_options: "Campaigns Options"
+  campaigns_small: campaigns
+  cancel: Cancel
+  category: Category
+  change_password: "Change Password"
+  child_accounts: "Child Accounts"
+  city: City
+  close_date: "Close date"
+  close_form: "Close form"
+  closed_ago_on: "closed %{time_ago} ago on %{date}"
+  closes_on: "Closes on"
+  closes_today: "expected to close today!"
+  closing_date: "closing date is %{value}"
+  cold_call: "Cold Call"
+  collapse_all: "Collapse all"
+  collapsed: Collapsed
+  comment: Comment
+  comment_intro: "You can add comments later."
+  comment_notification:
+    intro: "%{user_full_name} commented on %{entity_type}: %{entity_name}"
+    reply_instructions: "Reply to this email directly to add a new comment, or view the %{entity} online"
+  company: Company
+  competitor: Competitor
+  completed: Completed
+  completed_last_month: "Last month"
+  completed_last_week: "Last week"
+  completed_tab: Completed
+  completed_tasks: "Completed Tasks"
+  completed_this_month: "This month"
+  completed_today: Today
+  completed_yesterday: Yesterday
+  conference: Conference
+  confirm_delete: "Are you sure you want to delete this %{value}?"
+  confirm_group_delete: "Are you sure you wish to delete this group? There are %{count} items that still reference it."
+  confirm_password_intro: "Please type your new password and then confirm it."
+  contact: Contact
+  contact_info: "Contact Information"
+  contact_small: contact
+  contacted: Contacted
+  contacts: Contacts
+  contacts_account: "Contact's account"
+  contacts_options: "Contacts Options"
+  contacts_small: contacts
+  conversion: Conversion
+  conversion_label: "Conversion (%)"
+  conversion_number: "%{value} conversion"
+  convert: Convert
+  convert_lead: "Convert Lead"
+  convert_lead_permissions_intro: "Contact permissions will be copied from the lead being converted. You can change contact permissions later."
+  convert_lead_text: "By converting the lead %{value} will become a contact associated with the existing or newly created account. Lead status will be automatically set to converted."
+  converted: Converted
+  copy_permissions: "Copy %{value} permissions"
+  correspondent: Correspondent
+  correspondent_pfsl: "Correspondent PFSL"
+  correspondent_type_1: "Correspondent Type 1"
+  correspondent_type_2: "Correspondent Type 2"
+  correspondent_type_3: "Correspondent Type 3"
+  correspondent_type_4: "Correspondent Type 4"
+  could_not_find: "Couldn't find any %{value}. Feel free to"
+  could_not_find_matching: "Couldn't find any %{value} matching"
+  country: Country
+  create_a_new: "create a new"
+  create_account: "Create Account"
+  create_campaign: "Create Campaign"
+  create_contact: "Create Contact"
+  create_field: "Create field"
+  create_field_group: "Create field group"
+  create_group: "Create Group"
+  create_lead: "Create Lead"
+  create_new: "create new"
+  create_opp_for_contact: "You can optionally create an opportunity for the %{value} contact by specifying the name, current stage, estimated closing date, sale probability, amount of the deal, and the discount offered."
+  create_opportunity: "Create Opportunity"
+  create_past_participle: "Record Creations"
+  create_tag: "Create Tag"
+  create_task: "Create Task"
+  create_task_small: "create new task"
+  create_user: "Create User"
+  crm_admin_page: "Fat Free CRM Administration"
+  currency: ($)
+  current_password: "Current password"
+  custom_field_options: "Custom Field Options"
+  custom_fields: "Custom Fields"
+  customer: Customer
+  date:
+    formats:
+      mmdd: "%b %e"
+      mmddyy: "%b %e, %Y"
+      mmddyyyy: "%m/%d/%Y"
+  date_created: "Date Created"
+  date_updated: "Date Updated"
+  days_late: "Late by"
+  days_left: "Days left"
+  delete: Delete
+  department: Department
+  department_small: "%{value} department"
+  destroy_past_participle: Deletions
+  disable_email_subscriptions: "Disable email subscription"
+  discard: Discard
+  discount: Discount
+  discount_number: "with %{value} discount"
+  dma: DMA
+  do_not_call: "Do not call"
+  dropbox_notification_intro: "Succesfully added the email you sent to dropbox"
+  dropbox_notification_subject: "dropbox - Added email - %{subject}"
+  dropbox_notification_to: "Added to"
+  due: Due
+  due_asap: "As Soon As Possible"
+  due_later: "Sometime Later"
+  due_next_week: "Next Week"
+  due_specific_date: "On Specific Date..."
+  due_this_week: "This Week"
+  due_today: Today
+  due_tomorrow: Tomorrow
+  edit: Edit
+  edit_comment: "Editing comment"
+  edit_field_group: "Edit field group"
+  edit_note: "Edit Note"
+  edit_profile: "Edit Profile"
+  email: Email
+  end_date: "End date"
+  expand_all: "Expand all"
+  expanded: Expanded
+  expected_to_close: "expected to close in %{time} on %{date}"
+  extra_info: "Extra Information"
+  extra_info_small: "extra contact"
+  facebook: Facebook
+  fax: Fax
+  feel_free: "Feel free to"
+  field_group_confirm_delete: "If a field group is deleted, any fields will be moved to the default field group."
+  field_group_empty: "There are no fields in this group."
+  field_group_tag_restriction: "This field group applies to %{assets} tagged with \"%{tag}\""
+  field_group_tags: "Field Groups shown for this Tag"
+  field_group_unrestricted: "This field group applies to all %{assets}"
+  field_types:
+    boolean: Checkbox
+    check_boxes: "Checkbox List"
+    date: Date
+    datepair: "Date Pair"
+    datetime: "Date & Time"
+    datetimepair: "Date & Time Pair"
+    decimal: "Number (Decimal)"
+    email: "Email Address"
+    float: "Number (Floating Point)"
+    integer: "Number (Integer)"
+    multiselect: "Multi Select"
+    radio: "Radio Buttons"
+    select: "Select List"
+    string: "Short Answer"
+    tel: "Phone Number"
+    text: "Long Answer"
+    url: URL
+  final_review: "Final Review"
+  finished_on: "completed on %{value}"
+  finishes_in: "finishes in %{value}"
+  first_name: "First name"
+  follow_up: Follow-up
+  following_users_will_be_notified: "The following users will be notified by email"
+  forgot_password: "Forgot Password"
+  from: from
+  fx_business: "FX Business"
+  google: "Google IM"
+  gravatar_help: "Not familiar with Gravatars? Learn about Gravatars"
+  group_members: members
+  group_memberships: "Group Memberships"
+  group_small: group
+  groups: Groups
+  groups_small: groups
+  here: here
+  image_file: "Image file"
+  image_help: "The image file you upload will be automatically resized to 75 x 75 pixels. Supported formats are GIF, JPG, and PNG."
+  intro: "You can add %{value} information later."
+  items_total: "%{count} total."
+  job_title: Title
+  keep_private: "Keep it private, do not share with others"
+  label: Label
+  language: English
+  last_name: "Last name"
+  last_seen: "last seen %{value} ago"
+  lead: Lead
+  lead_info_small: "lead contact"
+  lead_permissions_intro_private: "By default permissions will be copied from the campaign or set to private. You can change lead permissions later."
+  lead_permissions_intro_public: "By default permissions will be copied from the campaign or set to public. You can change lead permissions later."
+  lead_permissions_intro_shared: "By default permissions will be copied from the campaign or shared with the specified users. You can change lead permissions later."
+  lead_small: lead
+  lead_status_small: "lead status"
+  lead_summary: "Lead Summary"
+  leads: Leads
+  leads_options: "Leads Options"
+  leads_small: leads
+  less: Less...
+  linked_in: LinkedIn
+  list: List
+  list_name_info: "If you use the name of an existing list, you will overwrite that list with your current settings"
+  lists: Lists
+  login: Login
+  login_now_link: "Login Now!"
+  logout: Logout
+  lost: Closed/Lost
+  lunch: Lunch
+  mail_to: "Mail to %{value}"
+  make_current_view_list: "Make current view a list"
+  make_public: "Share it with everyone"
+  me: me
+  meeting: Meeting
+  mobile: Mobile
+  mobile_small: mobile
+  money: Money
+  more: More...
+  move_to: "move to"
+  msg_account_created: "Your account has been created and is awaiting approval by the system administrator."
+  msg_account_not_approved: "Your account has not been approved yet."
+  msg_account_suspended: "User account has been suspended."
+  msg_asset_deleted: "%{value} has been deleted."
+  msg_asset_not_authorized: "You are not authorized to view this %{value}."
+  msg_asset_not_available: "This %{value} is no longer available."
+  msg_asset_rejected: "%{value} has been rejected."
+  msg_assets_not_available: "The %{value} are not available."
+  msg_bad_image_file: "^Could't upload or resize the image file you specified."
+  msg_cant_create_related: "Can't create the %{asset} since the %{related} is no longer available."
+  msg_cant_delete_field_group: "Field Group could not be deleted."
+  msg_cant_delete_tag: "Couldn't delete '%{value}' since it has associated Field Groups."
+  msg_cant_delete_user: "^Couldn't delete the user since %{value} has related assets present."
+  msg_cant_do: "Can't %{action} the %{asset} since it's no longer available."
+  msg_email_not_found: "No user was found with that email address."
+  msg_enter_new_password: "Please enter your new password."
+  msg_goodbye: "You have been logged out. Thank you for using Fat Free CRM!"
+  msg_invalid_password: "^Please specify valid current password"
+  msg_invalig_login: "Invalid username or password."
+  msg_last_login: "Your last login was on %{value}."
+  msg_login_needed: "You must be logged in to access this page."
+  msg_logout_needed: "You must be logged out to access this page."
+  msg_password_changed: "Your password has been changed."
+  msg_password_not_changed: "Your password has not been changed."
+  msg_password_updated: "Password was successfully updated."
+  msg_pwd_instructions_sent: "Instructions to reset your password have been sent to you. Please check your email."
+  msg_require_admin: "You must be Administrator to access this page."
+  msg_successful_signup: "Successful signup, welcome to Fat Free CRM!"
+  msg_welcome: "Welcome to Fat Free CRM!"
+  my_accounts: "My Accounts"
+  my_opportunities: "My Opportunities"
+  my_profile: "My Profile"
+  my_tasks: "My Tasks"
+  myself: Myself
+  n_a: N/A
+  name: Name
+  negotiation: Negotiation
+  new: New
+  new_password: "New password"
+  nexa: Nexa
+  no_account: "Do not have an account?"
+  no_account_records: "You have no accounts"
+  no_activity_records: "No activity records found."
+  no_button: "No"
+  no_closing_date: "no expected closing date"
+  no_discount: "with no discount"
+  no_match: "No %{value} match"
+  no_opportunity_records: "You have no opportunities."
+  no_recent_items: "There are no recent items to display yet."
+  no_saved_lists: "No saved lists"
+  no_start_date: "no start date specified"
+  no_task_records: "You have no tasks."
+  no_tasks: "You don't have any %{value} tasks"
+  no_tasks_assigned: assigned
+  no_tasks_completed: completed
+  no_tasks_pending: pending
+  none: None
+  not_implemented: "Not implemented yet."
+  not_showing_hidden_entities: "Not showing %{count} hidden %{entity}."
+  notifications_tooltip: "Subscribers will receive new comments via email"
+  number_of_leads: "Number of leads"
+  objectives: Objectives
+  objectives_help: "Please specify target number of leads, expected leads-to-opportunities conversion ratio, target revenue, and campaign budget. These numbers will let you track actual campaign performance."
+  objectives_small: "campaign objectives"
+  office: Office
+  omnibus_pfsc: "Omnibus PFSC"
+  on_hold: "On Hold"
+  one_day: "One Day"
+  one_hour: "One Hour"
+  one_month: "One Month"
+  one_week: "One Week"
+  online: "Online Marketing"
+  open_in_window: "Open %{value} in a new window"
+  opportunities: Opportunities
+  opportunities_options: "Opportunities Options"
+  opportunities_small: opportunities
+  opportunity: Opportunity
+  opportunity_small: opportunity
+  opportunity_summary: "Opportunity At a Glance"
+  opportunity_summary_text: "%{amount} with %{discount} discount and %{probability} probability"
+  option_after: after
+  option_all: all
+  option_all_users: "All Users"
+  option_amount: amount
+  option_amount*probability: "weighted amount"
+  option_before: before
+  option_brief: brief
+  option_closes_on: "close date"
+  option_company: company
+  option_created_at: "date created"
+  option_ends_on: "end date"
+  option_first_name: "first name"
+  option_last_name: "last name"
+  option_leads_count: "actual leads"
+  option_long: long
+  option_name: name
+  option_probability: probability
+  option_rating: rating
+  option_revenue: "actual revenue"
+  option_starts_on: "start date"
+  option_target_leads: "target leads"
+  option_target_revenue: "target revenue"
+  option_updated_at: "date updated"
+  options: Options
+  or: or
+  other: Other
+  other_pfsc: "Other PFSC"
+  overdue: Overdue
+  pair:
+    end: End
+    from_only: "From %{from}"
+    from_to: "From %{from} to %{to}"
+    start: Start
+    to_only: "Until %{to}"
+  parent: Parent
+  parent_account: "Parent Account"
+  partner: Partner
+  password: Password
+  password_confirmation: "Confirm new password"
+  password_intro: "Please specify your email address, and the instructions to reset your password will be sent to you."
+  password_reset_instruction: "password reset instructions"
+  past_due: "past due, was expected to close %{value} ago"
+  pending_tab: Pending
+  pending_tasks: "Pending Tasks"
+  permissions: Permissions
+  permissions_intro_private: "By default only you will have access to the %{value}. You can change permissions later."
+  permissions_intro_public: "By default all users will have access to the %{value}. You can change permissions later."
+  permissions_intro_shared: "By default only the selected users will have access to the %{value}. You can change permissions later."
+  personal_information: "Personal Information"
+  pfsi_internal: "PFSI Internal"
+  phone: Phone
+  phone_small: phone
+  phone_toll_free: Toll-free
+  pipeline: Pipeline
+  planned: Planned
+  please_retry: "please try another query."
+  pluralize:
+    comment:
+      one: "1 comment"
+      other: "%{count} comments"
+    contact:
+      one: "1 contact"
+      other: "%{count} contacts"
+    day:
+      one: "1 day"
+      other: "%{count} days"
+    lead:
+      one: "1 lead"
+      other: "%{count} leads"
+    login:
+      one: "1 login"
+      other: "%{count} logins"
+    opportunity:
+      one: "1 opportunity"
+      other: "%{count} opportunities"
+  pm: PM
+  presentation: Presentation
+  press: Press
+  probability: Probability
+  probability_number: "and %{value} probability"
+  profile: Profile
+  profile_language: Language
+  proposal: Proposal
+  prospect: Prospect
+  prospect_pfsc: "Prospect PFSC"
+  prospecting: Prospecting
+  quick_find: "Quick find"
+  ransack:
+    predicates:
+      blank: "is blank"
+      cont: contains
+      does_not_match: "doesn't match"
+      eq: is
+      gt: "is greater than"
+      lt: "is less than"
+      matches: matches
+      not_cont: "doesn't contain"
+      not_eq: "is not"
+      not_null: "is not null"
+      ? "null"
+      : "is null"
+      present: "is present"
+  rating: Rating
+  reactivate: Reactivate
+  recent_activity: "Recent Activity"
+  recent_activity_options: "Recent Activity Options"
+  recent_items: "Recent Items"
+  referral: Referral
+  referred_by: "Referred by"
+  referred_by_small: "referred by"
+  reject: Reject
+  reject_lead_confirm: "Are you sure you want to reject this lead?"
+  rejected: Rejected
+  related: "re:"
+  remember_me: "Remember Me"
+  reports_to: "Reports to"
+  reseller: Reseller
+  reset_password: "Reset Password"
+  restrict_by_tag: "Restrict by Tag"
+  restrict_by_tag_info: "Only show fields for %{assets} that are tagged with"
+  revenue: Revenue
+  revenue_label: "Revenue ($)"
+  revenue_number: "%{value} in revenue"
+  same_as_billing: "same as billing"
+  save_account: "Save Account"
+  save_campaign: "Save Campaign"
+  save_contact: "Save Contact"
+  save_field: "Save field"
+  save_field_group: "Save field group"
+  save_group: "Save Group"
+  save_lead: "Save Lead"
+  save_note: "Save Note"
+  save_opportunity: "Save Opportunity"
+  save_profile: "Save Profile"
+  save_tag: "Save Tag"
+  save_task: "Save Task"
+  save_user: "Save User"
+  search_assets: "Search %{value}"
+  select_a_country: "Select a Country"
+  select_an_account: "Select an Account"
+  select_blank: "-- Select --"
+  select_contact: "Select Contact"
+  select_existing: "select existing"
+  select_lead: "Select Lead"
+  select_none: "-- None --"
+  select_opportunity: "Select Opportunity"
+  select_or_create_tags: "Select some tags, or create a new tag by pressing 'enter'."
+  select_task: "Select Task"
+  self: "Self Generated"
+  service_provider: "Service Provider"
+  share_with: "Share it with the following people"
+  shipping_address: "Shipping address"
+  show: Show
+  show_per_page: "Show %{number} %{models} per page using %{fmt} format."
+  sign_up: "Sign Up"
+  sign_up_button: "Sign Up"
+  sign_up_now: "Sign Up Now!"
+  simple_form:
+    error_notification:
+      default_message: "Some errors were found, please take a look:"
+    ? "no"
+    : "No"
+    required:
+      mark: "*"
+      text: required
+    ? "yes"
+    : "Yes"
+  skype: Skype
+  sort_by: "Sort %{models} by %{field}."
+  sort_by_displaying: "Sort %{models} by %{field} displaying first name %{position} last name."
+  source: Source
+  stage: Stage
+  start_date: "Start date"
+  started: Started
+  started_ago: "started %{value} ago"
+  starts_in: "starts in %{value}"
+  starts_today: "starts today!"
+  state: State
+  status: Status
+  street1: "Street 1"
+  street2: "Street 2"
+  subject: Subject
   subject_account: account
-  subject_address: address on
+  subject_address: "address on"
   subject_campaign: campaign
-  subject_comment: comment on
+  subject_comment: "comment on"
   subject_contact: contact
-  subject_email: email on
+  subject_email: "email on"
   subject_lead: lead
   subject_opportunity: opportunity
   subject_task: task
   subject_user: user
-  create_past_participle: Record Creations
-  view_past_participle: Views
-  update_past_participle: Updates
-  destroy_past_participle: Deletions
-  all_events_past_participle: Activities
-  action_create_comment: "- &quot;%{comment}&quot;"
-
-  my_tasks: My Tasks
-  no_task_records: You have no tasks.
-  my_opportunities: My Opportunities
-  no_opportunity_records: You have no opportunities.
-  my_accounts: My Accounts
-  no_account_records: You have no accounts
-  not_showing_hidden_entities: Not showing %{count} hidden %{entity}.
-
-  # Views -> Common.
-  #----------------------------------------------------------------------------
-  add_note: Add Note
-  save_note: Save Note
-  add_note_help: Add a new note...
-  edit_note: Edit Note
-  added_ago: added %{value} ago
-  added_by: added %{time_ago} ago by %{user}
-  back: Back
-  cancel: Cancel
-  close_form: Close form
-  comment_intro: You can add comments later.
-  confirm_delete: Are you sure you want to delete this %{value}?
-  copy_permissions: Copy %{value} permissions
-  could_not_find: "Couldn't find any %{value}. Feel free to"
-  could_not_find_matching: "Couldn't find any %{value} matching"
-  create_new: create new
-  create_a_new: create a new
-  select_existing: select existing
-  delete: Delete
-  discard: Discard
-  edit: Edit
-  items_total: '%{count} total.'
-  less: Less...
-  me: me
-  more: More...
-  n_a: N/A
-  name: Name
-  no_match: No %{value} match
-  no_recent_items: There are no recent items to display yet.
-  options: Options
-  parent: Parent
-  permissions: Permissions
-  please_retry: please try another query.
-  recent_items: Recent Items
-  select_contact: Select Contact
-  select_lead: Select Lead
-  select_task: Select Task
-  select_opportunity: Select Opportunity
-  search_assets: Search %{value}
-  time_ago: "%{value} ago"
-  background_info: Background
-  address: Address
-  street1: Street 1 # NEW
-  street2: Street 2 # NEW
-  city: City
-  zipcode: Zip Code
-  state: State
-  country: Country
-  select_a_country: Select a Country
-  expand_all: Expand all
-  collapse_all: Collapse all
-  expanded: Expanded
-  collapsed: Collapsed
-
-  # Views -> Layout.
-  #----------------------------------------------------------------------------
-  about: About
-  about_dev_group: Discussion group for developers
-  about_features: Features and bugs
-  about_ffc: About Fat Free CRM
-  about_ffc_resources: Fat Free CRM resources (links open a new window)
-  about_ffc_version: Fat Free CRM version
-  about_home_page: Home page
-  about_project_page: Project page
-  about_thank_you: Thank you for using Fat Free CRM! We appreciate your business and hope you enjoy using the software.
-  about_twitter: Twitter commit updates
-  about_user_group: Discussion group for users
-  admin: Admin
-  logout: Logout
-  quick_find: Quick find
-  welcome: Welcome
-
-  # Views -> Advanced Search.
-  accounts_advanced_search: Accounts Advanced search
-  advanced_search: Advanced search
-  advanced_search_submit: Search
-  advanced_search_add_group: Add a group of filters
-  advanced_search_group_first: Show results where %{combinator} of the following match
-  advanced_search_group_rest: ...and where %{combinator} of the following match
-  advanced_search_add_condition: Add a filter
-  advanced_search_remove_condition: Remove filter
-
-  ransack:
-    predicates:
-      eq: is
-      not_eq: is not
-      lt: is less than
-      gt: is greater than
-      matches: matches
-      does_not_match: doesn't match
-      cont: contains
-      not_cont: doesn't contain
-      blank: is blank
-      present: is present
-      "null": is null
-      not_null: is not null
-
-
-  # Views -> Comments.
-  #----------------------------------------------------------------------------
-  comment: Comment
-  edit_comment: Editing comment
-  show: Show
-  update: Update
-  following_users_will_be_notified: The following users will be notified by email
-  notifications_tooltip: Subscribers will receive new comments via email
-  subscribe_via_email: Subscribe via email
-  disable_email_subscriptions: Disable email subscription
-
-  # Views -> Emails.
-  #----------------------------------------------------------------------------
-  email: Email
-
-  # Views -> Passwords.
-  #----------------------------------------------------------------------------
-  confirm_password_intro: Please type your new password and then confirm it.
-  password_intro: Please specify your email address, and the instructions to reset your password will be sent to you.
-  reset_password: Reset Password
-  update_password_and_login: Update Password and Login
-
-  # Views -> Admin
-  #----------------------------------------------------------------------------
-  back_to_crm: Back to Fat Free CRM
-  crm_admin_page: Fat Free CRM Administration
-
-  # Views -> Admin -> Groups
-  #----------------------------------------------------------------------------
-  create_group: Create Group
-  save_group: Save Group
-  group_members: members
-  groups: Groups
-  groups_small: groups
-  group_small: group
-  confirm_group_delete: Are you sure you wish to delete this group? There are %{count} items that still reference it.
-
-  # Views -> Admin -> Users
-  #----------------------------------------------------------------------------
-  approve: Approve
-  create_user: Create User
-  last_seen: last seen %{value} ago
-  personal_information: Personal Information
-  group_memberships: Group Memberships
-  reactivate: Reactivate
-  save_user: Save User
+  subscribe_via_email: "Subscribe via email"
   suspend: Suspend
-  user_active: Active
-  user_admin: Admin
-  user_awaits_approval: awaits your approval
-  user_confirm_delete: A user can only be deleted if no related assets are left behind.
-  user_is_admin: The user is Administrator
-  user_never_logged_in: "hasn't logged in yet"
-  user_signed_up: Signed Up
-  user_signed_up_on: signed up on %{value}
-  user_since: user since %{value}
-  user_suspended: Suspended
-  user_suspended_on: suspended on %{value}
-  users: Users
-  users_small: users
-
-  # Views -> Versions
-  #----------------------------------------------------------------------------
-  versions: History
-  version:
-    create: %{item} created by %{by}
-    update: %{item} modified by %{by}
-    destroy: %{item} destroyed by %{by}
-    set_html: %{attr} set to %{to}
-    unset_html: %{attr} unset
-    change_html: %{attr} changed from %{from} to %{to}
-    anonymous: anonymous
-
-  # Export.
-  #----------------------------------------------------------------------------
-  to_xls: Export to Excel
-  to_csv: Export to comma-delimited file format (including deleted records)
-  to_rss: RSS feed
-  to_atom: Atom feed
-  to_perm: Permalink
-
-  # Dropbox.
-  #----------------------------------------------------------------------------
-  dropbox_notification_subject: dropbox - Added email - %{subject}
-  dropbox_notification_intro: Succesfully added the email you sent to dropbox
-  dropbox_notification_to: Added to
-  subject: Subject
-  body: Body
-
-  # Comment Inbox
-  #----------------------------------------------------------------------------
-  comment_notification:
-    intro: "%{user_full_name} commented on %{entity_type}: %{entity_name}"
-    reply_instructions: "Reply to this email directly to add a new comment, or view the %{entity} online"
-
-  # Lists
-  #----------------------------------------------------------------------------
-  lists: Lists
-  list: List
-  no_saved_lists: No saved lists
-  make_current_view_list: Make current view a list
-  list_name_info: If you use the name of an existing list, you will overwrite that list with your current settings
-
-  # Pluralizations.
-  #----------------------------------------------------------------------------
-  pluralize:
-    comment:
-      one: '1 comment'
-      other: '%{count} comments'
-    contact:
-      one: '1 contact'
-      other: '%{count} contacts'
-    opportunity:
-      one: '1 opportunity'
-      other: '%{count} opportunities'
-    lead:
-      one: '1 lead'
-      other: '%{count} leads'
-    day:
-      one: '1 day'
-      other: '%{count} days'
-    login:
-      one: '1 login'
-      other: '%{count} logins'
-
-  # Custom date/time formats.
-  #----------------------------------------------------------------------------
-  date:
-    formats:
-      mmddyyyy: "%m/%d/%Y"
-      mmdd: "%b %e"
-      mmddyy: "%b %e, %Y"
-
+  tab_accounts: Accounts
+  tab_campaigns: Campaigns
+  tab_contacts: Contacts
+  tab_dashboard: Dashboard
+  tab_leads: Leads
+  tab_opportunities: Opportunities
+  tab_tasks: Tasks
+  tag_small: tag
+  tag_with_taggings_confirm_delete: "If this tag is deleted, it will be removed from %{value} records."
+  tagged: Tagged
+  tags: Tags
+  target: Target
+  target_conversion: "Targe conversion"
+  task: Task
+  task_assigned: "The task has been assigned to %{value}"
+  task_assigned_to: "and assigned to %{value}"
+  task_completed: completed
+  task_completed_ago: "completed %{value} ago"
+  task_completed_by: "completed %{time_ago} ago (%{date}) by %{user}"
+  task_created: "The task has been created"
+  task_due_in: "due in %{value}"
+  task_due_later: "due sometime soon"
+  task_due_now: "due now"
+  task_due_today: "due today"
+  task_from: "From %{value}"
+  task_overdue: "late, was due on"
+  task_pending: "The task has been moved to pending tasks"
+  task_small: task
+  tasks: Tasks
+  tasks_small: tasks
+  tick_data: "Tick Data"
   time:
     formats:
       mmddhhss: "%b %e at %l:%M%p"
       mmddyyyy_hhmm: "%m/%d/%Y %l:%M %p"
-
-  # will_paginate translations copied for 'en-US'
-  #----------------------------------------------------------------------------
-  will_paginate:
-    previous_label: "&#8592; Previous"
-    next_label: "Next &#8594;"
-    page_gap: "&hellip;"
-
-    page_entries_info:
-      single_page:
-        zero: "No %{plural} found"
-        one: "Displaying 1 %{name}"
-        other: "Displaying all %{count} %{plural}"
-
-      multi_page: "Displaying %{plural} %{from} - %{to} of %{total} in total"
-
-
-  # Views -> Admin -> Custom Fields
-  #----------------------------------------------------------------------------
-  label: Label
-  custom_fields: Custom Fields
-  custom_field_options: Custom Field Options
-  create_field: Create field
-  save_field: Save field
-  create_field_group: Create field group
-  edit_field_group: Edit field group
-  save_field_group: Save field group
-
-  field_group_empty: There are no fields in this group.
-
-  select_or_create_tags: Select some tags, or create a new tag by pressing 'enter'.
-
-  restrict_by_tag: Restrict by Tag
-  restrict_by_tag_info: Only show fields for %{assets} that are tagged with
-  field_group_tag_restriction: This field group applies to %{assets} tagged with "%{tag}"
-  field_group_unrestricted: This field group applies to all %{assets}
-  field_group_confirm_delete: If a field group is deleted, any fields will be moved to the default field group.
-  msg_cant_delete_field_group: Field Group could not be deleted.
-
-  admin_fields_info: |
-    Custom fields are displayed in groups.
-    Create a new field group, or add fields to one of the groups below.<br />
-    You can drag and drop fields to change their display order or move them between field groups.
-
-  # Views -> Admin -> Tags
-  #----------------------------------------------------------------------------
-  tags: Tags
-  tag_small: tag
-  tagged: Tagged
-  create_tag: Create Tag
-  save_tag: Save Tag
-  field_group_tags: Field Groups shown for this Tag
-  tag_with_taggings_confirm_delete: "If this tag is deleted, it will be removed from %{value} records."
-  msg_cant_delete_tag: "Couldn't delete '%{value}' since it has associated Field Groups."
-
-
-  # Views -> Admin -> Plugins
-  #----------------------------------------------------------------------------
+  time_ago: "%{value} ago"
+  to_atom: "Atom feed"
+  to_csv: "Export to comma-delimited file format (including deleted records)"
+  to_perm: Permalink
+  to_rss: "RSS feed"
+  to_xls: "Export to Excel"
+  total_accounts: "Total Accounts"
+  total_campaigns: "Total Campaigns"
+  total_leads: "Total Leads"
+  total_opportunities: "Total Opportunities"
+  total_tasks: "Total %{value}"
+  trip: Trip
+  twitter: Twitter
+  two_days: "Two Days"
+  two_weeks: "Two Weeks"
+  type: Type
+  unassigned: Unassigned
+  update: Update
+  update_password_and_login: "Update Password and Login"
+  update_past_participle: Updates
+  upload_picture: "Upload Picture"
+  use_gravatar: "Use Gravatar"
+  user: User
+  user_active: Active
+  user_admin: Admin
+  user_awaits_approval: "awaits your approval"
+  user_confirm_delete: "A user can only be deleted if no related assets are left behind."
+  user_is_admin: "The user is Administrator"
+  user_never_logged_in: "hasn't logged in yet"
+  user_signed_up: "Signed Up"
+  user_signed_up_on: "signed up on %{value}"
+  user_since: "user since %{value}"
+  user_suspended: Suspended
+  user_suspended_on: "suspended on %{value}"
+  username: Username
+  users: Users
+  users_small: users
+  vendor: Vendor
+  version:
+    anonymous: anonymous
+    change_html: "%{attr} changed from %{from} to %{to}"
+    create: "%{item} created by %{by}"
+    destroy: "%{item} destroyed by %{by}"
+    set_html: "%{attr} set to %{to}"
+    unset_html: "%{attr} unset"
+    update: "%{item} modified by %{by}"
+  versions: History
+  view_assigned_tasks: "view assigned tasks"
+  view_past_participle: Views
+  view_pending_tasks: "view pending tasks"
   views:
     admin:
       plugins:
         author: Author
-        version: Version
         description: Description
+        version: Version
+  was_supposed_to_finish: "was supposed to finish on %{value}"
+  was_supposed_to_start: "was supposed to start %{time_ago} ago on %{start_date}"
+  was_supposed_to_start_in: "was supposed to start in %{starts_in} on %{start_date}"
+  web: Website
+  web_presence: "Web Presence"
+  web_presence_small: "web presence"
+  website: Website
+  weighted_amount: "Weighted amount"
+  welcome: Welcome
+  will_paginate:
+    next_label: "Next →"
+    page_entries_info:
+      multi_page: "Displaying %{plural} %{from} - %{to} of %{total} in total"
+      single_page:
+        one: "Displaying 1 %{name}"
+        other: "Displaying all %{count} %{plural}"
+        zero: "No %{plural} found"
+    page_gap: …
+    previous_label: "← Previous"
+  won: Closed/Won
+  word_of_mouth: "Word of Mouth"
+  works_at: "%{job_title} at %{company}"
+  yahoo: "Yahoo IM"
+  yes_button: "Yes"
+  zipcode: "Zip Code"
 
-  # Simple Form translations
-  #----------------------------------------------------------------------------
-  simple_form:
-    "yes": 'Yes'
-    "no": 'No'
-    required:
-      text: 'required'
-      mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
-    error_notification:
-      default_message: "Some errors were found, please take a look:"
-    # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
-
-
-  # Form field types
-  #----------------------------------------------------------------------------
-  field_types:
-    string:      Short Answer
-    text:        Long Answer
-    select:      Select List
-    multiselect: Multi Select
-    radio:       Radio Buttons
-    boolean:     Checkbox
-    check_boxes: Checkbox List
-    date:        Date
-    datepair:    Date Pair
-    datetime:    Date & Time
-    datetimepair: Date & Time Pair
-    email:       Email Address
-    url:         URL
-    tel:         Phone Number
-    decimal:     Number (Decimal)
-    integer:     Number (Integer)
-    float:       Number (Floating Point)
-
-  pair:
-    start:       Start
-    end:         End
-    from_to:     From %{from} to %{to}
-    from_only:   From %{from}
-    to_only:     Until %{to}

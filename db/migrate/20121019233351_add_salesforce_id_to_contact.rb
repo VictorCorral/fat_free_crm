@@ -1,7 +1,7 @@
 class AddSalesforceIdToContact < ActiveRecord::Migration
   def up
     add_column :contacts, :salesforce_id, :string
-    add_index :contacts, :salesforce_id, :unique => true
+    add_index :contacts, :salesforce_id #, :unique => true
     change_column :contacts, :phone, :text
     change_column :contacts, :mobile, :text
     change_column :contacts, :fax, :text
