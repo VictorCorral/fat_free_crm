@@ -5,6 +5,8 @@ class AddSalesforceIdToContact < ActiveRecord::Migration
     change_column :contacts, :phone, :text
     change_column :contacts, :mobile, :text
     change_column :contacts, :fax, :text
+    change_column :contacts, :title, :text
+    change_column :contacts, :department, :text
   end
 
   def down
@@ -12,7 +14,9 @@ class AddSalesforceIdToContact < ActiveRecord::Migration
     change_column :contacts, :phone, :string
     change_column :contacts, :mobile, :string
     change_column :contacts, :fax, :string
+    change_column :contacts, :title, :string
+    change_column :contacts, :department, :string
 
-    remove_index :contacts, :salesforce_id 
+#    remove_index :contacts, :salesforce_id 
   end
 end

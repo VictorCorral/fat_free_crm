@@ -1,6 +1,6 @@
 {
     "contact": {
-        "Fields": {
+        "Contact Detail": {
             "Email": {
                 "label": "Email",
                 "required": false,
@@ -2145,7 +2145,7 @@
                 "datatype": "string"
             }
         },
-        "Account Information (cont.)": {
+        "Account Information (cont)": {
             "Website": {
                 "label": "Website",
                 "required": false,

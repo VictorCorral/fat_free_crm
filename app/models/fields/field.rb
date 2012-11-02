@@ -76,7 +76,7 @@ class Field < ActiveRecord::Base
 
   validates_presence_of :as, :message => "^Please specify a Field type."
   validates_inclusion_of :as, :in => FIELD_TYPES.keys, :message => "Invalid Field Type."
-
+ 
   def self.field_types
     # Expands concise FIELD_TYPES into a more usable hash
     @field_types ||= FIELD_TYPES.inject({}) do |hash, n|
