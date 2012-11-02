@@ -32,7 +32,11 @@ class AuthenticationsController < ApplicationController
 
   #----------------------------------------------------------------------------
   def create
-    @authentication = Authentication.new(params[:authentication])
+    @authentication = Authentication.new_from_ad(params[:authentication]) unless Rails.env.test?
+    if !@authentication
+      @authentication = Authentication.new(params[:authentication])
+    end
+
 
     if @authentication.save && !@authentication.user.suspended?
       flash[:notice] = t(:msg_welcome)

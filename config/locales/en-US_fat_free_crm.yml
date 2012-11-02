@@ -332,6 +332,7 @@ en-US:
   make_public: Share it with everyone
   mobile_small: mobile
   open_in_window: Open %{value} in a new window
+  parent_account: Parent Account
   phone_small: phone
   phone_toll_free: Toll-free
   pipeline: Pipeline

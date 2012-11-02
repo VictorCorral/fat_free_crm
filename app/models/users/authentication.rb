@@ -23,6 +23,15 @@ class Authentication < Authlogic::Session::Base # NOTE: This is not ActiveRecord
     id ? id : nil
   end
 
+  def self.new_from_ad(params)
+    ad_user = ActiveDirectoryUser.authenticate(params[:username], params[:password])
+    return nil if ad_user.nil?
+ 
+    @current_user = User.from_ad(ad_user)
+    @authentication = Authentication.create!(@current_user)
+    return @authentication
+  end
+
   private
 
   # Override Authlogic's validate_by_password() to allow blank passwords. See

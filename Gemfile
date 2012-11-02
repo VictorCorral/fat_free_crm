@@ -9,6 +9,7 @@ gem "activerecord-import", "~> 0.2.11"
 gem 'unicorn'
 gem 'unicorn-rails'
 gem 'hasherize_csv'
+gem 'net-ldap'
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
 # See README for more info at: https://github.com/ndbroadbent/bundler_local_development
@@ -61,6 +62,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver', '~> 2.25.0'
   gem 'spork'
   gem 'database_cleaner'
   gem 'fuubar'

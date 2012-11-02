@@ -50,15 +50,26 @@ module AccountsHelper
                         {:"data-placeholder" => t(:select_an_account),
                          :style => "width:330px; display:none;" }
   end
+
+  def parent_account_select(form, options = {})
+      # Generates a select list with the first 25 accounts,
+      # and prepends the currently selected account, if available
+      options[:include_blank] = true
+      accounts = ( Account.limit(25)).compact.uniq
+      form.collection_select  :parent_account_id, accounts, :id, :name, options,
+                        {:"data-placeholder" => t(:select_an_account),
+                         :style => "width:330px;" }
+  end
+
   
   # Select an existing account or create a new one.
   #----------------------------------------------------------------------------
-  def account_select_or_create(form, &block)
+  def account_select_or_create(form, tag, &block)
     options = {}
     yield options if block_given?
     
     content_tag(:div, :class => 'label') do
-      t(:account).html_safe +
+      t(tag).html_safe +
     
       content_tag(:span, :id => 'account_create_title') do
         "(#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(1); return false;'>#{t :select_existing}</a>):".html_safe

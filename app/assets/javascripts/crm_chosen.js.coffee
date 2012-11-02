@@ -20,6 +20,15 @@ crm.ensure_chosen_account = ->
       query_key: "auto_complete_query"
     }
 
+crm.ensure_chosen_parent_account = ->
+  unless $("parent_account_id_chzn")
+    new ajaxChosen $("account_parent_account_id"), {
+      allow_single_deselect: true
+      show_on_activate: true
+      url: "/accounts/auto_complete.json"
+      parameters: { limit: 25 }
+      query_key: "auto_complete_query"
+    }
 
 # Initialize chosen select lists for certain fields
 crm.init_chosen_fields = ->

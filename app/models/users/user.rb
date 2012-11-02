@@ -95,6 +95,19 @@ class User < ActiveRecord::Base
     c.validates_length_of_password_field_options  = { :minimum => 0, :allow_blank => true, :if => :require_password? }
     c.ignore_blank_passwords = true
   end
+  
+  # Create authenticated Active Directory user if they don't exist yet,
+  # then return the user to create session
+  def self.from_ad(ad_user)
+    user = User.find_by_username(ad_user.username)
+    if user.nil?
+      user = User.create!(:username => ad_user.username,
+                          :email => ad_user.email, 
+                          :first_name => ad_user.first_name, 
+                          :last_name => ad_user.last_name)
+    end
+    return user
+  end
 
   # Store current user in the class so we could access it from the activity
   # observer without extra authentication query.
