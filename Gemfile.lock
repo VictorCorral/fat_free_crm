@@ -101,10 +101,10 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.0.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (3.0.0)
-      factory_girl (~> 3.0.0)
+    factory_girl (2.6.4)
+      activesupport (>= 2.3.9)
+    factory_girl_rails (1.7.0)
+      factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
     ffaker (1.15.0)
     ffi (1.1.5)
@@ -128,6 +128,7 @@ GEM
       thor (~> 0.14)
     jruby-openssl (0.7.7)
       bouncy-castle-java (>= 1.5.0146.1)
+    jruby-rack (1.1.10)
     json (1.7.5)
     json (1.7.5-java)
     kgio (2.7.4)
@@ -270,6 +271,10 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    trinidad (1.4.4)
+      jruby-rack (>= 1.1.10)
+      trinidad_jars (>= 1.1.0)
+    trinidad_jars (1.1.1)
     turbo-sprockets-rails3 (0.2.12)
       railties (>= 3.1.0, < 3.2.9)
       sprockets (>= 2.0.0)
@@ -314,7 +319,7 @@ DEPENDENCIES
   dynamic_form
   email_reply_parser_ffcrm
   execjs
-  factory_girl_rails (~> 3.0.0)
+  factory_girl_rails (~> 1.7.0)
   ffaker (>= 1.12.0)
   fuubar
   haml (~> 3)
@@ -345,6 +350,7 @@ DEPENDENCIES
   sqlite3
   therubyracer
   tiny_tds
+  trinidad
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
   unicorn

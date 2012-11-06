@@ -17,6 +17,7 @@ gem 'activerecord-jdbcmssql-adapter'
 #gem "activerecord-import", "~> 0.2.11"
 gem 'hasherize_csv'
 gem 'net-ldap'
+gem 'trinidad', :require => nil
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
 # See README for more info at: https://github.com/ndbroadbent/bundler_local_development
