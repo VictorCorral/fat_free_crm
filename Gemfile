@@ -15,6 +15,7 @@ gem 'activerecord-jdbcmssql-adapter'
 # gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
 #gem "activerecord-import", "~> 0.2.11"
+gem 'hasherize_csv'
 gem 'net-ldap'
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
