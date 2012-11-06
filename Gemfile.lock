@@ -114,8 +114,9 @@ GEM
       rspec-instafail (~> 0.2.0)
       ruby-progressbar (~> 1.0.0)
     haml (3.1.7)
-    headless (0.3.1)
-    highline (1.6.15)
+    hasherize_csv (0.0.6)
+    headless (0.2.2)
+    highline (1.6.11)
     hike (1.2.1)
     htmlentities (4.3.1)
     i18n (0.6.1)
@@ -317,6 +318,7 @@ DEPENDENCIES
   ffaker (>= 1.12.0)
   fuubar
   haml (~> 3)
+  hasherize_csv
   headless
   jquery-rails
   jruby-openssl

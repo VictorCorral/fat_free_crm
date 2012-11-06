@@ -333,8 +333,7 @@ module ApplicationHelper
   # Gravatar helper that adds default CSS class and image URL.
   #----------------------------------------------------------------------------
   def gravatar_for(model, args = {})
-    args = { :class => 'gravatar', :gravatar => { :default => default_avatar_url } }.merge(args)
-    gravatar_image_tag(model.email, args)
+    image_tag("tab_icons/#{model.class.to_s.pluralize.downcase}_active.png", args.merge({:size => '16x16', :class => 'gravatar'}))
   end
 
   #----------------------------------------------------------------------------
