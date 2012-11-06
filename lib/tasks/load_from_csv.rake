@@ -215,6 +215,7 @@ namespace :load_csv do
 		     :fax => h["fax"],
 		     :title => h["title"],
 		     :department => h["department"],
+		     :email => h["email"],
 		     :business_address_attributes => {
 			:street1 => h["mailingstreet"],
 			:city => h["mailingcity"],
@@ -227,6 +228,7 @@ namespace :load_csv do
 
 		    contact_attr.merge!(h.select{|k,v| (!!(k =~ /\w*__c/) \
                                             and !(k =~ /title[0-9]__c/) \
+                                            and !!(k =~ /homephone/) \
 					    and Contact.columns.map(&:name).include?(k))
 		                      })
 
