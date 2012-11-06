@@ -12,12 +12,14 @@ class AddFieldGroupsKlassName < ActiveRecord::Migration
     end
     FieldGroup.update_all('klass_name = (SELECT MAX(klass_name) FROM fields WHERE field_group_id = field_groups.id)', {:klass_name => nil})
 
+    remove_index :fields, :klass_name
     remove_column :fields, :klass_name
     Field.reset_column_information
   end
 
   def down
     add_column :fields, :klass_name, :string, :limit => 32
+    add_index :fields, :klass_name
     connection.execute 'UPDATE fields SET klass_name = (SELECT MAX(klass_name) FROM field_groups WHERE field_groups.id = field_group_id)'
     remove_column :field_groups, :klass_name
   end

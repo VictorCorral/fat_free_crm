@@ -35,7 +35,7 @@ module FatFreeCRM
 
     module SingletonMethods
       def field_groups
-        if ActiveRecord::Base.connection.table_exists? 'field_groups'
+        if ActiveRecord::Base.connection.table_exists? 'field_groups' and ActiveRecord::Base.connection.column_exists? 'field_groups', 'klass_name'
           FieldGroup.where(:klass_name => self.name).order(:position)
         else
           []
