@@ -96,7 +96,7 @@ def load_field_metadata klass
 			      end,
 		      :collection => (metadata["picklist"]),
 		      :required => metadata["required"],
-		      :hint => metadata["hint"],
+		      :hint => metadata["hint"]
 #		      :disabled => !metadata["editable"],
 		      )
 		  puts "Trying to save #{f.inspect}"

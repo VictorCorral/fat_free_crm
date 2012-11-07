@@ -12,6 +12,7 @@ end
 gem 'jruby-openssl'
 gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmssql-adapter'
+gem 'activerecord-jdbcpostgresql-adapter'
 # gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
 #gem "activerecord-import", "~> 0.2.11"
