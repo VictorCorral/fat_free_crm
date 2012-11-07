@@ -10,13 +10,15 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     change_column :accounts, :fax, :text
     add_column :accounts, :salesforce_id, :string, :length => 20
     add_column :accounts, :salesforce_parent_id, :string, :length => 20
-    add_index :accounts, :salesforce_id #, :unique => true
-    add_index :accounts, :salesforce_parent_id, :unique => false
-    add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at", :unique => true
+    add_index :accounts, :salesforce_id
+    add_index :accounts, :salesforce_parent_id
+    add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at"
   end
 
   def down
     remove_index "accounts", ["user_id", "name", "deleted_at"]
+    remove_index :accounts, :salesforce_id
+    remove_index :accounts, :salesforce_parent_id
     change_column :accounts, :name, :string
     change_column :accounts, :website, :string
     change_column :accounts, :email, :string
@@ -26,6 +28,6 @@ class ModifyAccountsForEnterpriseImport < ActiveRecord::Migration
     change_column :accounts, :fax, :string
     remove_column :accounts, :salesforce_id
     remove_column :accounts, :salesforce_parent_id
-    add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at", :unique => true
+    add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at"
   end
 end

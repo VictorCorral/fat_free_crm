@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "accounts", ["assigned_to"], :name => "index_accounts_on_assigned_to"
   add_index "accounts", ["salesforce_id"], :name => "index_accounts_on_salesforce_id"
   add_index "accounts", ["salesforce_parent_id"], :name => "index_accounts_on_salesforce_parent_id"
-  add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at", :unique => true
+  add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at"
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",      :limit => 10
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   add_index "campaigns", ["assigned_to"], :name => "index_campaigns_on_assigned_to"
-  add_index "campaigns", ["user_id", "name", "deleted_at"], :name => "index_campaigns_on_user_id_and_name_and_deleted_at", :unique => true
+  add_index "campaigns", ["user_id", "name", "deleted_at"], :name => "index_campaigns_on_user_id_and_name_and_deleted_at"
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",          :limit => 10
@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
 
   add_index "contacts", ["assigned_to"], :name => "index_contacts_on_assigned_to"
   add_index "contacts", ["salesforce_id"], :name => "index_contacts_on_salesforce_id"
-  add_index "contacts", ["user_id", "last_name", "deleted_at"], :name => "id_last_name_deleted", :unique => true
+  add_index "contacts", ["user_id", "last_name", "deleted_at"], :name => "id_last_name_deleted"
 
   create_table "emails", :force => true do |t|
     t.string   "imap_message_id",                                       :null => false
@@ -281,7 +281,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   add_index "leads", ["assigned_to"], :name => "index_leads_on_assigned_to"
-  add_index "leads", ["user_id", "last_name", "deleted_at"], :name => "index_leads_on_user_id_and_last_name_and_deleted_at", :unique => true
+  add_index "leads", ["user_id", "last_name", "deleted_at"], :name => "index_leads_on_user_id_and_last_name_and_deleted_at"
 
   create_table "lists", :force => true do |t|
     t.string   "name"
@@ -310,7 +310,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   add_index "opportunities", ["assigned_to"], :name => "index_opportunities_on_assigned_to"
-  add_index "opportunities", ["user_id", "name", "deleted_at"], :name => "id_name_deleted", :unique => true
+  add_index "opportunities", ["user_id", "name", "deleted_at"], :name => "id_name_deleted"
 
   create_table "permissions", :force => true do |t|
     t.integer  "user_id",    :limit => 10
@@ -391,7 +391,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   add_index "tasks", ["assigned_to"], :name => "index_tasks_on_assigned_to"
-  add_index "tasks", ["user_id", "name", "deleted_at"], :name => "index_tasks_on_user_id_and_name_and_deleted_at", :unique => true
+  add_index "tasks", ["user_id", "name", "deleted_at"], :name => "index_tasks_on_user_id_and_name_and_deleted_at"
 
   create_table "users", :force => true do |t|
     t.string   "username",            :limit => 32, :default => "",    :null => false
@@ -429,7 +429,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
   add_index "users", ["persistence_token"], :name => "index_users_on_remember_token"
-  add_index "users", ["username", "deleted_at"], :name => "index_users_on_username_and_deleted_at", :unique => true
+  add_index "users", ["username", "deleted_at"], :name => "index_users_on_username_and_deleted_at"
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",                     :null => false
