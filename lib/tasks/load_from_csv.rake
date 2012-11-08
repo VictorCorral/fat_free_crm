@@ -33,19 +33,30 @@ def load_field_descriptions jsonfilename, csvfilename, sf_type
 
 	items = []
 	csv.each do |record|
-	#  puts record.inspect
+	  #puts record.inspect
 	  location = record["Location"].strip
+<<<<<<< HEAD
 	#  puts "record location: #{location}"
 	  details = h[sf_type][ location ]
 	  if details
 	     items << details.invert.select {|item| item["label"].strip == record["SF Tab"].strip}.collect{|k,v| [v.downcase, k.merge({"location" => location, "keep" => (record['Suggested Action'] == 'Keep') })]}.flatten
 	  else
+=======
+	  #puts "record location: #{location}"
+	  details = h[sf_type][ location ]
+	  if details
+	    matching_details = details.invert.select {|item| item["label"].strip == record["SF Tab"].strip}
+            puts "Warning: Didn't find any details for SF Tab key '#{record["SF Tab"]}' within #{details.collect{|k,v| v["label"] }}" if matching_details.empty?
+            items << matching_details.collect{|k,v| [v.downcase, k.merge({"location" => location, "keep" => (record['Suggested Action'] == 'Keep') })]}.flatten
+
+	  else
+>>>>>>> master
 	   puts "Warning: Couldn't find info for location #{record["Location"]} (field #{record["SF Tab"]} / #{record["Suggested Action"]} )"
 	  end
 	end
 
 	result = Hash[items]
-	puts result.inspect
+	#result.each { |r| puts r.inspect }
 	return result
 end
 
@@ -99,7 +110,7 @@ def load_field_metadata klass
 		      :hint => metadata["hint"]
 #		      :disabled => !metadata["editable"],
 		      )
-		  puts "Trying to save #{f.inspect}"
+		  puts "Saving #{f.inspect}"
 		  f.save!
            else
 	      puts "Warning: ignored field #{field_name} / #{metadata.inspect} / #{f.inspect}"
@@ -124,6 +135,7 @@ namespace :load_csv do
 
     desc "Load accounts from a salesforce csv"
     task :accounts => :environment do
+        PaperTrail.enabled = false
 	if defined?(Rails) && (Rails.env == 'development')
           Rails.logger = Logger.new(STDOUT)
 	end
@@ -194,15 +206,39 @@ namespace :load_csv do
 
     desc "Load contacts from a salesforce csv"
     task :contacts => :environment do
+        PaperTrail.enabled = false
 	if defined?(Rails) && (Rails.env == 'development')
           Rails.logger = Logger.new(STDOUT)
 	end
 
-	salesforce_contacts = Salesforce.connection.send(:select, ('SELECT "good_contacts".* FROM "good_contacts" '))
+	salesforce_contacts = Salesforce.connection.send(:select, ('SELECT "good_contacts".* FROM "good_contacts"' ))
 	Contact.observers.disable :all do #Otherwise 'recent activity' goes bananas
                 contacts = []
                 i = 0
+
 		salesforce_contacts.each do |h|
+                  company_fields = h.select{|k,v| (!!(k =~ /company([0-9])__c/) and v) }
+
+                  new_secondary_account_contacts = Array.new
+
+                  (1..6).each do |i|
+                     (company_fields["company#{i}__c"] || "").strip.split(',').each do |code|
+                       #puts "for code #{code}"
+                       [Account.where("office_code__c = ? OR office_mpid__c = ? OR branch_code__c = ?", code.strip, code.strip, code.strip).first].compact.each do |acct|
+                        # puts "  for acct #{acct.name}"
+                         titles = (h["title#{i}__c"] || "").strip.split(';').collect{|m| m.strip.downcase.sub(' ','_')}
+                         titles << 'authorized_signer' if h["authorizedsigner#{i}__c"] && h["authorizedsigner#{i}__c"] != "f"
+                         titles << 'correspondent_level' if h["correspondentlevel#{i}__c"] && h["correspondentlevel#{i}__c"] != "f"
+                         titles << 'follows' if titles.empty? #ugh yes, it's possible to just be 'related' to an acct for no reason
+                         titles.each do |title|
+                           # puts "    for title #{title}"
+                           new_secondary_account_contacts << {:account_id => acct.id, :account_contact_type => title}
+                         end
+                       end
+                     end
+                  end
+
+                  #puts new_secondary_account_contacts.inspect
 		  contact_attr = {
                      :salesforce_id => h["id"],
                      :account => Account.find_by_salesforce_id(h["accountid"]),
@@ -222,24 +258,31 @@ namespace :load_csv do
 			:state => h["mailingstate"],
 			:zipcode => h["mailingpostalcode"],
 			:country => h["mailingcountry"],
-			:address_type => 'Billing', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+			:address_type => 'Business', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+		      },
+                     :alternate_address_attributes => {
+			:street1 => h["otherstreet"],
+			:city => h["othercity"],
+			:state => h["otherstate"],
+			:zipcode => h["otherpostalcode"],
+			:country => h["othercountry"],
+			:address_type => 'Alternate', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
 		    }
 
 		    contact_attr.merge!(h.select{|k,v| (!!(k =~ /\w*__c/) \
-                                            and !(k =~ /title[0-9]__c/) \
                                             and !!(k =~ /homephone/) \
 					    and Contact.columns.map(&:name).include?(k))
 		                      })
 
-		    array_fields = h.select{|k,v| (!!(k =~ /title[0-9]__c/) and v) }
-
-		    array_fields.each{|k,v| array_fields[k] = v.split(";").collect {|i| i.strip}}
 
 		    contact_attr.merge!(array_fields)
 
 	         #puts contact_attr.inspect
 		 contacts << Contact.new(contact_attr)
+
+                   contacts.last.account_contacts.build(new_secondary_account_contacts)
+
                  i = i + 1; if i % 1000 == 1
                   Rails.logger.info("#{i}: begin db load")
                   loadActiveRecord(contacts)

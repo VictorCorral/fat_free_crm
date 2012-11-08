@@ -158,39 +158,38 @@ en-US:
   campaigns: Campaigns
   campaigns_options: "Campaigns Options"
   campaigns_small: campaigns
-  cancel: Cancel
-  category: Category
-  change_password: "Change Password"
-  child_accounts: "Child Accounts"
-  city: City
-  close_date: "Close date"
-  close_form: "Close form"
-  closed_ago_on: "closed %{time_ago} ago on %{date}"
-  closes_on: "Closes on"
-  closes_today: "expected to close today!"
-  closing_date: "closing date is %{value}"
-  cold_call: "Cold Call"
-  collapse_all: "Collapse all"
-  collapsed: Collapsed
-  comment: Comment
-  comment_intro: "You can add comments later."
-  comment_notification:
-    intro: "%{user_full_name} commented on %{entity_type}: %{entity_name}"
-    reply_instructions: "Reply to this email directly to add a new comment, or view the %{entity} online"
-  company: Company
-  competitor: Competitor
-  completed: Completed
-  completed_last_month: "Last month"
-  completed_last_week: "Last week"
-  completed_tab: Completed
-  completed_tasks: "Completed Tasks"
-  completed_this_month: "This month"
-  completed_today: Today
-  completed_yesterday: Yesterday
-  conference: Conference
-  confirm_delete: "Are you sure you want to delete this %{value}?"
-  confirm_group_delete: "Are you sure you wish to delete this group? There are %{count} items that still reference it."
-  confirm_password_intro: "Please type your new password and then confirm it."
+  conversion: Conversion
+  conversion_label: Conversion (%)
+  conversion_number: "%{value} conversion"
+  target_conversion: Targe conversion
+  create_campaign: Create Campaign
+  end_date: End date
+  finished_on: completed on %{value}
+  finishes_in: finishes in %{value}
+  no_start_date: no start date specified
+  number_of_leads: Number of leads
+  objectives: Objectives
+  objectives_help: Please specify target number of leads, expected leads-to-opportunities conversion ratio, target revenue, and campaign budget. These numbers will let you track actual campaign performance.
+  objectives_small: campaign objectives
+  revenue: Revenue
+  revenue_label: Revenue ($)
+  revenue_number: "%{value} in revenue"
+  save_campaign: Save Campaign
+  start_date: Start date
+  started_ago: started %{value} ago
+  starts_in: starts in %{value}
+  starts_today: starts today!
+  target: Target
+  total_campaigns: Total Campaigns
+  was_supposed_to_finish: was supposed to finish on %{value}
+  was_supposed_to_start: was supposed to start %{time_ago} ago on %{start_date}
+  was_supposed_to_start_in: was supposed to start in %{starts_in} on %{start_date}
+
+  # Views -> Contacts.
+  #----------------------------------------------------------------------------
+  alt_email_small: Other
+  alternate_address: Alternate address
+  blog: Website/Blog
   contact: Contact
   contact_info: "Contact Information"
   contact_small: contact

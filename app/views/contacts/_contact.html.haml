@@ -31,6 +31,7 @@
         == #{t :referred_by_small} #{lead.referred_by}
 
     - unless current_user.preference[:contacts_outline] == "brief"
+      = render :partial => 'contacts/account_summary', :as => :account, :collection => contact.secondary_accounts, :locals => { :original_object => contact}
       %dt{ :style => "padding: 2px 0px 0px 0px" }
         - if can?(:read, contact)
           - if contact.email.present?

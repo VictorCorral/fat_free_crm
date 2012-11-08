@@ -43,6 +43,7 @@ class Address < ActiveRecord::Base
   scope :business, :conditions => "address_type='Business'"
   scope :billing,  :conditions => "address_type='Billing'"
   scope :shipping, :conditions => "address_type='Shipping'"
+  scope :alternate, :conditions => "address_type='Alternate'"
 
   # Checks if the address is blank for both single and compound addresses.
   #----------------------------------------------------------------------------
