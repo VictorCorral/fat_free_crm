@@ -11,27 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019233351) do
+ActiveRecord::Schema.define(:version => 20121108080353) do
 
   create_table "account_contacts", :force => true do |t|
-    t.integer  "account_id", :limit => 10
-    t.integer  "contact_id", :limit => 10
-    t.datetime "deleted_at", :limit => 23
-    t.datetime "created_at", :limit => 23, :null => false
-    t.datetime "updated_at", :limit => 23, :null => false
+    t.integer  "account_id",           :limit => 19
+    t.integer  "contact_id",           :limit => 19
+    t.datetime "deleted_at",           :limit => 23
+    t.datetime "created_at",           :limit => 23, :null => false
+    t.datetime "updated_at",           :limit => 23, :null => false
+    t.string   "account_contact_type"
   end
 
+  add_index "account_contacts", ["account_contact_type"], :name => "unique_account_contact_type_str"
+  add_index "account_contacts", ["contact_id", "account_id", "account_contact_type"], :name => "account_contact_types"
+
   create_table "account_opportunities", :force => true do |t|
-    t.integer  "account_id",     :limit => 10
-    t.integer  "opportunity_id", :limit => 10
+    t.integer  "account_id",     :limit => 19
+    t.integer  "opportunity_id", :limit => 19
     t.datetime "deleted_at",     :limit => 23
     t.datetime "created_at",     :limit => 23, :null => false
     t.datetime "updated_at",     :limit => 23, :null => false
   end
 
   create_table "accounts", :force => true do |t|
-    t.integer  "user_id",              :limit => 10
-    t.integer  "assigned_to",          :limit => 10
+    t.integer  "user_id",              :limit => 19
+    t.integer  "assigned_to",          :limit => 19
     t.string   "name",                               :default => ""
     t.string   "access",               :limit => 8,  :default => "Public"
     t.text     "website"
@@ -43,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
     t.datetime "updated_at",           :limit => 23,                       :null => false
     t.text     "email"
     t.string   "background_info"
-    t.integer  "rating",               :limit => 10, :default => 0,        :null => false
+    t.integer  "rating",               :limit => 19, :default => 0,        :null => false
     t.text     "category"
     t.text     "subscribed_users"
-    t.integer  "parent_account_id",    :limit => 10
+    t.integer  "parent_account_id",    :limit => 19
     t.string   "salesforce_id"
     t.string   "salesforce_parent_id"
   end
@@ -57,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at"
 
   create_table "activities", :force => true do |t|
-    t.integer  "user_id",      :limit => 10
-    t.integer  "subject_id",   :limit => 10
+    t.integer  "user_id",      :limit => 19
+    t.integer  "subject_id",   :limit => 19
     t.string   "subject_type"
     t.string   "action",       :limit => 32, :default => "created"
     t.string   "info",                       :default => ""
@@ -79,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
     t.string   "country",          :limit => 64
     t.string   "full_address"
     t.string   "address_type",     :limit => 16
-    t.integer  "addressable_id",   :limit => 10
+    t.integer  "addressable_id",   :limit => 19
     t.string   "addressable_type"
     t.datetime "created_at",       :limit => 23, :null => false
     t.datetime "updated_at",       :limit => 23, :null => false
@@ -89,10 +93,10 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
 
   create_table "avatars", :force => true do |t|
-    t.integer  "user_id",            :limit => 10
-    t.integer  "entity_id",          :limit => 10
+    t.integer  "user_id",            :limit => 19
+    t.integer  "entity_id",          :limit => 19
     t.string   "entity_type"
-    t.integer  "image_file_size",    :limit => 10
+    t.integer  "image_file_size",    :limit => 19
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.datetime "created_at",         :limit => 23, :null => false
@@ -100,17 +104,17 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   create_table "campaigns", :force => true do |t|
-    t.integer  "user_id",             :limit => 10
-    t.integer  "assigned_to",         :limit => 10
+    t.integer  "user_id",             :limit => 19
+    t.integer  "assigned_to",         :limit => 19
     t.string   "name",                :limit => 64,                                :default => "",       :null => false
     t.string   "access",              :limit => 8,                                 :default => "Public"
     t.string   "status",              :limit => 64
     t.decimal  "budget",                            :precision => 12, :scale => 2
-    t.integer  "target_leads",        :limit => 10
+    t.integer  "target_leads",        :limit => 19
     t.decimal  "target_conversion",                 :precision => 18, :scale => 0
     t.decimal  "target_revenue",                    :precision => 12, :scale => 2
-    t.integer  "leads_count",         :limit => 10
-    t.integer  "opportunities_count", :limit => 10
+    t.integer  "leads_count",         :limit => 19
+    t.integer  "opportunities_count", :limit => 19
     t.decimal  "revenue",                           :precision => 12, :scale => 2
     t.date     "starts_on",           :limit => 10
     t.date     "ends_on",             :limit => 10
@@ -126,8 +130,8 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "campaigns", ["user_id", "name", "deleted_at"], :name => "index_campaigns_on_user_id_and_name_and_deleted_at"
 
   create_table "comments", :force => true do |t|
-    t.integer  "user_id",          :limit => 10
-    t.integer  "commentable_id",   :limit => 10
+    t.integer  "user_id",          :limit => 19
+    t.integer  "commentable_id",   :limit => 19
     t.string   "commentable_type"
     t.boolean  "private"
     t.string   "title",                          :default => ""
@@ -138,8 +142,8 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   create_table "contact_opportunities", :force => true do |t|
-    t.integer  "contact_id",     :limit => 10
-    t.integer  "opportunity_id", :limit => 10
+    t.integer  "contact_id",     :limit => 19
+    t.integer  "opportunity_id", :limit => 19
     t.string   "role",           :limit => 32
     t.datetime "deleted_at",     :limit => 23
     t.datetime "created_at",     :limit => 23, :null => false
@@ -147,10 +151,10 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.integer  "user_id",          :limit => 10
-    t.integer  "lead_id",          :limit => 10
-    t.integer  "assigned_to",      :limit => 10
-    t.integer  "reports_to",       :limit => 10
+    t.integer  "user_id",          :limit => 19
+    t.integer  "lead_id",          :limit => 19
+    t.integer  "assigned_to",      :limit => 19
+    t.integer  "reports_to",       :limit => 19
     t.string   "first_name",       :limit => 64,  :default => "",       :null => false
     t.string   "last_name",        :limit => 64,  :default => "",       :null => false
     t.string   "access",           :limit => 8,   :default => "Public"
@@ -183,8 +187,8 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
 
   create_table "emails", :force => true do |t|
     t.string   "imap_message_id",                                       :null => false
-    t.integer  "user_id",         :limit => 10
-    t.integer  "mediator_id",     :limit => 10
+    t.integer  "user_id",         :limit => 19
+    t.integer  "mediator_id",     :limit => 19
     t.string   "mediator_type"
     t.string   "sent_from",                                             :null => false
     t.string   "sent_to",                                               :null => false
@@ -206,18 +210,18 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   create_table "field_groups", :force => true do |t|
     t.string   "name",       :limit => 64
     t.string   "label",      :limit => 128
-    t.integer  "position",   :limit => 10
+    t.integer  "position",   :limit => 19
     t.string   "hint"
     t.datetime "created_at", :limit => 23,  :null => false
     t.datetime "updated_at", :limit => 23,  :null => false
-    t.integer  "tag_id",     :limit => 10
+    t.integer  "tag_id",     :limit => 19
     t.string   "klass_name", :limit => 32
   end
 
   create_table "fields", :force => true do |t|
     t.string   "type"
-    t.integer  "field_group_id", :limit => 10
-    t.integer  "position",       :limit => 10
+    t.integer  "field_group_id", :limit => 19
+    t.integer  "position",       :limit => 19
     t.string   "name",           :limit => 64
     t.string   "label",          :limit => 128
     t.string   "hint"
@@ -226,10 +230,10 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
     t.text     "collection"
     t.boolean  "disabled"
     t.boolean  "required"
-    t.integer  "maxlength",      :limit => 10
+    t.integer  "maxlength",      :limit => 19
     t.datetime "created_at",     :limit => 23,  :null => false
     t.datetime "updated_at",     :limit => 23,  :null => false
-    t.integer  "pair_id",        :limit => 10
+    t.integer  "pair_id",        :limit => 19
   end
 
   add_index "fields", ["field_group_id"], :name => "index_fields_on_field_group_id"
@@ -242,8 +246,8 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
-    t.integer "group_id", :limit => 10
-    t.integer "user_id",  :limit => 10
+    t.integer "group_id", :limit => 19
+    t.integer "user_id",  :limit => 19
   end
 
   add_index "groups_users", ["group_id", "user_id"], :name => "index_groups_users_on_group_id_and_user_id"
@@ -251,9 +255,9 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "groups_users", ["user_id"], :name => "index_groups_users_on_user_id"
 
   create_table "leads", :force => true do |t|
-    t.integer  "user_id",          :limit => 10
-    t.integer  "campaign_id",      :limit => 10
-    t.integer  "assigned_to",      :limit => 10
+    t.integer  "user_id",          :limit => 19
+    t.integer  "campaign_id",      :limit => 19
+    t.integer  "assigned_to",      :limit => 19
     t.string   "first_name",       :limit => 64,  :default => "",       :null => false
     t.string   "last_name",        :limit => 64,  :default => "",       :null => false
     t.string   "access",           :limit => 8,   :default => "Public"
@@ -270,7 +274,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
     t.string   "linkedin",         :limit => 128
     t.string   "facebook",         :limit => 128
     t.string   "twitter",          :limit => 128
-    t.integer  "rating",           :limit => 10,  :default => 0,        :null => false
+    t.integer  "rating",           :limit => 19,  :default => 0,        :null => false
     t.boolean  "do_not_call",                     :default => false,    :null => false
     t.datetime "deleted_at",       :limit => 23
     t.datetime "created_at",       :limit => 23,                        :null => false
@@ -291,14 +295,14 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   create_table "opportunities", :force => true do |t|
-    t.integer  "user_id",          :limit => 10
-    t.integer  "campaign_id",      :limit => 10
-    t.integer  "assigned_to",      :limit => 10
+    t.integer  "user_id",          :limit => 19
+    t.integer  "campaign_id",      :limit => 19
+    t.integer  "assigned_to",      :limit => 19
     t.string   "name",             :limit => 64,                                :default => "",       :null => false
     t.string   "access",           :limit => 8,                                 :default => "Public"
     t.string   "source",           :limit => 32
     t.string   "stage",            :limit => 32
-    t.integer  "probability",      :limit => 10
+    t.integer  "probability",      :limit => 19
     t.decimal  "amount",                         :precision => 12, :scale => 2
     t.decimal  "discount",                       :precision => 12, :scale => 2
     t.date     "closes_on",        :limit => 10
@@ -313,12 +317,12 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "opportunities", ["user_id", "name", "deleted_at"], :name => "id_name_deleted"
 
   create_table "permissions", :force => true do |t|
-    t.integer  "user_id",    :limit => 10
-    t.integer  "asset_id",   :limit => 10
+    t.integer  "user_id",    :limit => 19
+    t.integer  "asset_id",   :limit => 19
     t.string   "asset_type"
     t.datetime "created_at", :limit => 23, :null => false
     t.datetime "updated_at", :limit => 23, :null => false
-    t.integer  "group_id",   :limit => 10
+    t.integer  "group_id",   :limit => 19
   end
 
   add_index "permissions", ["asset_id", "asset_type"], :name => "index_permissions_on_asset_id_and_asset_type"
@@ -326,7 +330,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "permissions", ["user_id"], :name => "index_permissions_on_user_id"
 
   create_table "preferences", :force => true do |t|
-    t.integer  "user_id",    :limit => 10
+    t.integer  "user_id",    :limit => 19
     t.string   "name",       :limit => 32, :default => "", :null => false
     t.text     "value"
     t.datetime "created_at", :limit => 23,                 :null => false
@@ -355,9 +359,9 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   add_index "settings", ["name"], :name => "index_settings_on_name"
 
   create_table "taggings", :force => true do |t|
-    t.integer  "tag_id",        :limit => 10
-    t.integer  "taggable_id",   :limit => 10
-    t.integer  "tagger_id",     :limit => 10
+    t.integer  "tag_id",        :limit => 19
+    t.integer  "taggable_id",   :limit => 19
+    t.integer  "tagger_id",     :limit => 19
     t.string   "tagger_type"
     t.string   "taggable_type"
     t.string   "context"
@@ -372,11 +376,11 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
   end
 
   create_table "tasks", :force => true do |t|
-    t.integer  "user_id",          :limit => 10
-    t.integer  "assigned_to",      :limit => 10
-    t.integer  "completed_by",     :limit => 10
+    t.integer  "user_id",          :limit => 19
+    t.integer  "assigned_to",      :limit => 19
+    t.integer  "completed_by",     :limit => 19
     t.string   "name",                           :default => "", :null => false
-    t.integer  "asset_id",         :limit => 10
+    t.integer  "asset_id",         :limit => 19
     t.string   "asset_type"
     t.string   "priority",         :limit => 32
     t.string   "category",         :limit => 32
@@ -416,7 +420,7 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
     t.datetime "current_login_at",    :limit => 23
     t.string   "last_login_ip"
     t.string   "current_login_ip"
-    t.integer  "login_count",         :limit => 10, :default => 0,     :null => false
+    t.integer  "login_count",         :limit => 19, :default => 0,     :null => false
     t.datetime "deleted_at",          :limit => 23
     t.datetime "created_at",          :limit => 23,                    :null => false
     t.datetime "updated_at",          :limit => 23,                    :null => false
@@ -433,13 +437,13 @@ ActiveRecord::Schema.define(:version => 20121019233351) do
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",                     :null => false
-    t.integer  "item_id",        :limit => 10,  :null => false
+    t.integer  "item_id",        :limit => 19,  :null => false
     t.string   "event",          :limit => 512
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at",     :limit => 23
     t.text     "object_changes"
-    t.integer  "related_id",     :limit => 10
+    t.integer  "related_id",     :limit => 19
     t.string   "related_type"
   end
 

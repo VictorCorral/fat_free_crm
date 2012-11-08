@@ -152,7 +152,7 @@ namespace :load_csv do
 			:state => h["billingstate"],
 			:zipcode => h["billingpostalcode"],
 			:country => h["billingcountry"],
-			:address_type => 'Billing', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+			:address_type => 'Billing' #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
 		     :shipping_address_attributes => {
 			:street1 => h["shippingstreet"],
@@ -160,7 +160,7 @@ namespace :load_csv do
 			:state => h["shippingstate"],
 			:zipcode => h["shippingpostalcode"],
 			:country => h["shippingcountry"],
-			:address_type => 'Shipping', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+			:address_type => 'Shipping' #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
 
 		    }
@@ -267,8 +267,6 @@ namespace :load_csv do
 					    and Contact.columns.map(&:name).include?(k))
 		                      })
 
-
-		    contact_attr.merge!(array_fields)
 
 	         #puts contact_attr.inspect
 		 contacts << Contact.new(contact_attr)
