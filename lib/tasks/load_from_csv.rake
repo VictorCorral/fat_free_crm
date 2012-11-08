@@ -35,13 +35,6 @@ def load_field_descriptions jsonfilename, csvfilename, sf_type
 	csv.each do |record|
 	  #puts record.inspect
 	  location = record["Location"].strip
-<<<<<<< HEAD
-	#  puts "record location: #{location}"
-	  details = h[sf_type][ location ]
-	  if details
-	     items << details.invert.select {|item| item["label"].strip == record["SF Tab"].strip}.collect{|k,v| [v.downcase, k.merge({"location" => location, "keep" => (record['Suggested Action'] == 'Keep') })]}.flatten
-	  else
-=======
 	  #puts "record location: #{location}"
 	  details = h[sf_type][ location ]
 	  if details
@@ -50,7 +43,6 @@ def load_field_descriptions jsonfilename, csvfilename, sf_type
             items << matching_details.collect{|k,v| [v.downcase, k.merge({"location" => location, "keep" => (record['Suggested Action'] == 'Keep') })]}.flatten
 
 	  else
->>>>>>> master
 	   puts "Warning: Couldn't find info for location #{record["Location"]} (field #{record["SF Tab"]} / #{record["Suggested Action"]} )"
 	  end
 	end
