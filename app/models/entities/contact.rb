@@ -52,17 +52,31 @@ class Contact < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :lead
   belongs_to  :assignee, :class_name => "User", :foreign_key => :assigned_to
-  has_one     :account_contact, :dependent => :destroy
-  has_one     :account, :through => :account_contact
+  has_many    :account_contacts, :dependent => :delete_all do 
+    def for_account account
+      where(:account_id => account.id) 
+    end
+  end
+  has_many    :accounts, :through => :account_contacts, :source => :account
+
+#Primary account
+  has_one     :account_contact, :class_name => 'AccountContact', :foreign_key => :contact_id, :conditions => {:account_contact_type => 'primary'}
+  has_one     :account, :through => :account_contact, :source => :account
+
+#Secondary accounts
+  has_many    :secondary_account_contacts, :class_name => 'AccountContact', :foreign_key => :contact_id, :conditions => ["account_contact_type NOT LIKE ?", 'primary']
+  has_many    :secondary_accounts, :through => :secondary_account_contacts, :source => :account, :uniq => true
   has_many    :contact_opportunities, :dependent => :destroy
   has_many    :opportunities, :through => :contact_opportunities, :uniq => true, :order => "opportunities.id DESC"
   has_many    :tasks, :as => :asset, :dependent => :destroy#, :order => 'created_at DESC'
   has_one     :business_address, :dependent => :destroy, :as => :addressable, :class_name => "Address", :conditions => "address_type = 'Business'"
+  has_one     :alternate_address, :dependent => :destroy, :as => :addressable, :class_name => "Address", :conditions => "address_type = 'Alternate'"
   has_many    :emails, :as => :mediator
 
   serialize :subscribed_users, Set
 
   accepts_nested_attributes_for :business_address, :allow_destroy => true
+  accepts_nested_attributes_for :alternate_address, :allow_destroy => true
 
   scope :created_by, lambda { |user| { :conditions => [ "user_id = ?", user.id ] } }
   scope :assigned_to, lambda { |user| { :conditions => ["assigned_to = ?", user.id ] } }
@@ -94,7 +108,7 @@ class Contact < ActiveRecord::Base
   validates_presence_of :first_name, :message => :missing_first_name
   validates_presence_of :last_name, :message => :missing_last_name if Setting.require_last_names
   validate :users_for_shared_access
-
+  
   # Default values provided through class methods.
   #----------------------------------------------------------------------------
   def self.per_page ; 20                  ; end
@@ -115,7 +129,7 @@ class Contact < ActiveRecord::Base
   #----------------------------------------------------------------------------
   def save_with_account_and_permissions(params)
     account = Account.create_or_select_for(self, params[:account])
-    self.account_contact = AccountContact.new(:account => account, :contact => self) unless account.id.blank?
+    self.account_contact = AccountContact.new(:account => account, :contact => self, :account_contact_type => 'primary') unless account.id.blank?
     self.opportunities << Opportunity.find(params[:opportunity]) unless params[:opportunity].blank?
     self.save
   end
@@ -130,7 +144,7 @@ class Contact < ActiveRecord::Base
       account = Account.create_or_select_for(self, params[:account])
       if self.account != account and account.id.present?
         notify_account_change(:from => self.account, :to => account)
-        self.account_contact = AccountContact.new(:account => account, :contact => self)
+        self.account_contact = AccountContact.new(:account => account, :contact => self, :account_contact_type => 'primary')
       end
       
     end
@@ -155,6 +169,10 @@ class Contact < ActiveRecord::Base
     else # Opportunities
       self.send(attachment.class.name.tableize).delete(attachment)
     end
+  end
+  
+  def self.account_contacts_for_account account
+
   end
 
   # Class methods.
@@ -182,11 +200,12 @@ class Contact < ActiveRecord::Base
     end
     
     contact.business_address = Address.new(:street1 => model.business_address.street1, :street2 => model.business_address.street2, :city => model.business_address.city, :state => model.business_address.state, :zipcode => model.business_address.zipcode, :country => model.business_address.country, :full_address => model.business_address.full_address, :address_type => "Business") unless model.business_address.nil?
+    contact.alternate_address = Address.new(:street1 => model.alternate_address.street1, :street2 => model.alternate_address.street2, :city => model.alternate_address.city, :state => model.alternate_address.state, :zipcode => model.alternate_address.zipcode, :country => model.alternate_address.country, :full_address => model.alternate_address.full_address, :address_type => "Business") unless model.alternate_address.nil?
 
     # Save the contact only if the account and the opportunity have no errors.
     if account.errors.empty? && opportunity.errors.empty?
       # Note: contact.account = account doesn't seem to work here.
-      contact.account_contact = AccountContact.new(:account => account, :contact => contact) unless account.id.blank?
+      contact.account_contact = AccountContact.new(:account => account, :contact => contact, :account_contact_type => 'primary') unless account.id.blank?
       contact.opportunities << opportunity unless opportunity.id.blank?
       if contact.access != "Lead" || model.nil?
         contact.save

@@ -13,11 +13,7 @@
 
 = hook(:show_account_bottom, self) do
 
-  = render :partial => "tasks/tasks", :locals => {:object => @account}
-
   = render :partial => "contacts/contacts", :locals => {:object => @account}
-
-  = render :partial => "opportunities/opportunities", :locals => {:object => @account}
 
   = render :partial => "versions/versions", :locals => {:object => @account}
 

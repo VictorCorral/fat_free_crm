@@ -387,6 +387,7 @@ en-US:
   # Views -> Contacts.
   #----------------------------------------------------------------------------
   alt_email_small: Other
+  alternate_address: Alternate address 
   blog: Website/Blog
   contact: Contact
   contact_small: contact

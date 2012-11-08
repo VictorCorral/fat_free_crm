@@ -1,6 +1,6 @@
 = section(object, :contacts)
 .list#contacts
   - contacts = object.contacts.paginate(:page => 1, :per_page => 20)
-  = render :partial => "contacts/contact", :collection => contacts
+  = render :partial => "contacts/contact", :collection => contacts, :locals => { :original_object => object }
 
 = will_paginate contacts, :id => 'contacts_pagination', :params => {:action => :contacts}

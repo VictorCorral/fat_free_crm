@@ -11,15 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019233351) do
+ActiveRecord::Schema.define(:version => 20121106163723) do
 
   create_table "account_contacts", :force => true do |t|
     t.integer  "account_id"
     t.integer  "contact_id"
     t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "account_contact_type"
   end
+
+  add_index "account_contacts", ["account_contact_type"], :name => "unique_account_contact_type_str"
+  add_index "account_contacts", ["contact_id", "account_id", "account_contact_type"], :name => "unique_account_contact_types", :unique => true
 
   create_table "account_opportunities", :force => true do |t|
     t.integer  "account_id"

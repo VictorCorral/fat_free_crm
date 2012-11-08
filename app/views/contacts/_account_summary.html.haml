@@ -1,0 +1,4 @@
+%dt{ :style => "padding: 2px 0px 0px 10px" }
+  = account.secondary_account_contacts.for_contact(original_object).pluck(:account_contact_type).collect{|act| act.humanize}.join(", ")
+  - if account.name?
+    == #{t :at} #{link_to_if can?(:read, account), account.name, account_path(account)}

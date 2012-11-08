@@ -222,7 +222,15 @@ namespace :load_csv do
 			:state => h["mailingstate"],
 			:zipcode => h["mailingpostalcode"],
 			:country => h["mailingcountry"],
-			:address_type => 'Billing', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+			:address_type => 'Business', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+		      },
+                     :alternate_address_attributes => { 
+			:street1 => h["otherstreet"],
+			:city => h["othercity"],
+			:state => h["otherstate"],
+			:zipcode => h["otherpostalcode"],
+			:country => h["othercountry"],
+			:address_type => 'Alternate', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
 		    }
 		    
