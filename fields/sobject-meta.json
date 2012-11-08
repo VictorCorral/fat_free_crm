@@ -428,7 +428,7 @@
                 "datatype": "double"
             }
         },
-        "CR": {
+        "CR_NULLIFIED": {
             "Company1__c": {
                 "label": "Company1",
                 "required": false,
@@ -1329,7 +1329,7 @@
                 "datatype": "string"
             },
             "DTC_B_D__c": {
-                "label": "DTC B/D#:",
+                "label": "DTC B/D#",
                 "required": false,
                 "editable": false,
                 "datatype": "string"
@@ -2075,13 +2075,13 @@
         },
         "CMT - Correspondent": {
             "GLCode__c": {
-                "label": "GLCode",
+                "label": "GL Code",
                 "required": false,
                 "editable": false,
                 "datatype": "string"
             },
             "MPIDs__c": {
-                "label": "CorrespondentCode",
+                "label": "Correspondent Code",
                 "required": false,
                 "editable": false,
                 "datatype": "string"
@@ -2095,7 +2095,7 @@
                 "datatype": "string"
             },
             "TraditionalTrader__c": {
-                "label": "TraditionalTrader",
+                "label": "Traditional Trader",
                 "required": false,
                 "editable": false,
                 "datatype": "boolean"
