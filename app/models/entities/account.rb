@@ -85,6 +85,12 @@ class Account < ActiveRecord::Base
   validate :users_for_shared_access
   before_save :nullify_blank_category
 
+  # Get records updated/created since a certain time
+  #----------------------------------------------------------------------------
+  def self.since(time)
+    Account.where('updated_at >= :since', {:since => time})
+  end
+
   # Default values provided through class methods.
   #----------------------------------------------------------------------------
   def self.per_page ; 20     ; end

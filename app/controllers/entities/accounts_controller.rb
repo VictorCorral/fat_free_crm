@@ -21,13 +21,27 @@ class AccountsController < EntitiesController
   # GET /accounts
   #----------------------------------------------------------------------------
   def index
+      # Get /accounts.json?email=person@example.com
       if params.has_key?(:email)
-        @accounts = Account.find_by_email(params[:email])
-
-        respond_with @accounts do |format|
+        respond_to do |format|
+          @accounts = Account.find_by_email(params[:email])
           format.json { render :json =>
             @accounts.nil? ? [] : @accounts.to_json(:include => [:contacts, :billing_address, :shipping_address])}
         end
+      # GET /accounts.json?since=yyyy-MM-ddThh:mm:ss
+      elsif params.has_key?(:since)
+        respond_to do |format|
+          begin
+            Time.zone = "Central Time (US & Canada)"
+            dt = Time.zone.local_to_utc(params[:since].to_datetime)
+          rescue ArgumentError, NoMethodError
+            format.json { render :json => 'Invalid DateTime' }
+          else
+            @accounts = Account.since(dt)
+            format.json { render :json => @accounts.nil? ? [] : @accounts.to_json }
+          end
+        end
+      # GET /accounts
       else
         @accounts = get_accounts(:page => params[:page])
         respond_with @accounts do |format|
