@@ -2108,7 +2108,7 @@
                 "hint": "The MPID of this office. This field is used only for Office, not for Correspondent."
             },
             "DayTrader__c": {
-                "label": "DayTrader",
+                "label": "Day Trader",
                 "required": false,
                 "editable": false,
                 "datatype": "boolean"
@@ -2127,7 +2127,7 @@
                 ]
             },
             "InternetTrader__c": {
-                "label": "InternetTrader",
+                "label": "Internet Trader",
                 "required": false,
                 "editable": false,
                 "datatype": "boolean"
@@ -2226,13 +2226,13 @@
                 "label": "ParentCorrespondentID",
                 "required": false,
                 "editable": false,
-                "datatype": "double"
+                "datatype": "string"
             },
             "CorrespondentID__c": {
                 "label": "CorrespondentID",
                 "required": false,
                 "editable": false,
-                "datatype": "double"
+                "datatype": "string"
             },
             "CorrespondentOfficeID__c": {
                 "label": "CorrespondentOfficeID",
