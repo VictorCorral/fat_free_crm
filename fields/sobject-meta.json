@@ -78,7 +78,7 @@
                 "datatype": "boolean"
             },
             "AutoNumber_Contact__c": {
-                "label": "AutoNumber_ Contact",
+                "label": "AutoNumber_Contact",
                 "required": false,
                 "editable": false,
                 "datatype": "string",
