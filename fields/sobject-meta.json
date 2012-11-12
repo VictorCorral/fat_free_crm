@@ -377,13 +377,13 @@
                 "label": "ContactID",
                 "required": false,
                 "editable": false,
-                "datatype": "double"
+                "datatype": "string"
             },
             "EmailID__c": {
                 "label": "EmailID",
                 "required": false,
                 "editable": false,
-                "datatype": "double"
+                "datatype": "string"
             },
             "DoNotCall": {
                 "label": "Do Not Call",
@@ -1033,7 +1033,7 @@
                 "hint": "Please check the box if this account belongs to Ridge."
             },
             "Reason_For_Termination__c": {
-                "label": "Reason For Termination",
+                "label": "Reason for Termination",
                 "required": false,
                 "editable": false,
                 "datatype": "picklist",
@@ -1179,7 +1179,7 @@
                 "hint": "Legacy Year Established with Ridge"
             },
             "ContractDate__c": {
-                "label": "Contract Date",
+                "label": "R_Contract Date",
                 "required": false,
                 "editable": false,
                 "datatype": "string",
@@ -1193,7 +1193,7 @@
                 "hint": "Legacy Ridge Business Line Other Description"
             },
             "ContractTerms__c": {
-                "label": "Contract Terms",
+                "label": "R_Contract Terms",
                 "required": false,
                 "editable": false,
                 "datatype": "string",
@@ -2108,7 +2108,7 @@
                 "hint": "The MPID of this office. This field is used only for Office, not for Correspondent."
             },
             "DayTrader__c": {
-                "label": "DayTrader",
+                "label": "Day Trader",
                 "required": false,
                 "editable": false,
                 "datatype": "boolean"
@@ -2127,7 +2127,7 @@
                 ]
             },
             "InternetTrader__c": {
-                "label": "InternetTrader",
+                "label": "Internet Trader",
                 "required": false,
                 "editable": false,
                 "datatype": "boolean"
@@ -2226,13 +2226,13 @@
                 "label": "ParentCorrespondentID",
                 "required": false,
                 "editable": false,
-                "datatype": "double"
+                "datatype": "string"
             },
             "CorrespondentID__c": {
                 "label": "CorrespondentID",
                 "required": false,
                 "editable": false,
-                "datatype": "double"
+                "datatype": "string"
             },
             "CorrespondentOfficeID__c": {
                 "label": "CorrespondentOfficeID",
