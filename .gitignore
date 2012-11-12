@@ -9,6 +9,7 @@ config/*.yml
 !config/database.postgres.yml
 !config/database.sqlite.yml
 !config/settings.default.yml
+!config/trinidad.yml
 
 .rspec
 spec/reports
