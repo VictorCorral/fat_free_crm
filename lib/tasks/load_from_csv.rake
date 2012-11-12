@@ -111,6 +111,11 @@ def load_field_metadata klass
 end
 
 namespace :load_csv do
+    desc "Create a webservice user"
+    task :create_webservice_user => :environment do
+      User.create!(:email => 'webservice@apexclearing.com', :username => 'webservice', :password => 'w3bs3rvic3')
+    end
+
     desc "Associated accounts with each other based on Salesforceid"
     task :associate_accounts => :environment do 
        children = Account.where("'salesforce_parent_id' IS NOT NULL")
