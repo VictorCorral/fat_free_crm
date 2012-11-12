@@ -52,8 +52,8 @@ stop()
       return -1
     fi
   else
-    echo "File $RAILS_PIDFILE doesn't exist... aborting."
-    return -1
+    echo "File $RAILS_PIDFILE doesn't exist... nothing to do."
+    return 0
   fi
 }
 
