@@ -56,7 +56,7 @@ remove 'fat_free_crm'
 
 group :development, :test do
   # Uncomment the following two gems to deploy via Capistrano
-  gem 'mina'
+  gem 'mina', :git => 'git://github.com/nadarei/mina.git'
   gem 'capistrano'
   gem 'capistrano_colors'
 
