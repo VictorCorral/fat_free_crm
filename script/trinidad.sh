@@ -2,44 +2,87 @@
 
 set -e
 
-# Must be a valid filename
-NAME=trinidad
-#/var/run/app must be writable by your user
-FILE_ROOT=`dirname $(readlink -f $0)`
-APP_DIR="$FILE_ROOT/.."
-PIDFILE=$APP_DIR/tmp/pids/trinidad.pid
-#This is the command to be run, give the full pathname
-DAEMON="/usr/bin/trinidad"
-#create a config yml with daemonization options in it - and the same PIDFILE path as above
-DAEMON_OPTS="--config=$APP_DIR/config/trinidad.yml"
-USER=fatfreecrm
+RAILS_ENV_DEFAULT=production
+RAILS_PORT_DEFAULT=4000
+RAILS_STDOUT_LOG_DEFAULT=/dev/null
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+RAILS_PIDFILE_DEFAULT=$DIR/../tmp/pids/trinidad.pid
 
-# below is our java opts, for a 8 gig ram, xeon quadcore machine, you might want to change this
-export JAVA_OPTS="-server -Xmx2500m -Xms2500m -XX:PermSize=512m -XX:MaxPermSize=512m -XX:NewRatio=2 -XX:+DisableExplicitGC -Dhk2.file.directory.changeIntervalTimer=6000 -Xss2048k -XX:ParallelGCThreads=4 -XX:+AggressiveHeap"
+usage()
+{
+cat <<EOF
+  usage: $0 [ARGS] start|stop
 
-export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+  args:
+    [-e development|production|test|postgres_test (default: $RAILS_ENV_DEFAULT)]
+    [-p PORT_NUMBER (default: $RAILS_PORT_DEFAULT)]
+    [-f PIDFILE (default: $RAILS_PIDFILE_DEFAULT)]
+    [-l STDOUT_LOG (default: $RAILS_STDOUT_LOG_DEFAULT)]
+EOF
+}
 
-case "$1" in
-  start)
-        echo -n "Starting daemon: "$NAME
-  start-stop-daemon --start --chdir $APPDIR --quiet --chuid $USER --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
-        echo "."
-  ;;
-  stop)
-        echo -n "Stopping daemon: "$NAME
-  start-stop-daemon --stop --chdir $APPDIR --quiet --chuid $USER --oknodo --pidfile $PIDFILE
-        echo "."
-  ;;
-  restart)
-        echo -n "Restarting daemon: "$NAME
-  start-stop-daemon --stop --chdir $APPDIR --quiet --chuid $USER --oknodo --retry 30 --pidfile $PIDFILE
-  start-stop-daemon --start --chdir $APPDIR --quiet --chuid $USER --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
-  echo "."
-  ;;
+start()
+{
+  if [ -e $RAILS_PIDFILE ]; then
+    echo "Error: pid file $RAILS_PIDFILE exists."
+    return 1
+  else
+    echo "Starting tomcat/rails in $RAILS_ENV mode..."
+    pushd "$DIR/.." > /dev/null
+      jruby --1.9 --server -J-Djruby.compile.mode=FORCE -J-Xmn128m -J-Xms256m -J-Xmx1024m -J-XX:MaxPermSize=1024m -S trinidad --threadsafe --config -p ${RAILS_PORT} -e ${RAILS_ENV} &> ${RAILS_STDOUT_LOG} &
+    popd > /dev/null
+    echo $! > $RAILS_PIDFILE
+    echo "...success."
+    echo "Logging stdout to $RAILS_STDOUT_LOG"
+    return 0
+  fi
+}
 
-  *)
-  echo "Usage: "$1" {start|stop|restart}"
-  exit 1
-esac
+stop()
+{
+  if [ -e $RAILS_PIDFILE ]; then
+    pid=`cat $RAILS_PIDFILE`
+    echo "Trying to kill $pid..."
+    if kill $pid &> /dev/null; then
+      echo " success."
+      rm -f $RAILS_PIDFILE
+      return 0
+    else
+      echo " error killing $pid (from file $RAILS_PIDFILE)... aborting."
+      return -1
+    fi
+  else
+    echo "File $RAILS_PIDFILE doesn't exist... aborting."
+    return -1
+  fi
+}
 
-exit 0
+while getopts "e:f:l:h" FLAG; do
+  case $FLAG in
+    e) RAILS_ENV=$OPTARG;;
+    p) RAILS_PORT=$OPTARG;;
+    f) RAILS_PIDFILE=$OPTARG;;
+    l) RAILS_STDOUT_LOG=$OPTARG;;
+    h) usage; exit 0;;
+  esac
+done
+shift $((OPTIND-1))
+
+: ${RAILS_ENV=$RAILS_ENV_DEFAULT}
+: ${RAILS_PORT=$RAILS_PORT_DEFAULT}
+: ${RAILS_PIDFILE=$RAILS_PIDFILE_DEFAULT}
+: ${RAILS_STDOUT_LOG=$RAILS_STDOUT_LOG_DEFAULT}
+
+RETVAL=-1
+if [ "x$@" == "xstart" ]; then
+  start
+  RETVAL=$?
+elif [ "x$@" == "xstop" ]; then
+  stop
+  RETVAL=$?
+else
+  usage
+fi
+
+exit $RETVAL
+
