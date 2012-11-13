@@ -33,7 +33,7 @@ class ContactsController < EntitiesController
       end
     elsif params.has_key?(:email_list)
       @contacts = get_contacts(:page => 1, :per_page => 'all')
-      render :text => @contacts.pluck(:email).reject{|e| e.empty?}.join("; ")
+      render :text => @contacts.pluck(:email).join("; ")
     else
       respond_with @contacts do |format|
         format.xls { render :layout => 'header' }
