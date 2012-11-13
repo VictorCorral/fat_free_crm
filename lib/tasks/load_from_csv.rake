@@ -111,6 +111,11 @@ def load_field_metadata klass
 end
 
 namespace :load_csv do
+    desc "Create a webservice user"
+    task :create_webservice_user => :environment do
+      User.create!(:email => 'webservice@apexclearing.com', :username => 'webservice', :password => 'w3bs3rvic3')
+    end
+
     desc "Associated accounts with each other based on Salesforceid"
     task :associate_accounts => :environment do 
        children = Account.where("'salesforce_parent_id' IS NOT NULL")
@@ -214,14 +219,17 @@ namespace :load_csv do
                   new_secondary_account_contacts = Array.new
 
                   (1..6).each do |i|
-                     (company_fields["company#{i}__c"] || "").strip.split(',').each do |code|
+                     head, *tail = *((company_fields["company#{i}__c"] || "").strip.split(','))
+                     tail.each do |code|
                        #puts "for code #{code}"
-                       [Account.where("office_code__c = ? OR office_mpid__c = ? OR branch_code__c = ?", code.strip, code.strip, code.strip).first].compact.each do |acct|
-                        # puts "  for acct #{acct.name}"
+                       res = Account.where("name LIKE '%(#{code.strip})'")
+                       puts "WARNING: No account found for code #{code.strip} / contact #{h['id']} #{h['name']}" if (!res or res.length == 0)
+                       res.each do |acct|
+                         #puts "  for acct #{acct.name}"
                          titles = (h["title#{i}__c"] || "").strip.split(';').collect{|m| m.strip.downcase.sub(' ','_')}
                          titles << 'authorized_signer' if h["authorizedsigner#{i}__c"] && h["authorizedsigner#{i}__c"] != "f"
                          titles << 'correspondent_level' if h["correspondentlevel#{i}__c"] && h["correspondentlevel#{i}__c"] != "f"
-                         titles << 'follows' if titles.empty? #ugh yes, it's possible to just be 'related' to an acct for no reason 
+                         titles << 'undefined_title' if titles.empty? #ugh yes, it's possible to just be 'related' to an acct for no reason 
                          titles.each do |title|
                            # puts "    for title #{title}"
                            new_secondary_account_contacts << {:account_id => acct.id, :account_contact_type => title}
@@ -262,18 +270,17 @@ namespace :load_csv do
 		      },
 		    }
 		    
-		    contact_attr.merge!(h.select{|k,v| (!!(k =~ /\w*__c/) \
-                                            and !!(k =~ /homephone/) \
+		  contact_attr = contact_attr.merge(h.select{|k,v| ((!!(k =~ /\w*__c/) \
+                                            or !!(k =~ /homephone/)) \
 					    and Contact.columns.map(&:name).include?(k)) 
 		                      })
 		    
 
 	         #puts contact_attr.inspect	
 		 contacts << Contact.new(contact_attr)
-                 
-                   contacts.last.account_contacts.build(new_secondary_account_contacts)
+                 contacts.last.account_contacts.build(new_secondary_account_contacts)
 
-                 i = i + 1; if i % 1000 == 1
+                 i = i + 1; if i % 1000 == 0
                   Rails.logger.info("#{i}: begin db load")
                   loadActiveRecord(contacts)
                   contacts = []
