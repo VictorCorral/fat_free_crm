@@ -11,19 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108080353) do
+ActiveRecord::Schema.define(:version => 20121111223131) do
 
   create_table "account_contacts", :force => true do |t|
     t.integer  "account_id"
     t.integer  "contact_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.string   "account_contact_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "account_contacts", ["account_contact_type"], :name => "unique_account_contact_type_str"
-  add_index "account_contacts", ["contact_id", "account_id", "account_contact_type"], :name => "account_contact_types"
 
   create_table "account_opportunities", :force => true do |t|
     t.integer  "account_id"
@@ -127,6 +123,11 @@ ActiveRecord::Schema.define(:version => 20121108080353) do
   add_index "accounts", ["salesforce_id"], :name => "index_accounts_on_salesforce_id"
   add_index "accounts", ["salesforce_parent_id"], :name => "index_accounts_on_salesforce_parent_id"
   add_index "accounts", ["user_id", "name", "deleted_at"], :name => "index_accounts_on_user_id_and_name_and_deleted_at", :unique => true
+
+  create_table "accounts_title_groups", :force => true do |t|
+    t.integer "account_id"
+    t.integer "title_group_id"
+  end
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -480,6 +481,24 @@ ActiveRecord::Schema.define(:version => 20121108080353) do
 
   add_index "tasks", ["assigned_to"], :name => "index_tasks_on_assigned_to"
   add_index "tasks", ["user_id", "name", "deleted_at"], :name => "index_tasks_on_user_id_and_name_and_deleted_at", :unique => true
+
+  create_table "title_groups", :force => true do |t|
+    t.integer  "contact_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "title_groups_titles", :force => true do |t|
+    t.integer "title_id"
+    t.integer "title_group_id"
+  end
+
+  create_table "titles", :force => true do |t|
+    t.string "name"
+  end
+
+  add_index "titles", ["name"], :name => "index_titles_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username",            :limit => 32, :default => "",    :null => false

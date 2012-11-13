@@ -1,0 +1,5 @@
+%dt{ :style => "padding: 2px 0px 0px 10px" }
+  = title_group.title_names
+  %dt{ :style => "padding: 2px 0px 0px 8px" }
+    = t :at 
+    = title_group.accounts.collect {|account| link_to_if (account.name? and can?(:read, account)), account.name, account_path(account)}.join(", ").html_safe

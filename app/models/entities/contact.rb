@@ -60,12 +60,12 @@ class Contact < ActiveRecord::Base
   has_many    :accounts, :through => :account_contacts, :source => :account
 
 #Primary account
-  has_one     :account_contact, :class_name => 'AccountContact', :foreign_key => :contact_id, :conditions => {:account_contact_type => 'primary'}
+  has_one     :account_contact, :class_name => 'AccountContact', :foreign_key => :contact_id
   has_one     :account, :through => :account_contact, :source => :account
 
 #Secondary accounts
-  has_many    :secondary_account_contacts, :class_name => 'AccountContact', :foreign_key => :contact_id, :conditions => ["account_contact_type NOT LIKE ?", 'primary']
-  has_many    :secondary_accounts, :through => :secondary_account_contacts, :source => :account, :uniq => true
+  has_many    :title_groups
+  has_many    :secondary_accounts, :through => :title_groups, :source => :accounts, :uniq => true
   has_many    :contact_opportunities, :dependent => :destroy
   has_many    :opportunities, :through => :contact_opportunities, :uniq => true, :order => "opportunities.id DESC"
   has_many    :tasks, :as => :asset, :dependent => :destroy#, :order => 'created_at DESC'
@@ -77,7 +77,7 @@ class Contact < ActiveRecord::Base
 
   accepts_nested_attributes_for :business_address, :allow_destroy => true
   accepts_nested_attributes_for :alternate_address, :allow_destroy => true
-  accepts_nested_attributes_for :secondary_account_contacts
+  accepts_nested_attributes_for :title_groups
 
   scope :created_by, lambda { |user| { :conditions => [ "user_id = ?", user.id ] } }
   scope :assigned_to, lambda { |user| { :conditions => ["assigned_to = ?", user.id ] } }
@@ -130,7 +130,7 @@ class Contact < ActiveRecord::Base
   #----------------------------------------------------------------------------
   def save_with_account_and_permissions(params)
     account = Account.create_or_select_for(self, params[:account])
-    self.account_contact = AccountContact.new(:account => account, :contact => self, :account_contact_type => 'primary') unless account.id.blank?
+    self.account_contact = AccountContact.new(:account => account, :contact => self) unless account.id.blank?
     self.opportunities << Opportunity.find(params[:opportunity]) unless params[:opportunity].blank?
     self.save
   end
@@ -145,7 +145,7 @@ class Contact < ActiveRecord::Base
       account = Account.create_or_select_for(self, params[:account])
       if self.account != account and account.id.present?
         notify_account_change(:from => self.account, :to => account)
-        self.account_contact = AccountContact.new(:account => account, :contact => self, :account_contact_type => 'primary')
+        self.account_contact = AccountContact.new(:account => account, :contact => self)
       end
       
     end
@@ -206,7 +206,7 @@ class Contact < ActiveRecord::Base
     # Save the contact only if the account and the opportunity have no errors.
     if account.errors.empty? && opportunity.errors.empty?
       # Note: contact.account = account doesn't seem to work here.
-      contact.account_contact = AccountContact.new(:account => account, :contact => contact, :account_contact_type => 'primary') unless account.id.blank?
+      contact.account_contact = AccountContact.new(:account => account, :contact => contact) unless account.id.blank?
       contact.opportunities << opportunity unless opportunity.id.blank?
       if contact.access != "Lead" || model.nil?
         contact.save

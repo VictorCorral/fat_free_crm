@@ -1,0 +1,4 @@
+= naked_section(object, :secondary_contact_relationships)
+.list#contacts
+  - contacts = object.secondary_contacts
+  = render :partial => "contacts/contact", :collection => contacts, :locals => { :original_object => object }
