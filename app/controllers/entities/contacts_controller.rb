@@ -32,6 +32,7 @@ class ContactsController < EntitiesController
           @contacts.nil? ? [] : @contacts.to_json(:include => [:account, :business_address]) }
       end
     elsif params.has_key?(:email_list)
+      @contacts = get_contacts
       render :text => @contacts.pluck(:email).reject{|e| e.empty?}.join("; ")
     else
       respond_with @contacts do |format|
