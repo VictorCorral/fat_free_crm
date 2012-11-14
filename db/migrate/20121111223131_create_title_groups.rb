@@ -1,9 +1,10 @@
 class CreateTitleGroups < ActiveRecord::Migration
   def up
    #Get rid of relationship info on direct account_contact relationships
-    remove_column :account_contacts, :account_contact_type
     remove_index :account_contacts, :name => 'unique_account_contact_types' if index_name_exists? :account_contacts, 'unique_account_contact_types', false
+    remove_index :account_contacts, :name => 'account_contact_types' if index_name_exists? :account_contacts, 'account_contact_types', false
     remove_index :account_contacts, :name => 'unique_account_contact_type_str' if index_name_exists? :account_contacts, 'unique_account_contact_type_str', false
+    remove_column :account_contacts, :account_contact_type
 
     create_table :title_groups, :force => true do |t|
       t.references :contact

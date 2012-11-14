@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:sfritz/mina.git
+  remote: https://github.com/sfritz/mina.git
   revision: c6b3c420758b398e40780f22c77a68d921c4437b
   specs:
     mina (0.2.1)

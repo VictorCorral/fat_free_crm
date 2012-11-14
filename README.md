@@ -102,7 +102,7 @@ Install postgresql:
 
 Install gem dependencies:
 
-```sudo apt-get install libmagick+-dev libxml2 libxml2-dev libxslt1-dev libyaml-dev libpq-dev libsqlite3-dev```
+```sudo apt-get install libmagick+-dev libxml2 libxml2-dev libxslt1-dev libyaml-dev libpq-dev libsqlite3-dev nodejs```
 
 Run the following command from the application’s root directory:
 
