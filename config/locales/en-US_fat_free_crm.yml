@@ -734,6 +734,7 @@ en-US:
 
   # Export.
   #----------------------------------------------------------------------------
+  to_email: Get email list
   to_xls: Export to Excel
   to_csv: Export to comma-delimited file format (including deleted records)
   to_rss: RSS feed
