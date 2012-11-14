@@ -57,14 +57,13 @@ class Contact < ActiveRecord::Base
       where(:account_id => account.id) 
     end
   end
-  has_many    :accounts, :through => :account_contacts, :source => :account
 
 #Primary account
   has_one     :account_contact, :class_name => 'AccountContact', :foreign_key => :contact_id
   has_one     :account, :through => :account_contact, :source => :account
 
 #Secondary accounts
-  has_many    :title_groups
+  has_many    :title_groups, :dependent => :delete_all
   has_many    :secondary_accounts, :through => :title_groups, :source => :accounts, :uniq => true
   has_many    :contact_opportunities, :dependent => :destroy
   has_many    :opportunities, :through => :contact_opportunities, :uniq => true, :order => "opportunities.id DESC"

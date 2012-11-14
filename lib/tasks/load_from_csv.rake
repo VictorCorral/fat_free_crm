@@ -216,9 +216,9 @@ namespace :load_csv do
 		salesforce_contacts.each do |h| 
                   company_fields = h.select{|k,v| (!!(k =~ /company([0-9])__c/) and v) }
 
-                  new_secondary_account_contacts = Array.new
-
+                  title_groups = [] 
                   (1..6).each do |i|
+                     title_group = TitleGroup.new
                      head, *tail = *((company_fields["company#{i}__c"] || "").strip.split(','))
                      tail.each do |code|
                        #puts "for code #{code}"
@@ -226,15 +226,24 @@ namespace :load_csv do
                        puts "WARNING: No account found for code #{code.strip} / contact #{h['id']} #{h['name']}" if (!res or res.length == 0)
                        res.each do |acct|
                          #puts "  for acct #{acct.name}"
-                         titles = (h["title#{i}__c"] || "").strip.split(';').collect{|m| m.strip.downcase.sub(' ','_')}
-                         titles << 'authorized_signer' if h["authorizedsigner#{i}__c"] && h["authorizedsigner#{i}__c"] != "f"
-                         titles << 'correspondent_level' if h["correspondentlevel#{i}__c"] && h["correspondentlevel#{i}__c"] != "f"
-                         titles << 'undefined_title' if titles.empty? #ugh yes, it's possible to just be 'related' to an acct for no reason 
+                         titles = (h["title#{i}__c"] || "").strip.split(';').collect{|m| m.strip}
+                         titles << 'Authorized Signer' if h["authorizedsigner#{i}__c"] && h["authorizedsigner#{i}__c"] != "f"
+                         titles << 'Correspondent Level' if h["correspondentlevel#{i}__c"] && h["correspondentlevel#{i}__c"] != "f"
+                         titles << 'Undefined Title' if titles.empty? #ugh yes, it's possible to just be 'related' to an acct for no reason 
                          titles.each do |title|
+                           title_group.accounts << acct
                            # puts "    for title #{title}"
-                           new_secondary_account_contacts << {:account_id => acct.id, :account_contact_type => title}
+                           title = Title.where(:name => title)
+                           if title
+                             title_group.titles << title 
+                           else 
+                             puts "WARNING: Unknown title #{title}" 
+                           end
                          end
                        end
+                     end
+                     if !title_group.titles.empty? and !title_group.accounts.empty?
+                       title_groups << title_group
                      end
                   end      
 
@@ -278,7 +287,7 @@ namespace :load_csv do
 
 	         #puts contact_attr.inspect	
 		 contacts << Contact.new(contact_attr)
-                 contacts.last.account_contacts.build(new_secondary_account_contacts)
+                 contacts.last.title_groups = title_groups
 
                  i = i + 1; if i % 1000 == 0
                   Rails.logger.info("#{i}: begin db load")

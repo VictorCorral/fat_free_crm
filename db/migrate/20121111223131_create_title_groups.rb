@@ -67,6 +67,8 @@ class CreateTitleGroups < ActiveRecord::Migration
      "Technology Contact",
      "Trading Contact",
      "Upload Contact",
+     "Authorized Signer",
+     "Correspondent Level",
      "Undefined Title"
     ].each do |title|
       Title.create!(:name => title)
@@ -79,7 +81,7 @@ class CreateTitleGroups < ActiveRecord::Migration
     add_column :account_contacts, :account_contact_type, :string
     remove_index :titles, :name
 
-    drop_table :title_group
-    drop_table :title
+    drop_table :title_groups
+    drop_table :titles
   end
 end
