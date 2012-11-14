@@ -5,12 +5,12 @@ require 'hasherize_csv'
 def loadActiveRecord( items )
     failed_instances = []
     num_inserts = 0
-    ActiveRecord::Base.transaction do
+    ActiveRecord::Base.transaction do 
        items.each do |a|
-          res = a.save
-          if res
+          res = a.save 
+          if res 
            num_inserts = num_inserts + 1
-          else
+          else 
            failed_instances << {:object => a.inspect, :errors => a.errors.inspect}
           end
        end
@@ -36,13 +36,13 @@ def load_field_descriptions jsonfilename, csvfilename, sf_type
 	  #puts record.inspect
 	  location = record["Location"].strip
 	  #puts "record location: #{location}"
-	  details = h[sf_type][ location ]
+	  details = h[sf_type][ location ] 
 	  if details
 	    matching_details = details.invert.select {|item| item["label"].strip == record["SF Tab"].strip}
             puts "Warning: Didn't find any details for SF Tab key '#{record["SF Tab"]}' within #{details.collect{|k,v| v["label"] }}" if matching_details.empty?
             items << matching_details.collect{|k,v| [v.downcase, k.merge({"location" => location, "keep" => (record['Suggested Action'] == 'Keep') })]}.flatten
 
-	  else
+	  else 
 	   puts "Warning: Couldn't find info for location #{record["Location"]} (field #{record["SF Tab"]} / #{record["Suggested Action"]} )"
 	  end
 	end
@@ -53,7 +53,7 @@ def load_field_descriptions jsonfilename, csvfilename, sf_type
 end
 
 def load_field_metadata klass
-        custom_field_metadata = load_field_descriptions ENV['SF_JSON_METADATA'], ENV['SF_TABLE_METADATA'], klass.to_s.downcase if (ENV['SF_JSON_METADATA'] and ENV['SF_TABLE_METADATA'])
+        custom_field_metadata = load_field_descriptions ENV['SF_JSON_METADATA'], ENV['SF_TABLE_METADATA'], klass.to_s.downcase if (ENV['SF_JSON_METADATA'] and ENV['SF_TABLE_METADATA']) 
 
         custom_field_metadata.each do |field_name, metadata|
 	  field_group = FieldGroup.where(:label => metadata['location'], :klass_name => klass.to_s).first
@@ -63,11 +63,11 @@ def load_field_metadata klass
 	     field_group.label = metadata['location']
 	     field_group.klass_name = klass.to_s
 	     field_group.save!
-	  end
+	  end 
 
 	  f = CustomField.where(:label => metadata["label"], :field_group_id => field_group.id).first
 	  if !f && !klass.columns.map(&:name).include?(field_name) && metadata["keep"]
-		  f = CustomField.new(
+		  f = CustomField.new( 
 		      :name => (field_name ),
 		      :field_group => field_group,
 		      :label => metadata["label"],
@@ -94,35 +94,40 @@ def load_field_metadata klass
 			      when 'url'
 				 'url'
 			      else
-				 puts "Warning: unknown custom field type #{metadata['datatype']}; choosing string"
+				 puts "Warning: unknown custom field type #{metadata['datatype']}; choosing string" 
 				 'string'
 			      end,
 		      :collection => (metadata["picklist"]),
 		      :required => metadata["required"],
-		      :hint => metadata["hint"]
+		      :hint => metadata["hint"],
 #		      :disabled => !metadata["editable"],
-		      )
+		      )  
 		  puts "Saving #{f.inspect}"
 		  f.save!
-           else
+           else 
 	      puts "Warning: ignored field #{field_name} / #{metadata.inspect} / #{f.inspect}"
            end
         end
 end
 
 namespace :load_csv do
+    desc "Create a webservice user"
+    task :create_webservice_user => :environment do
+      User.create!(:email => 'webservice@apexclearing.com', :username => 'webservice', :password => 'w3bs3rvic3')
+    end
+
     desc "Associated accounts with each other based on Salesforceid"
-    task :associate_accounts => :environment do
+    task :associate_accounts => :environment do 
        children = Account.where("'salesforce_parent_id' IS NOT NULL")
        children.each do |child|
          child.parent_account = Account.find_by_salesforce_id(child.salesforce_parent_id)
          child.save
        end
     end
-
+     
     desc "Load account metadata from a salesforce csv"
     task :account_custom_fields => :environment do
-       load_field_metadata Account
+       load_field_metadata Account 
     end
 
     desc "Load accounts from a salesforce csv"
@@ -136,7 +141,7 @@ namespace :load_csv do
 	Account.observers.disable :all do #Otherwise 'recent activity' goes bananas
                 accounts = []
                 i = 0
-		salesforce_accounts.each do |h|
+		salesforce_accounts.each do |h| 
                      account_attr = {
 	             :salesforce_id => h["id"],
                      :salesforce_parent_id => h["parentid"],
@@ -146,13 +151,13 @@ namespace :load_csv do
 		     :phone => h["phone"],
 		     :fax => h["fax"],
 		     :category => ( h["type"].downcase.gsub(' ','_').gsub('-','_') if h["type"] ),
-		     :billing_address_attributes => {
+		     :billing_address_attributes => { 
 			:street1 => h["billingstreet"],
 			:city => h["billingcity"],
 			:state => h["billingstate"],
 			:zipcode => h["billingpostalcode"],
 			:country => h["billingcountry"],
-			:address_type => 'Billing' #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+			:address_type => 'Billing', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
 		     :shipping_address_attributes => {
 			:street1 => h["shippingstreet"],
@@ -160,7 +165,7 @@ namespace :load_csv do
 			:state => h["shippingstate"],
 			:zipcode => h["shippingpostalcode"],
 			:country => h["shippingcountry"],
-			:address_type => 'Shipping' #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
+			:address_type => 'Shipping', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
 
 		    }
@@ -168,15 +173,15 @@ namespace :load_csv do
 		                            and k != "services_products_subscriptions__c"  \
 		                            and k != "trading_platforms__c" \
 		                            and k != "products__c" \
-					    and Account.columns.map(&:name).include?(k))
+					    and Account.columns.map(&:name).include?(k)) 
 		                      })
-
+		    
 		    array_fields = h.select{|k,v| (k == "services_products_subscriptions__c"  \
 		                            and k == "trading_platforms__c" \
 		                            and k == "products__c")}
-
+					   
 		    array_fields.each{|k,v| array_fields[k] = v.split(";").collect {|i| i.strip}}
-
+                           
 
 		   accounts << Account.new(account_attr)
 
@@ -193,7 +198,7 @@ namespace :load_csv do
 
     desc "Load account metadata from a salesforce csv"
     task :contact_custom_fields => :environment do
-       load_field_metadata Contact
+       load_field_metadata Contact 
     end
 
     desc "Load contacts from a salesforce csv"
@@ -208,29 +213,41 @@ namespace :load_csv do
                 contacts = []
                 i = 0
 
-		salesforce_contacts.each do |h|
+		salesforce_contacts.each do |h| 
                   company_fields = h.select{|k,v| (!!(k =~ /company([0-9])__c/) and v) }
 
-                  new_secondary_account_contacts = Array.new
-
+                  title_groups = [] 
                   (1..6).each do |i|
-                     (company_fields["company#{i}__c"] || "").strip.split(',').each do |code|
+                     title_group = TitleGroup.new
+                     head, *tail = *((company_fields["company#{i}__c"] || "").strip.split(','))
+                     tail.each do |code|
                        #puts "for code #{code}"
-                       [Account.where("office_code__c = ? OR office_mpid__c = ? OR branch_code__c = ?", code.strip, code.strip, code.strip).first].compact.each do |acct|
-                        # puts "  for acct #{acct.name}"
-                         titles = (h["title#{i}__c"] || "").strip.split(';').collect{|m| m.strip.downcase.sub(' ','_')}
-                         titles << 'authorized_signer' if h["authorizedsigner#{i}__c"] && h["authorizedsigner#{i}__c"] != "f"
-                         titles << 'correspondent_level' if h["correspondentlevel#{i}__c"] && h["correspondentlevel#{i}__c"] != "f"
-                         titles << 'follows' if titles.empty? #ugh yes, it's possible to just be 'related' to an acct for no reason
+                       res = Account.where("name LIKE '%(#{code.strip})'")
+                       puts "WARNING: No account found for code #{code.strip} / contact #{h['id']} #{h['name']}" if (!res or res.length == 0)
+                       res.each do |acct|
+                         #puts "  for acct #{acct.name}"
+                         titles = (h["title#{i}__c"] || "").strip.split(';').collect{|m| m.strip}
+                         titles << 'Authorized Signer' if h["authorizedsigner#{i}__c"] && h["authorizedsigner#{i}__c"] != "f"
+                         titles << 'Correspondent Level' if h["correspondentlevel#{i}__c"] && h["correspondentlevel#{i}__c"] != "f"
+                         titles << 'Undefined Title' if titles.empty? #ugh yes, it's possible to just be 'related' to an acct for no reason 
                          titles.each do |title|
+                           title_group.accounts << acct
                            # puts "    for title #{title}"
-                           new_secondary_account_contacts << {:account_id => acct.id, :account_contact_type => title}
+                           title = Title.where(:name => title)
+                           if title
+                             title_group.titles << title 
+                           else 
+                             puts "WARNING: Unknown title #{title}" 
+                           end
                          end
                        end
                      end
-                  end
+                     if !title_group.titles.empty? and !title_group.accounts.empty?
+                       title_groups << title_group
+                     end
+                  end      
 
-                  #puts new_secondary_account_contacts.inspect
+                  #puts new_secondary_account_contacts.inspect 
 		  contact_attr = {
                      :salesforce_id => h["id"],
                      :account => Account.find_by_salesforce_id(h["accountid"]),
@@ -244,7 +261,7 @@ namespace :load_csv do
 		     :title => h["title"],
 		     :department => h["department"],
 		     :email => h["email"],
-		     :business_address_attributes => {
+		     :business_address_attributes => { 
 			:street1 => h["mailingstreet"],
 			:city => h["mailingcity"],
 			:state => h["mailingstate"],
@@ -252,7 +269,7 @@ namespace :load_csv do
 			:country => h["mailingcountry"],
 			:address_type => 'Business', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
-                     :alternate_address_attributes => {
+                     :alternate_address_attributes => { 
 			:street1 => h["otherstreet"],
 			:city => h["othercity"],
 			:state => h["otherstate"],
@@ -261,19 +278,18 @@ namespace :load_csv do
 			:address_type => 'Alternate', #shouldn't need to specify that... but we do. probably a activerecord bug with ":conditions" on mass assignment
 		      },
 		    }
-
-		    contact_attr.merge!(h.select{|k,v| (!!(k =~ /\w*__c/) \
-                                            and !!(k =~ /homephone/) \
-					    and Contact.columns.map(&:name).include?(k))
+		    
+		  contact_attr = contact_attr.merge(h.select{|k,v| ((!!(k =~ /\w*__c/) \
+                                            or !!(k =~ /homephone/)) \
+					    and Contact.columns.map(&:name).include?(k)) 
 		                      })
+		    
 
-
-	         #puts contact_attr.inspect
+	         #puts contact_attr.inspect	
 		 contacts << Contact.new(contact_attr)
+                 contacts.last.title_groups = title_groups
 
-                   contacts.last.account_contacts.build(new_secondary_account_contacts)
-
-                 i = i + 1; if i % 1000 == 1
+                 i = i + 1; if i % 1000 == 0
                   Rails.logger.info("#{i}: begin db load")
                   loadActiveRecord(contacts)
                   contacts = []

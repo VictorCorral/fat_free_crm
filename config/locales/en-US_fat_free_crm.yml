@@ -1,5 +1,5 @@
----
-en-US:
+--- 
+en-US: 
   3rd_party: "3rd Party"
   about: About
   about_dev_group: "Discussion group for developers"
@@ -22,8 +22,7 @@ en-US:
   accounts_small: accounts
   action_completed: completed
   action_create: created
-  action_create_comment:
-    - "%{comment}"
+  action_create_comment: "- \"%{comment}\""
   action_destroy: deleted
   action_reassigned: reassigned
   action_rejected: rejected
@@ -31,67 +30,67 @@ en-US:
   action_update: updated
   action_view: viewed
   action_won: won
-  activerecord:
-    errors:
-      models:
-        account:
-          attributes:
-            access:
+  activerecord: 
+    errors: 
+      models: 
+        account: 
+          attributes: 
+            access: 
               share_account: "^Please specify users to share the account with."
-            name:
+            name: 
               missing_account_name: "^Please specify account name."
-        authentication:
-          attributes:
-            login_field:
+        authentication: 
+          attributes: 
+            login_field: 
               is_not_valid: "is not valid"
-            password_field:
+            password_field: 
               is_not_valid: "is not valid"
-        campaign:
-          attributes:
-            access:
+        campaign: 
+          attributes: 
+            access: 
               share_campaign: "^Please specify users to share the campaign with."
-            ends_on:
+            ends_on: 
               dates_not_in_sequence: "^Please make sure the campaign end date is after the start date."
-            name:
+            name: 
               missing_campaign_name: "^Please specify campaign name."
-        contact:
-          attributes:
-            access:
+        contact: 
+          attributes: 
+            access: 
               share_contact: "^Please specify users to share the contact with."
-            first_name:
+            first_name: 
               missing_first_name: "^Please specify first name."
-            last_name:
+            last_name: 
               missing_last_name: "^Please specify last name."
-        custom_field:
+        custom_field: 
           endbeforestart: "^%{field} cannot end before it begins."
           maxlength: "^%{field} is too long."
           required: "^%{field} is required."
-        lead:
-          attributes:
-            access:
+        lead: 
+          attributes: 
+            access: 
               share_lead: "^Please specify users to share the lead with."
-            first_name:
+            first_name: 
               missing_first_name: "^Please specify first name."
-            last_name:
+            last_name: 
               missing_last_name: "^Please specify last name."
-        opportunity:
-          attributes:
-            access:
+        opportunity: 
+          attributes: 
+            access: 
               share_opportunity: "^Please specify users to share the opportunity with."
-            name:
+            name: 
               missing_opportunity_name: "^Please specify opportunity name."
-        task:
-          attributes:
-            calendar:
+        task: 
+          attributes: 
+            calendar: 
               invalid_date: "^Please specify valid date."
-            name:
+            name: 
               missing_task_name: "^Please specify task name."
-        user:
-          attributes:
-            email:
+        user: 
+          attributes: 
+            email: 
               email_in_use: "^There is another user with the same email."
               missing_email: "^Please specify email address."
-            username:
+            username: 
               missing_username: "^Please specify username."
               username_taken: "^This username is already taken."
   activities: Activities
@@ -129,6 +128,7 @@ en-US:
   already_signed_up: "Already signed up?"
   alt_email: "Alternative email"
   alt_email_small: Other
+  alternate_address: "Alternate address"
   amount: Amount
   analysis: Analysis
   approve: Approve
@@ -158,38 +158,39 @@ en-US:
   campaigns: Campaigns
   campaigns_options: "Campaigns Options"
   campaigns_small: campaigns
-  conversion: Conversion
-  conversion_label: Conversion (%)
-  conversion_number: "%{value} conversion"
-  target_conversion: Targe conversion
-  create_campaign: Create Campaign
-  end_date: End date
-  finished_on: completed on %{value}
-  finishes_in: finishes in %{value}
-  no_start_date: no start date specified
-  number_of_leads: Number of leads
-  objectives: Objectives
-  objectives_help: Please specify target number of leads, expected leads-to-opportunities conversion ratio, target revenue, and campaign budget. These numbers will let you track actual campaign performance.
-  objectives_small: campaign objectives
-  revenue: Revenue
-  revenue_label: Revenue ($)
-  revenue_number: "%{value} in revenue"
-  save_campaign: Save Campaign
-  start_date: Start date
-  started_ago: started %{value} ago
-  starts_in: starts in %{value}
-  starts_today: starts today!
-  target: Target
-  total_campaigns: Total Campaigns
-  was_supposed_to_finish: was supposed to finish on %{value}
-  was_supposed_to_start: was supposed to start %{time_ago} ago on %{start_date}
-  was_supposed_to_start_in: was supposed to start in %{starts_in} on %{start_date}
-
-  # Views -> Contacts.
-  #----------------------------------------------------------------------------
-  alt_email_small: Other
-  alternate_address: Alternate address
-  blog: Website/Blog
+  cancel: Cancel
+  category: Category
+  change_password: "Change Password"
+  child_accounts: "Child Accounts"
+  city: City
+  close_date: "Close date"
+  close_form: "Close form"
+  closed_ago_on: "closed %{time_ago} ago on %{date}"
+  closes_on: "Closes on"
+  closes_today: "expected to close today!"
+  closing_date: "closing date is %{value}"
+  cold_call: "Cold Call"
+  collapse_all: "Collapse all"
+  collapsed: Collapsed
+  comment: Comment
+  comment_intro: "You can add comments later."
+  comment_notification: 
+    intro: "%{user_full_name} commented on %{entity_type}: %{entity_name}"
+    reply_instructions: "Reply to this email directly to add a new comment, or view the %{entity} online"
+  company: Company
+  competitor: Competitor
+  completed: Completed
+  completed_last_month: "Last month"
+  completed_last_week: "Last week"
+  completed_tab: Completed
+  completed_tasks: "Completed Tasks"
+  completed_this_month: "This month"
+  completed_today: Today
+  completed_yesterday: Yesterday
+  conference: Conference
+  confirm_delete: "Are you sure you want to delete this %{value}?"
+  confirm_group_delete: "Are you sure you wish to delete this group? There are %{count} items that still reference it."
+  confirm_password_intro: "Please type your new password and then confirm it."
   contact: Contact
   contact_info: "Contact Information"
   contact_small: contact
@@ -238,8 +239,8 @@ en-US:
   custom_field_options: "Custom Field Options"
   custom_fields: "Custom Fields"
   customer: Customer
-  date:
-    formats:
+  date: 
+    formats: 
       mmdd: "%b %e"
       mmddyy: "%b %e, %Y"
       mmddyyyy: "%m/%d/%Y"
@@ -288,7 +289,7 @@ en-US:
   field_group_tag_restriction: "This field group applies to %{assets} tagged with \"%{tag}\""
   field_group_tags: "Field Groups shown for this Tag"
   field_group_unrestricted: "This field group applies to all %{assets}"
-  field_types:
+  field_types: 
     boolean: Checkbox
     check_boxes: "Checkbox List"
     date: Date
@@ -472,7 +473,7 @@ en-US:
   other: Other
   other_pfsc: "Other PFSC"
   overdue: Overdue
-  pair:
+  pair: 
     end: End
     from_only: "From %{from}"
     from_to: "From %{from} to %{to}"
@@ -500,23 +501,23 @@ en-US:
   pipeline: Pipeline
   planned: Planned
   please_retry: "please try another query."
-  pluralize:
-    comment:
+  pluralize: 
+    comment: 
       one: "1 comment"
       other: "%{count} comments"
-    contact:
+    contact: 
       one: "1 contact"
       other: "%{count} contacts"
-    day:
+    day: 
       one: "1 day"
       other: "%{count} days"
-    lead:
+    lead: 
       one: "1 lead"
       other: "%{count} leads"
-    login:
+    login: 
       one: "1 login"
       other: "%{count} logins"
-    opportunity:
+    opportunity: 
       one: "1 opportunity"
       other: "%{count} opportunities"
   pm: PM
@@ -531,8 +532,8 @@ en-US:
   prospect_pfsc: "Prospect PFSC"
   prospecting: Prospecting
   quick_find: "Quick find"
-  ransack:
-    predicates:
+  ransack: 
+    predicates: 
       blank: "is blank"
       cont: contains
       does_not_match: "doesn't match"
@@ -582,6 +583,7 @@ en-US:
   save_task: "Save Task"
   save_user: "Save User"
   search_assets: "Search %{value}"
+  secondary_contact_relationships: "Secondary Contact Relationships"
   select_a_country: "Select a Country"
   select_an_account: "Select an Account"
   select_blank: "-- Select --"
@@ -601,12 +603,12 @@ en-US:
   sign_up: "Sign Up"
   sign_up_button: "Sign Up"
   sign_up_now: "Sign Up Now!"
-  simple_form:
-    error_notification:
+  simple_form: 
+    error_notification: 
       default_message: "Some errors were found, please take a look:"
     ? "no"
     : "No"
-    required:
+    required: 
       mark: "*"
       text: required
     ? "yes"
@@ -669,13 +671,14 @@ en-US:
   tasks: Tasks
   tasks_small: tasks
   tick_data: "Tick Data"
-  time:
-    formats:
+  time: 
+    formats: 
       mmddhhss: "%b %e at %l:%M%p"
       mmddyyyy_hhmm: "%m/%d/%Y %l:%M %p"
   time_ago: "%{value} ago"
   to_atom: "Atom feed"
   to_csv: "Export to comma-delimited file format (including deleted records)"
+  to_email: "Get email list"
   to_perm: Permalink
   to_rss: "RSS feed"
   to_xls: "Export to Excel"
@@ -711,7 +714,7 @@ en-US:
   users: Users
   users_small: users
   vendor: Vendor
-  version:
+  version: 
     anonymous: anonymous
     change_html: "%{attr} changed from %{from} to %{to}"
     create: "%{item} created by %{by}"
@@ -723,9 +726,9 @@ en-US:
   view_assigned_tasks: "view assigned tasks"
   view_past_participle: Views
   view_pending_tasks: "view pending tasks"
-  views:
-    admin:
-      plugins:
+  views: 
+    admin: 
+      plugins: 
         author: Author
         description: Description
         version: Version
@@ -738,11 +741,11 @@ en-US:
   website: Website
   weighted_amount: "Weighted amount"
   welcome: Welcome
-  will_paginate:
+  will_paginate: 
     next_label: "Next →"
-    page_entries_info:
+    page_entries_info: 
       multi_page: "Displaying %{plural} %{from} - %{to} of %{total} in total"
-      single_page:
+      single_page: 
         one: "Displaying 1 %{name}"
         other: "Displaying all %{count} %{plural}"
         zero: "No %{plural} found"
@@ -754,4 +757,3 @@ en-US:
   yahoo: "Yahoo IM"
   yes_button: "Yes"
   zipcode: "Zip Code"
-

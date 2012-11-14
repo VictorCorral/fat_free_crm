@@ -398,6 +398,12 @@ module ApplicationHelper
     url_params.merge!(:q => params[:q]) unless params[:q].blank?
     url_params.merge!(:view => @view) unless @view.blank? # tasks
 
+    lists = %w(email).map do |format|
+      if controller.controller_name == 'contacts'
+        link_to(format.upcase, url_params.merge(:email_list => ''), :title => I18n.t(:"to_email"), :target =>"_blank")
+      end
+    end
+
     exports = %w(xls csv).map do |format|
       link_to(format.upcase, url_params.merge(:format => format), :title => I18n.t(:"to_#{format}")) unless action.to_s == "show"
     end
@@ -410,7 +416,7 @@ module ApplicationHelper
       link_to(format.upcase, url_params, :title => I18n.t(:"to_#{format}"))
     end
 
-    (exports + feeds + links).compact.join(' | ')
+    (lists + exports + feeds + links).compact.join(' | ')
   end
 
   def template_fields(f, type)

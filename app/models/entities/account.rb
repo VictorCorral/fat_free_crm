@@ -40,23 +40,11 @@
 class Account < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :assignee, :class_name => "User", :foreign_key => :assigned_to
-  has_many    :account_contacts, :dependent => :destroy do
-    def for_contact contact
-      where(:contact_id => contact.id)
-    end
-  end
-  has_many    :contacts, :through => :account_contacts, :uniq => true do
-    #Tha hell is this?! This is an 'association extention'. For your googling pleasure.
-    def account_contacts
-      return map{|contact| contact.account_contacts.for_account(self)}
-    end
-  end
-
-  has_many   :secondary_account_contacts, :class_name => 'AccountContact', :foreign_key => :account_id, :conditions => ["account_contact_type NOT LIKE ?", 'primary']  do
-    def for_contact contact
-      where(:contact_id => contact.id)
-    end
-  end
+  has_many    :account_contacts, :dependent => :destroy
+  has_many    :contacts, :through => :account_contacts, :uniq => true  
+  has_and_belongs_to_many :title_groups
+#  has_many   :secondary_contacts, :class_name => 'TitleGroup', :foreign_key => :account_id, :uniq => true
+  has_many    :secondary_contacts, :through => :title_groups, :source => :contact, :uniq => true
 
   has_many    :account_opportunities, :dependent => :destroy
   has_many    :opportunities, :through => :account_opportunities, :uniq => true, :order => "opportunities.id DESC"
@@ -140,9 +128,9 @@ class Account < ActiveRecord::Base
     end
   end
 
-  def contacts_with_relationships
-    self.account_contacts.select([:account_id, :contact_id]).uniq.collect { |c| [Contact.find(c.contact_id), AccountContact.where(:account_id => c.account_id, :contact_id => c.contact_id)]}
-  end
+#  def contacts_with_relationships
+#    self.account_contacts.select([:account_id, :contact_id]).uniq.collect { |c| [Contact.find(c.contact_id), AccountContact.where(:account_id => c.account_id, :contact_id => c.contact_id)]}
+#  end
 
   # Class methods.
   #----------------------------------------------------------------------------
