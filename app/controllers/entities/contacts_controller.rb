@@ -24,7 +24,6 @@ class ContactsController < EntitiesController
   def index
     @contacts = get_contacts(:page     => params[:page],
                              :per_page => params[:per_page])
-    
     if params.has_key?(:email)
       @contacts = Contact.find_by_email(params[:email])
       respond_with @contacts do |format|
@@ -35,6 +34,8 @@ class ContactsController < EntitiesController
       @contacts = get_contacts(:page => 1, :per_page => 'all')
       render :text => @contacts.map(&:email).join("; ")
     else
+      # NOTE: This is probably slow on a fully loaded database
+      @contact_ids = get_contacts(:page => 1, :per_page => 'all').map(&:id)
       respond_with @contacts do |format|
         format.xls { render :layout => 'header' }
       end

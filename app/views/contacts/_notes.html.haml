@@ -1,0 +1,3 @@
+.panel#note{ hidden_if(!params[:q]) }
+  .caption Add Note To All
+  = render :partial => "comments/bulk_new", :object => {:class => Contact, :commentable_ids => @contact_ids }, :as => :page_state

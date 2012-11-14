@@ -89,6 +89,20 @@ class CommentsController < ApplicationController
     respond_with(@comment)
   end
 
+  def bulk_create
+    params[:commentable_ids].each do |id|
+      @comment = Comment.new(params[:comment].merge(:commentable_id => id))
+      model, id = @comment.commentable_type, @comment.commentable_id
+      unless model.constantize.my.find_by_id(id)
+        #respond_to_related_not_found(model.downcase) and return
+        render :text => 'error: could not find id '+id.to_s+' in model '+model.to_s and return
+      end
+      @comment.save
+    end
+    flash[:notice] = "Notes posted successfully to current list of contacts"
+    redirect_to contacts_path
+  end
+
   # PUT /comments/1
   # PUT /comments/1.json
   # PUT /comments/1.xml                                          not implemened

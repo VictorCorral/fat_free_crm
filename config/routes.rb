@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   match '/home/redraw',   :as => :redraw
 
   resource  :authentication
-  resources :comments
+  resources :comments do
+    collection do
+      post :bulk_create
+    end
+  end
   resources :emails
   resources :passwords
 

@@ -10,5 +10,8 @@
 
 - if Setting.advanced_search_enabled  
   = render "shared/lists"
+  -# Only show bulk comment box in contacts index
+  - if view == "contacts" and action == "index"
+    = render "contacts/notes"
   
 = render "shared/recently"
