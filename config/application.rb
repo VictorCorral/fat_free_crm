@@ -1,3 +1,15 @@
+#HACK for jruby-1.7.0
+if RUBY_PLATFORM == "java"
+    class IO 
+      def winsize
+        stty_info = `stty -a`
+        match = stty_info.match(/(\d+) rows; (\d+) columns/) # BSD version of stty, like the one used in Mac OS X
+        match ||= stty_info.match(/; rows (\d+); columns (\d+)/) # GNU version of stty, like the one used in Ubuntu
+        [match[1].to_i, match[2].to_i]
+      end
+    end
+end
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -9,6 +21,7 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
+
 
 # Override Rails Engines so that plugins have higher priority than the Application
 require 'fat_free_crm/gem_ext/rails/engine'
