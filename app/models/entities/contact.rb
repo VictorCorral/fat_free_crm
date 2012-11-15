@@ -71,6 +71,7 @@ class Contact < ActiveRecord::Base
   has_one     :business_address, :dependent => :destroy, :as => :addressable, :class_name => "Address", :conditions => "address_type = 'Business'"
   has_one     :alternate_address, :dependent => :destroy, :as => :addressable, :class_name => "Address", :conditions => "address_type = 'Alternate'"
   has_many    :emails, :as => :mediator
+  has_many    :titles, :through => :title_groups
 
   serialize :subscribed_users, Set
 
