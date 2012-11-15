@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -49,7 +49,7 @@ stop()
       return 0
     else
       echo " error killing $pid (from file $RAILS_PIDFILE)... aborting."
-      return -1
+      return 3
     fi
   else
     echo "File $RAILS_PIDFILE doesn't exist... nothing to do."
@@ -73,7 +73,7 @@ shift $((OPTIND-1))
 : ${RAILS_PIDFILE=$RAILS_PIDFILE_DEFAULT}
 : ${RAILS_STDOUT_LOG=$RAILS_STDOUT_LOG_DEFAULT}
 
-RETVAL=-1
+RETVAL=3
 if [ "x$@" == "xstart" ]; then
   start
   RETVAL=$?
