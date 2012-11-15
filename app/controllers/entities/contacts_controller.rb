@@ -172,7 +172,8 @@ class ContactsController < EntitiesController
       current_user.pref[:contacts_naming] = params[:naming]
       current_user.pref[:leads_naming] ||= params[:naming]
     end
-
+    # NOTE: This is probably slow on a fully loaded database
+    @contact_ids = get_contacts(:page => 1, :per_page => 'all').map(&:id)
     @contacts = get_contacts(:page => 1) # Start on the first page.
     render :index
   end
