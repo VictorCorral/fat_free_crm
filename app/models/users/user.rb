@@ -104,7 +104,8 @@ class User < ActiveRecord::Base
       user = User.create!(:username => ad_user.username,
                           :email => ad_user.email, 
                           :first_name => ad_user.first_name, 
-                          :last_name => ad_user.last_name)
+                          :last_name => ad_user.last_name, 
+                          :admin => false)
     end
     return user
   end
