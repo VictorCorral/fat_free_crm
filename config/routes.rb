@@ -70,6 +70,7 @@ Rails.application.routes.draw do
       post :auto_complete
       post :redraw
       get :versions
+      post :bulk_comment
     end
     member do
       put  :attach

@@ -22,9 +22,9 @@ class ContactsController < EntitiesController
   # GET /contacts
   #----------------------------------------------------------------------------
   def index
+    @last_query = params.select { |k,v| k == 'q' or k == 'query' }
     @contacts = get_contacts(:page     => params[:page],
                              :per_page => params[:per_page])
-    
     if params.has_key?(:email)
       @contacts = Contact.find_by_email(params[:email])
       respond_with @contacts do |format|
@@ -171,9 +171,23 @@ class ContactsController < EntitiesController
       current_user.pref[:contacts_naming] = params[:naming]
       current_user.pref[:leads_naming] ||= params[:naming]
     end
-
     @contacts = get_contacts(:page => 1) # Start on the first page.
     render :index
+  end
+
+  def bulk_comment
+    @contacts = get_list_of_records(:page => 1, :per_page => 'all')
+    @contacts.each do |contact|
+      @comment = Comment.new(params[:comment].merge(:commentable_id => contact.id))
+      model, id = @comment.commentable_type, @comment.commentable_id
+      unless model.constantize.my.find_by_id(id)
+        #respond_to_related_not_found(model.downcase) and return
+        render :text => 'error: could not find id '+id.to_s+' in model '+model.to_s and return
+      end
+      @comment.save
+    end
+    flash[:notice] = "Notes posted successfully to current list of contacts"
+    redirect_to contacts_path
   end
 
   private
