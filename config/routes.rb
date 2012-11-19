@@ -17,11 +17,7 @@ Rails.application.routes.draw do
   match '/home/redraw',   :as => :redraw
 
   resource  :authentication
-  resources :comments do
-    collection do
-      post :bulk_create
-    end
-  end
+  resources :comments
   resources :emails
   resources :passwords
 
@@ -74,6 +70,7 @@ Rails.application.routes.draw do
       post :auto_complete
       post :redraw
       get :versions
+      post :bulk_comment
     end
     member do
       put  :attach
