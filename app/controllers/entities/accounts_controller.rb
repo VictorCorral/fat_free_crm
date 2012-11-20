@@ -41,6 +41,28 @@ class AccountsController < EntitiesController
             format.json { render :json => @accounts.nil? ? [] : @accounts.to_json }
           end
         end
+
+      #GET /accounts.json?correspondent_listing
+      elsif params.has_key?(:correspondent_listing)
+        @accounts = Account.select("id, name, ridge_branch__c, mpids__c, corbil__c, status__c, firm__c, " +
+                                   "correspondentid__c, category, ridge_correspondent__c, owdb_corres_id_n__c, " +
+                                   "relationship_manager__c, rm_email__c, r_base_rate_code__c, r_bps__c, " +
+                                   "r_dk_rate__c, r_daily_factor__c, r_dk_fee__c")
+                           .where(:category => "Correspondent",
+                                  :firm__c  => "10 (Client 10)")
+        respond_with @accounts do |format|
+            format.json { render :json => @accounts ? @accounts.to_json() : [] }
+        end
+
+      #GET /accounts.json?branch_listing
+      elsif params.has_key?(:branch_listing)
+        @accounts = Account.select("id, name, corbil__c, status__c, mpids__c, firm__c, category, " +
+                                   "ridge_branch__c, office_mpid__c")
+                           .where(:category => "Branch")
+        respond_with @accounts do |format|
+            format.json { render :json => @accounts ? @accounts.to_json() : [] }
+        end
+
       # GET /accounts
       else
         @accounts = get_accounts(:page => params[:page])
