@@ -107,8 +107,8 @@ class User < ActiveRecord::Base
                           :last_name => ad_user.last_name)
       user.login_count = 0 #hack for mssql bug in prod db
       user.admin = false
-      u.password_salt = ""
-      u.password_hash = ""
+      user.password_salt = ""
+      user.password_hash = ""
       user.save!
     end
     return user
