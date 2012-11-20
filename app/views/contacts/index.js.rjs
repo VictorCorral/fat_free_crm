@@ -3,5 +3,18 @@ if @contacts.any?
 else
   page[:contacts].replace_html render(:partial => "shared/empty")
 end
+
+page << <<eos
+form = $("contact_comment_bulk_form")
+re = new RegExp("[?].*")
+if(form.action.match(re))
+{
+  console.debug( form );
+  form.action = form.action.replace(re, '?#{@last_query.to_query}');
+} else {
+  form.action = form.action + '?#{@last_query.to_query}';
+}
+eos
 page[:paginate].replace_html render(:partial => "shared/paginate")
 page[:export].replace_html render(:partial => "shared/export")
+page[:note].show

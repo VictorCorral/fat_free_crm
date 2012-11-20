@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
     c.validates_length_of_password_field_options  = { :minimum => 0, :allow_blank => true, :if => :require_password? }
     c.ignore_blank_passwords = true
   end
-  
+
   # Create authenticated Active Directory user if they don't exist yet,
   # then return the user to create session
   def self.from_ad(ad_user)
@@ -111,6 +111,12 @@ class User < ActiveRecord::Base
       user.password_hash = ""
       user.save!
     end
+    # If user is in a priveleged AD group they get write access
+    user.write_access = false
+    Setting.privileged_groups.each do |group|
+      user.write_access = true if ad_user.groups.include? group
+    end
+    user.save
     return user
   end
 
