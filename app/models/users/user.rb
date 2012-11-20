@@ -101,11 +101,15 @@ class User < ActiveRecord::Base
   def self.from_ad(ad_user)
     user = User.find_by_username(ad_user.username)
     if user.nil?
-      user = User.create!(:username => ad_user.username,
+      user = User.new(:username => ad_user.username,
                           :email => ad_user.email, 
                           :first_name => ad_user.first_name, 
-                          :last_name => ad_user.last_name, 
-                          :admin => false)
+                          :last_name => ad_user.last_name)
+      user.login_count = 0 #hack for mssql bug in prod db
+      user.admin = false
+      user.password_salt = ""
+      user.password_hash = ""
+      user.save!
     end
     # If user is in a priveleged AD group they get write access
     user.write_access = false
