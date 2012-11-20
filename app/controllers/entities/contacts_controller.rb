@@ -22,19 +22,41 @@ class ContactsController < EntitiesController
   # GET /contacts
   #----------------------------------------------------------------------------
   def index
-    @contacts = get_contacts(:page     => params[:page],
-                             :per_page => params[:per_page])
-    
     if params.has_key?(:email)
       @contacts = Contact.find_by_email(params[:email])
       respond_with @contacts do |format|
         format.json { render :json =>
-          @contacts.nil? ? [] : @contacts.to_json(:include => [:account, :business_address]) }
+          @contacts.nil? ? [] : @contacts.to_json(:include => [:account, :business_address, :title_groups]) }
       end
+    elsif params.has_key?(:contact_report)
+        @contacts = Contact
+                        .select("contacts.id, contacts.first_name, contacts.last_name, contacts.email, contacts.updated_at, contacts.status__c, contacts.phone, " +
+                                "accounts.id AS account_id, accounts.name AS account_name, accounts.status__c AS account_status, accounts.corbil__c AS account_corbil")
+                        .joins(:account, :title_groups)
+                        .where(:status__c => "Active", 
+                               :accounts  => { :category  => "Correspondent", 
+                                               :status__c => "Active" })
+        respond_with @contacts do |format|
+            format.json { render :json => @contacts ? @contacts.to_json(:include => {
+                                                                            :title_groups => {
+                                                                                :include => {
+                                                                                    :accounts => {
+                                                                                        :only => [ :branch_code__c ]
+                                                                                    },
+                                                                                    :titles => {
+                                                                                        :only => [ :name ]
+                                                                                    }
+                                                                                },
+                                                                                :except => [ :created_at, :deleted_at, :updated_at ]
+                                                                            }
+                                                                        }) : [] }
+        end
     elsif params.has_key?(:email_list)
       @contacts = get_contacts(:page => 1, :per_page => 'all')
       render :text => @contacts.map(&:email).join("; ")
     else
+      @contacts = get_contacts(:page     => params[:page],
+                               :per_page => params[:per_page])
       respond_with @contacts do |format|
         format.xls { render :layout => 'header' }
       end
