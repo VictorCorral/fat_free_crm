@@ -37,8 +37,9 @@ class ContactsController < EntitiesController
                                 "accounts.id AS account_id, accounts.name AS account_name, accounts.status__c AS account_status, accounts.corbil__c AS account_corbil")
                         .joins(:account, :title_groups)
                         .where(:status__c => "Active",
-                               :accounts  => { :category  => "Correspondent",
+                               :accounts  => { :category  => "Correspondent", 
                                                :status__c => "Active" })
+                        .uniq
         respond_with @contacts do |format|
             format.json { render :json => @contacts ? @contacts.to_json(:include => {
                                                                             :title_groups => {
