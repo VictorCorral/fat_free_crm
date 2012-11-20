@@ -9,7 +9,6 @@ form = $("contact_comment_bulk_form")
 re = new RegExp("[?].*")
 if(form.action.match(re))
 {
-  console.debug( "GOT IN TO MATCH BLOCK");
   console.debug( form );
   form.action = form.action.replace(re, '?#{@last_query.to_query}');
 } else {

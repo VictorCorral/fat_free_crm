@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111223131) do
+ActiveRecord::Schema.define(:version => 20121119221904) do
 
   create_table "account_contacts", :force => true do |t|
     t.integer  "account_id", :limit => 10
@@ -30,96 +30,25 @@ ActiveRecord::Schema.define(:version => 20121111223131) do
   end
 
   create_table "accounts", :force => true do |t|
-    t.integer  "user_id",                                :limit => 10
-    t.integer  "assigned_to",                            :limit => 10
-    t.string   "name",                                                                                :default => ""
-    t.string   "access",                                 :limit => 8,                                 :default => "Public"
+    t.integer  "user_id",              :limit => 10
+    t.integer  "assigned_to",          :limit => 10
+    t.string   "name",                               :default => ""
+    t.string   "access",               :limit => 8,  :default => "Public"
     t.text     "website"
     t.text     "toll_free_phone"
     t.text     "phone"
     t.text     "fax"
-    t.datetime "deleted_at",                             :limit => 23
-    t.datetime "created_at",                             :limit => 23,                                                      :null => false
-    t.datetime "updated_at",                             :limit => 23,                                                      :null => false
+    t.datetime "deleted_at",           :limit => 23
+    t.datetime "created_at",           :limit => 23,                       :null => false
+    t.datetime "updated_at",           :limit => 23,                       :null => false
     t.text     "email"
     t.string   "background_info"
-    t.integer  "rating",                                 :limit => 10,                                :default => 0,        :null => false
+    t.integer  "rating",               :limit => 10, :default => 0,        :null => false
     t.text     "category"
     t.text     "subscribed_users"
-    t.integer  "parent_account_id",                      :limit => 10
+    t.integer  "parent_account_id",    :limit => 10
     t.string   "salesforce_id"
     t.string   "salesforce_parent_id"
-    t.string   "conversion_date__c"
-    t.date     "date_correspondent_closed__c",           :limit => 10
-    t.string   "contact_sheet_link__c"
-    t.boolean  "ridge_correspondent__c"
-    t.text     "ridge_branch__c"
-    t.string   "taxid_ein__c"
-    t.string   "contractdate__c"
-    t.string   "contractterms__c"
-    t.string   "rm_email__c"
-    t.string   "owdb_corres_id_n__c"
-    t.string   "firm__c"
-    t.string   "status__c"
-    t.string   "relationship_manager__c"
-    t.string   "secondary_rm__c"
-    t.date     "deposit_release_date__c",                :limit => 10
-    t.decimal  "deposit_amount_released__c",                           :precision => 15, :scale => 2
-    t.string   "reason_for_termination__c"
-    t.date     "termination_effective_date__c",          :limit => 10
-    t.text     "termination_notes__c"
-    t.string   "ftp_login__c"
-    t.text     "ftp_date_ticket__c"
-    t.text     "services_products_subscriptions__c"
-    t.date     "last_review_on_indemnification_form__c", :limit => 10
-    t.string   "sponsored_access_mpid__c"
-    t.string   "dtc_b_d__c"
-    t.string   "sec__c"
-    t.string   "crd__c"
-    t.string   "omgeo_acronym__c"
-    t.string   "client__c"
-    t.string   "corbil__c"
-    t.text     "mnemonics__c"
-    t.string   "dual_clearing_1__c"
-    t.string   "dual_clearing_2__c"
-    t.decimal  "required_deposit__c",                                  :precision => 15, :scale => 2
-    t.decimal  "actual_deposit__c",                                    :precision => 15, :scale => 2
-    t.decimal  "contract_periods_months__c"
-    t.boolean  "piggyback_office__c"
-    t.string   "piggyback_firm_name__c"
-    t.text     "trading_platforms__c"
-    t.text     "products__c"
-    t.string   "address_line_1__c"
-    t.string   "address_line_2__c"
-    t.string   "city__c"
-    t.string   "state__c"
-    t.string   "zip_code__c"
-    t.string   "country__c"
-    t.decimal  "r_total_assets__c",                                    :precision => 15, :scale => 2
-    t.string   "emergency_phone__c"
-    t.string   "languageid__c"
-    t.string   "currencycode__c"
-    t.string   "branded_product_url__c"
-    t.decimal  "r_dk_fee__c",                                          :precision => 15, :scale => 2
-    t.string   "r_dk_rate__c"
-    t.string   "r_base_rate_code__c"
-    t.string   "r_daily_factor__c"
-    t.string   "daily_volume__c"
-    t.string   "r_bps__c"
-    t.string   "glcode__c"
-    t.string   "mpids__c"
-    t.string   "office_code__c"
-    t.string   "office_mpid__c"
-    t.string   "tradeing_systems__c"
-    t.string   "branch_code__c"
-    t.boolean  "traditionaltrader__c"
-    t.boolean  "daytrader__c"
-    t.boolean  "internettrader__c"
-    t.string   "industry"
-    t.string   "tickersymbol"
-    t.date     "training__c",                            :limit => 10
-    t.decimal  "correspondentofficeid__c"
-    t.string   "correspondentid__c"
   end
 
   add_index "accounts", ["assigned_to"], :name => "index_accounts_on_assigned_to"
@@ -223,51 +152,34 @@ ActiveRecord::Schema.define(:version => 20121111223131) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.integer  "user_id",                 :limit => 10
-    t.integer  "lead_id",                 :limit => 10
-    t.integer  "assigned_to",             :limit => 10
-    t.integer  "reports_to",              :limit => 10
-    t.string   "first_name",              :limit => 64,  :default => "",       :null => false
-    t.string   "last_name",               :limit => 64,  :default => "",       :null => false
-    t.string   "access",                  :limit => 8,   :default => "Public"
+    t.integer  "user_id",          :limit => 10
+    t.integer  "lead_id",          :limit => 10
+    t.integer  "assigned_to",      :limit => 10
+    t.integer  "reports_to",       :limit => 10
+    t.string   "first_name",       :limit => 64,  :default => "",       :null => false
+    t.string   "last_name",        :limit => 64,  :default => "",       :null => false
+    t.string   "access",           :limit => 8,   :default => "Public"
     t.text     "title"
     t.text     "department"
-    t.string   "source",                  :limit => 32
-    t.string   "email",                   :limit => 64
-    t.string   "alt_email",               :limit => 64
+    t.string   "source",           :limit => 32
+    t.string   "email",            :limit => 64
+    t.string   "alt_email",        :limit => 64
     t.text     "phone"
     t.text     "mobile"
     t.text     "fax"
-    t.string   "blog",                    :limit => 128
-    t.string   "linkedin",                :limit => 128
-    t.string   "facebook",                :limit => 128
-    t.string   "twitter",                 :limit => 128
-    t.date     "born_on",                 :limit => 10
-    t.boolean  "do_not_call",                            :default => false,    :null => false
-    t.datetime "deleted_at",              :limit => 23
-    t.datetime "created_at",              :limit => 23,                        :null => false
-    t.datetime "updated_at",              :limit => 23,                        :null => false
+    t.string   "blog",             :limit => 128
+    t.string   "linkedin",         :limit => 128
+    t.string   "facebook",         :limit => 128
+    t.string   "twitter",          :limit => 128
+    t.date     "born_on",          :limit => 10
+    t.boolean  "do_not_call",                     :default => false,    :null => false
+    t.datetime "deleted_at",       :limit => 23
+    t.datetime "created_at",       :limit => 23,                        :null => false
+    t.datetime "updated_at",       :limit => 23,                        :null => false
     t.string   "background_info"
-    t.string   "skype",                   :limit => 128
+    t.string   "skype",            :limit => 128
     t.text     "subscribed_users"
     t.string   "salesforce_id"
-    t.boolean  "hasoptedoutofemail"
-    t.string   "contact_name__c"
-    t.string   "autonumber_contact__c"
-    t.string   "homephone"
-    t.string   "status__c"
-    t.string   "date_closed__c"
-    t.boolean  "auth_trading_instrx__c"
-    t.boolean  "do_not_replicate__c"
-    t.string   "ftp_login__c"
-    t.text     "ftp_date_ticket__c"
-    t.text     "cip_ofac_id__c"
-    t.string   "imdemnification_form__c"
-    t.string   "contactid__c"
-    t.string   "emailid__c"
-    t.decimal  "phoneid__c"
-    t.decimal  "mobileid__c"
-    t.boolean  "donotcall"
   end
 
   add_index "contacts", ["assigned_to"], :name => "index_contacts_on_assigned_to"
@@ -534,6 +446,7 @@ ActiveRecord::Schema.define(:version => 20121111223131) do
     t.boolean  "admin",                             :default => false, :null => false
     t.datetime "suspended_at",        :limit => 23
     t.string   "single_access_token"
+    t.boolean  "write_access",                      :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

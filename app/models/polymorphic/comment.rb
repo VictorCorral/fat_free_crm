@@ -59,7 +59,8 @@ class Comment < ActiveRecord::Base
     commentable.subscribed_users.reject{|user_id| user_id == user.id}.each do |subscriber_id|
       if subscriber = User.find_by_id(subscriber_id)
         # Only send email if SMTP settings are configured
-        if Rails.application.config.action_mailer.smtp_settings.present?
+        # if Rails.application.config.action_mailer.smtp_settings.present?
+        if false
           SubscriptionMailer.comment_notification(subscriber, self).deliver
         end
       end

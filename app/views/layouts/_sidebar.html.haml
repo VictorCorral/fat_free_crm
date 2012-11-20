@@ -10,8 +10,8 @@
 
 - if Setting.advanced_search_enabled  
   = render "shared/lists"
-  -# Only show bulk comment box in contacts index
-  - if view == "contacts" and action == "index"
+  -# Only show bulk comment box to users with write access in contacts index
+  - if view == "contacts" and action == "index" and can? :manage, @contacts
     = render "contacts/notes"
   
 = render "shared/recently"

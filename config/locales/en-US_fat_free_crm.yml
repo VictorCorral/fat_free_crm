@@ -378,7 +378,7 @@ en-US:
   msg_cant_delete_field_group: "Field Group could not be deleted."
   msg_cant_delete_tag: "Couldn't delete '%{value}' since it has associated Field Groups."
   msg_cant_delete_user: "^Couldn't delete the user since %{value} has related assets present."
-  msg_cant_do: "Can't %{action} the %{asset} since it's no longer available."
+  msg_cant_do: "Can't %{action} the %{asset}."
   msg_email_not_found: "No user was found with that email address."
   msg_enter_new_password: "Please enter your new password."
   msg_goodbye: "You have been logged out. Thank you for using Fat Free CRM!"

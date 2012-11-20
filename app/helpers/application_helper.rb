@@ -38,9 +38,9 @@ module ApplicationHelper
   def show_flash(options = { :sticky => false })
     [:error, :warning, :info, :notice].each do |type|
       if flash[type]
-        html = javascript_tag "alert('#{flash[type]}')"
+        html = content_tag(:div, h(flash[type]), :id => "flash")
         flash[type] = nil
-        return html
+        return html << content_tag(:script, "crm.flash('#{type}', #{options[:sticky]})", :type => "text/javascript")
       end
     end
     content_tag(:p, nil, :id => "flash", :style => "display:none;")
