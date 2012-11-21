@@ -29,7 +29,7 @@ start()
   else
     echo "Starting tomcat/rails in $RAILS_ENV mode..."
     pushd "$DIR/.." > /dev/null
-      jruby --1.9 --server -J-Djruby.compile.mode=FORCE -J-Xmn128m -J-Xms256m -J-Xmx1024m -J-XX:MaxPermSize=1024m -S trinidad --threadsafe --config -p ${RAILS_PORT} -e ${RAILS_ENV} &> ${RAILS_STDOUT_LOG} &
+        jruby --1.9 --server -J-Djruby.compile.mode=FORCE -J-Dcom.sun.management.jmxremote.port=2400 -J-Dcom.sun.management.jmxremote  -J-Dcom.sun.management.jmxremote.authenticate=false  -J-Dcom.sun.management.jmxremote.ssl=false -J-Xmn128m -J-Xms512m -J-Xmx2048m -J-XX:MaxPermSize=512m -S trinidad --threadsafe --config -p ${RAILS_PORT} -e ${RAILS_ENV} &> ${RAILS_STDOUT_LOG} &
     popd > /dev/null
     echo $! > $RAILS_PIDFILE
     echo "...success."
