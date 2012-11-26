@@ -134,6 +134,11 @@ Run the app:
 
 ```rails server```
 
+## ACS Deployment steps
+Ensure your SSH key is part of the authorized_keys for the fatfreecrm user on the server you are deploying to
+```mina deploy to=dev``` 
+Environments available for to= argument: dev, production
+
 ## Upgrading from previous versions of Fat Free CRM
 
 If you are upgrading from version 0.10.1 or below to the latest Rails 3.x version, your database schema
