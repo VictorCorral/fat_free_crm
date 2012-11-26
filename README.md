@@ -136,7 +136,9 @@ Run the app:
 
 ## ACS Deployment steps
 Ensure your SSH key is part of the authorized_keys for the fatfreecrm user on the server you are deploying to
+
 ```mina deploy to=dev``` 
+
 Environments available for to= argument: dev, production
 
 ## Upgrading from previous versions of Fat Free CRM
