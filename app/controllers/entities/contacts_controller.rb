@@ -41,7 +41,10 @@ class ContactsController < EntitiesController
                                     "OR (accounts.category = 'Correspondent' AND accounts.status__c = 'Active'))")
                         .uniq
         respond_with @contacts do |format|
-            format.json { render :json => @contacts ? @contacts.to_json(:include => {
+            format.json { render :json => @contacts ? @contacts.to_json({
+                                                                          :methods => :last_modified_date,
+                                                                          :except  => :updated_at,
+                                                                          :include => {
                                                                             :title_groups => {
                                                                                 :include => {
                                                                                     :accounts => {
@@ -53,6 +56,7 @@ class ContactsController < EntitiesController
                                                                                 },
                                                                                 :except => [ :created_at, :deleted_at, :updated_at ]
                                                                             }
+                                                                          }
                                                                         }) : [] }
         end
     elsif params.has_key?(:email_list)

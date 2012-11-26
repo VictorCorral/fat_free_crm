@@ -172,6 +172,10 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  def last_modified_date
+    self.updated_at.strftime("%m/%d/%Y")
+  end
+
   def self.account_contacts_for_account account
 
   end
