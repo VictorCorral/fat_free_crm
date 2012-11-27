@@ -11,7 +11,7 @@ RAILS_PIDFILE_DEFAULT=$DIR/../tmp/pids/trinidad.pid
 usage()
 {
 cat <<EOF
-  usage: $0 [ARGS] start|stop
+  usage: $0 [ARGS] start|stop|restart
 
   args:
     [-e development|production|test|postgres_test (default: $RAILS_ENV_DEFAULT)]
@@ -57,6 +57,14 @@ stop()
   fi
 }
 
+restart()
+{
+  stop
+  if [ $? == 0 ]; then
+    start
+  fi
+}
+
 while getopts "e:f:l:h" FLAG; do
   case $FLAG in
     e) RAILS_ENV=$OPTARG;;
@@ -79,6 +87,9 @@ if [ "x$@" == "xstart" ]; then
   RETVAL=$?
 elif [ "x$@" == "xstop" ]; then
   stop
+  RETVAL=$?
+elif [ "x$@" == "xrestart" ]; then
+  restart
   RETVAL=$?
 else
   usage
