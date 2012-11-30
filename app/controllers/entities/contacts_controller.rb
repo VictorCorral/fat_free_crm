@@ -221,7 +221,9 @@ class ContactsController < EntitiesController
         #respond_to_related_not_found(model.downcase) and return
         render :text => 'error: could not find id '+id.to_s+' in model '+model.to_s and return
       end
-      @comment.save
+      @comment.without_versioning do
+        @comment.save
+      end
     end
     flash[:notice] = "Notes posted successfully to current list of contacts"
     redirect_to contacts_path

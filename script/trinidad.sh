@@ -11,7 +11,7 @@ RAILS_PIDFILE_DEFAULT=$DIR/../tmp/pids/trinidad.pid
 usage()
 {
 cat <<EOF
-  usage: $0 [ARGS] start|stop
+  usage: $0 [ARGS] start|stop|restart
 
   args:
     [-e development|production|test|postgres_test (default: $RAILS_ENV_DEFAULT)]
@@ -43,18 +43,25 @@ stop()
   if [ -e $RAILS_PIDFILE ]; then
     pid=`cat $RAILS_PIDFILE`
     echo "Trying to kill $pid..."
-    if kill $pid &> /dev/null; then
-      echo " success."
+    while sleep 1
+      echo "Waiting for $pid to die..."
+      kill -0 $pid >/dev/null 2>&1
+    do
+      kill $pid &> /dev/null
+    done
+      echo "...success."
       rm -f $RAILS_PIDFILE
       return 0
-    else
-      echo " error killing $pid (from file $RAILS_PIDFILE)... aborting."
-      return 3
-    fi
   else
     echo "File $RAILS_PIDFILE doesn't exist... nothing to do."
     return 0
   fi
+}
+
+restart()
+{
+  stop
+  start
 }
 
 while getopts "e:f:l:h" FLAG; do
@@ -80,9 +87,11 @@ if [ "x$@" == "xstart" ]; then
 elif [ "x$@" == "xstop" ]; then
   stop
   RETVAL=$?
+elif [ "x$@" == "xrestart" ]; then
+  restart
+  RETVAL=$?
 else
   usage
 fi
 
 exit $RETVAL
-
