@@ -27,8 +27,7 @@ var crm = {
   //----------------------------------------------------------------------------
   set_destroy_and_disable_title_group: function(destroy_tag_id) {
     jQuery('#' + destroy_tag_id).val(true);
-    container = jQuery('#' + destroy_tag_id).parent().parent().parent().parent()
-    container.addClass('pending_destroy');
+    container = jQuery('#' + destroy_tag_id).closest(".title_group_container").addClass('pending_destroy');
   },
 
 
