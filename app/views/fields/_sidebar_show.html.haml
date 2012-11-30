@@ -4,4 +4,7 @@
       .caption #{field_group.label_i18n}
       - field_group.fields.without_pairs.each do |field|
         - if (value = field.render_value(asset)).present?
-          == #{field.label}:<br /> <b>#{truncate(value, :length => 35)}</b><br />
+          - if (field.as == 'url')
+            == #{field.label}:<br /> <b><a href="#{value}">#{truncate(value, :length => 35)}</a></b><br />
+          - else
+            == #{field.label}:<br /> <b>#{truncate(value, :length => 35)}</b><br />
