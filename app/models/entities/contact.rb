@@ -172,6 +172,10 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  def last_modified_date
+    self.updated_at.strftime("%m/%d/%Y")
+  end
+
   # Class methods.
   #----------------------------------------------------------------------------
   def self.create_for(model, account, opportunity, params)
