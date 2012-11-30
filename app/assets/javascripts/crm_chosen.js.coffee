@@ -30,6 +30,17 @@ crm.ensure_chosen_parent_account = ->
       query_key: "auto_complete_query"
     }
 
+crm.ensure_chosen_generic_account = ->
+ $$('.generic_account_id').each (item) => 
+    unless $(item.id+"_chzn")
+      new ajaxChosen $(item.id), {
+        allow_single_deselect: true
+        show_on_activate: true
+        url: "/accounts/auto_complete.json"
+        parameters: { limit: 25 }
+        query_key: "auto_complete_query"
+      }
+
 # Initialize chosen select lists for certain fields
 crm.init_chosen_fields = ->
   ['assigned_to', '[country]'].each (field) ->

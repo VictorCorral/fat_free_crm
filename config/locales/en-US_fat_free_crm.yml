@@ -99,6 +99,7 @@ en-US:
   actual_performance: "Actual Performance"
   add_note: "Add Note"
   add_note_help: "Add a new note..."
+  add_title_group: "New group"
   added_ago: "added %{value} ago"
   added_by: "added %{time_ago} ago by %{user}"
   address: Address
@@ -249,6 +250,7 @@ en-US:
   days_late: "Late by"
   days_left: "Days left"
   delete: Delete
+  delete_group: Delete group
   department: Department
   department_small: "%{value} department"
   destroy_past_participle: Deletions
@@ -583,6 +585,7 @@ en-US:
   save_task: "Save Task"
   save_user: "Save User"
   search_assets: "Search %{value}"
+  secondary_account_relationships: "Secondary Account Relationships"
   secondary_contact_relationships: "Secondary Contact Relationships"
   select_a_country: "Select a Country"
   select_an_account: "Select an Account"
@@ -676,6 +679,7 @@ en-US:
       mmddhhss: "%b %e at %l:%M%p"
       mmddyyyy_hhmm: "%m/%d/%Y %l:%M %p"
   time_ago: "%{value} ago"
+  titles: "Titles"
   to_atom: "Atom feed"
   to_csv: "Export to comma-delimited file format (including deleted records)"
   to_email: "Get email list"

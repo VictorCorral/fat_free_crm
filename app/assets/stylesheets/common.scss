@@ -134,6 +134,15 @@ $sidebar_width: 210px;
   margin: 8px 0px 0px 0px;
   padding: 0px 8px 0px 0px; }
 
+ label.pending-delete {
+   color: #dc143c;
+   text-decoration: line-through;
+ }
+
+ label.pending-add {
+   color: #008000;
+ }
+
 .top {
   margin: 5px 0px 0px 0px; }
 
@@ -211,6 +220,86 @@ $sidebar_width: 210px;
     &:hover {
       background: #1e4262;
       color: white; } } }
+
+.title_groups {
+  div.pending_destroy {
+      background: darkgrey;
+   }
+  
+  a.add_group {
+    display: inline-block;
+    background: forestgreen;
+    border: {
+      top: 1px gainsboro solid;
+      left: 1px gainsboro solid;
+      bottom: 1px grey solid;
+      right: 1px grey solid; };
+    color: white;
+    cursor: pointer;
+    height: 16px;
+    margin: 0px;
+    padding: 1px;
+    //position: absolute;
+    right: 0px;
+    text-align: center;
+    top: 0px;
+    &:hover {
+      background: #1e4262;
+      color: white; } }
+
+  .title_group_container {
+    border: 2px darkgrey solid;
+    background: whitesmoke;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+    border-spacing: 5px;
+    width: 100%;
+    position: relative; 
+    .accounts_column {
+      border: {
+        left: 2px gainsboro solid;};
+      padding: {
+        left: 5px};
+    }
+    .titles_column {
+      margin: {
+        right: 0px};
+    }
+    .remove_item {
+       float: right;
+    }
+    .add_item {
+       float: right;
+    }
+    
+    a.remove_group {
+       display: block;
+       background: sienna;
+       border: {
+         top: 1px gainsboro solid;
+         left: 1px gainsboro solid;
+         bottom: 1px grey solid;
+         right: 1px grey solid; };
+       color: white;
+       cursor: pointer;
+       height: 16px;
+       margin: 3px;
+       padding: 1px;
+       position: absolute;
+       right: 0px;
+       text-align: center;
+       top: 0px;
+       &:hover {
+         background: #1e4262;
+         color: white; } }
+    
+    
+    table {
+      width: 100%;
+      .label.top {
+        font-weight: bold;
+     
+    }}}}
 
 .buttonbar {
   border-top: 1px gray solid;

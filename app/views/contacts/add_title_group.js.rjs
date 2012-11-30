@@ -1,0 +1,10 @@
+id = dom_id(@contact)
+parent_builder = ActionView::Helpers::FormBuilder.new(:contact, @contact, self, {}, proc {} )
+title_group_builder = nil
+parent_builder.fields_for(:title_groups) do |current_title_group_builder|
+   title_group_builder = current_title_group_builder #Hacky way to get last builder
+end
+
+page << "jQuery('#title_groups_container').append(\"#{escape_javascript render :partial => "title_groups/title_group", :locals => { :f => title_group_builder }}\")"
+
+page.call "crm.ensure_chosen_generic_account"

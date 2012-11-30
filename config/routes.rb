@@ -75,6 +75,7 @@ Rails.application.routes.draw do
     member do
       put  :attach
       post :discard
+      post :add_title_group
       post :subscribe
       post :unsubscribe
       get :opportunities

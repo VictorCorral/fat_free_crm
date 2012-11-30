@@ -1,0 +1,6 @@
+- field_id = "#{item.class.name.downcase}_ids_#{item.id}" 
+- complete_field_id = field_id_for_js(f, field_id)
+%div{:id => "#{field_id_for_js(f,"#{field_id}_div")}" }
+  = f.label field_id, item.name 
+  = link_to_function 'remove', remove_field_and_strikeout_label_js(f, field_id), :class => 'remove_item'
+  = hidden_field_tag new_array_member_name_for_js(f, "#{item.class.name.downcase}_ids"), item.id, :id => complete_field_id

@@ -165,6 +165,13 @@ class ContactsController < EntitiesController
   #----------------------------------------------------------------------------
   # Handled by EntitiesController :discard
 
+  # POST /contacts/1/add_title_group
+  #----------------------------------------------------------------------------
+  def add_title_group
+    @title_group = @contact.title_groups.create
+    respond_with(@contact)
+  end
+
   # POST /contacts/auto_complete/query                                     AJAX
   #----------------------------------------------------------------------------
   # Handled by ApplicationController :auto_complete

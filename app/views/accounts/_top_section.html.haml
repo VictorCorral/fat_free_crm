@@ -17,11 +17,6 @@
         %td
           .label #{t :rating}:
           = rating_select "account[rating]", { :id => :account_rating, :selected => @account.rating, :style => "width:160px" }
-
-      -#%tr
-        -#%td
-          -#.label #{t "Parent account"}:
-          -#= f.select :parent_account_id, Account.except(@account).collect { |a| [a.name, a.id] }, {:include_blank => 'None'} 
     -if !Rails.env.test?
       %table
         %tr

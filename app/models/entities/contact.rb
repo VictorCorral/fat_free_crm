@@ -77,7 +77,7 @@ class Contact < ActiveRecord::Base
 
   accepts_nested_attributes_for :business_address, :allow_destroy => true
   accepts_nested_attributes_for :alternate_address, :allow_destroy => true
-  accepts_nested_attributes_for :title_groups
+  accepts_nested_attributes_for :title_groups, :allow_destroy => true
 
   scope :created_by, lambda { |user| { :conditions => [ "user_id = ?", user.id ] } }
   scope :assigned_to, lambda { |user| { :conditions => ["assigned_to = ?", user.id ] } }
@@ -170,10 +170,6 @@ class Contact < ActiveRecord::Base
     else # Opportunities
       self.send(attachment.class.name.tableize).delete(attachment)
     end
-  end
-
-  def self.account_contacts_for_account account
-
   end
 
   # Class methods.

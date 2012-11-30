@@ -1,0 +1,12 @@
+- edit ||= false
+- collapsed = session[:contact_presence].nil? # && @contact.errors.empty?
+= subtitle :title_groups, collapsed, t(:secondary_account_relationships)
+.section
+  %small#title_groups_intro{ hidden_if(!collapsed) }
+    = t(:intro, t(:secondary_account_relationships_small)) unless edit
+  #title_groups{ hidden_if(collapsed) }
+    %div{:id => 'title_groups_container', :class => 'title_groups'}
+      = link_to t(:add_title_group), add_title_group_contact_path(@contact), :remote => true, :method => :post, :class => "add_group"
+      = f.fields_for :title_groups do |title_group_fields|
+        = render "title_groups/title_group", :f => title_group_fields
+

@@ -16,6 +16,13 @@
 #------------------------------------------------------------------------------
 
 module ContactsHelper
+  def remove_field_and_strikeout_label_js(builder, attribute)
+    "jQuery('##{field_id_for_js(builder, attribute)}').remove(); jQuery('label[for=\"#{field_id_for_js(builder, attribute)}\"]').addClass('pending-delete'); jQuery(this).hide()"
+  end
+
+  def add_field_and_label_js(container_div_id, builder, attribute)
+    "crm.insert_hidden_field_and_label('#{container_div_id}', '#{new_array_member_name_for_js(builder, attribute)}', jQuery('#_add_#{attribute.to_s}_#{container_div_id} :selected').val(), jQuery('#_add_#{attribute.to_s}_#{container_div_id} :selected').text())"
+  end
   # Contact summary for RSS/ATOM feeds.
   #----------------------------------------------------------------------------
   def contact_summary(contact)

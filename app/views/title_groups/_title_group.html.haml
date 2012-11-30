@@ -1,0 +1,25 @@
+%div{:id => 'title_group_container', :class => 'title_group_container'}
+  %table
+    %tr{:class => 'title_group'}
+      = f.hidden_field :_destroy
+      = f.hidden_field :id
+      = link_to_function t(:delete_group), "crm.set_destroy_and_disable_title_group('#{field_id_for_js(f, :_destroy)}')", :class => "remove_group"
+      %td{:class => 'titles_column'}
+        - this_div_id = "#{field_id_for_js(f, :titles_attributes)}"
+        %div{:id => this_div_id}
+          .label.top #{t :titles}:
+          = hidden_field_tag new_array_member_name_for_js(f, "title_ids"), "" #for the default case, we need an empty one
+          - f.object.titles.each do |title|
+            = render "title_groups/item_id_array",  :item => title, :f => f
+        = select_tag "_add_title_ids_#{this_div_id}", options_from_collection_for_select(Title.all, :id, :name), :include_blank => true, :style => "display: inline;"
+        = link_to_function 'add', add_field_and_label_js(this_div_id, f, :title_ids), :class => "add_item"
+      %td= spacer
+      %td{ :class => 'accounts_column'} 
+        - this_div_id = "#{field_id_for_js(f, :accounts_attributes)}"
+        %div{:id => this_div_id}
+          .label.top #{t :accounts}:
+          = hidden_field_tag new_array_member_name_for_js(f, "account_ids"), "" #for the default case, we need an empty one
+          - f.object.accounts.each do |account|
+            = render "title_groups/item_id_array", :item => account, :f => f
+        = generic_account_select "_add_account_ids_#{this_div_id}" 
+        = link_to_function 'add', add_field_and_label_js(this_div_id, f, :account_ids), :class => "add_item"

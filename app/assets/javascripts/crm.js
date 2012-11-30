@@ -23,6 +23,21 @@ var crm = {
   autocompleter : null,
   base_url      : "",
 
+
+  //----------------------------------------------------------------------------
+  set_destroy_and_disable_title_group: function(destroy_tag_id) {
+    jQuery('#' + destroy_tag_id).val(true);
+    container = jQuery('#' + destroy_tag_id).parent().parent().parent().parent()
+    container.addClass('pending_destroy');
+  },
+
+
+  //----------------------------------------------------------------------------
+  insert_hidden_field_and_label: function(parent_id, name, value, label) {
+    jQuery('#' + parent_id).append('<label for="'+name+'" class="pending-add">'+label+'</label><br/>')
+    return jQuery('#' + parent_id).append('<input name="'+name+'" type="hidden" value="'+value+'">');
+  },
+
   //----------------------------------------------------------------------------
   find_form: function(class_name) {
     var forms = $$('form.' + class_name);

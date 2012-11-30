@@ -60,8 +60,18 @@ module AccountsHelper
                         {:"data-placeholder" => t(:select_an_account),
                          :style => "width:330px;" }
   end
-
   
+  def generic_account_select(collection_name = :_generic_account_id, options = {})
+      # Generates a select list with the first 25 accounts,
+      # and prepends the currently selected account, if available
+      options[:include_blank] = true
+      accounts = ( Account.limit(25)).compact.uniq
+      collection_select collection_name, :id, accounts, :id, :name, options,
+                        {:"data-placeholder" => t(:select_an_account),
+                         :style => "width:330px;", :id => collection_name, :class => 'generic_account_id' }
+  end
+
+
   # Select an existing account or create a new one.
   #----------------------------------------------------------------------------
   def account_select_or_create(form, tag, &block)

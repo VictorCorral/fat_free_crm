@@ -16,6 +16,23 @@
 #------------------------------------------------------------------------------
 
 module ApplicationHelper
+  def set_value_true_for_js(builder, attribute)
+    "jQuery('##{field_id_for_js(builder, attribute)}').val(true);"
+  end
+
+  def new_array_member_name_for_js(builder, container_attribute)
+     "#{field_name_for_js(builder, container_attribute)}[]"
+  end
+ 
+  #from http://www.codeofficer.com/blog/entry/form_builders_in_rails_discovering_field_names_and_ids_for_javascript/
+  def field_id_for_js(builder, attribute)
+    "#{builder.object_name}[#{attribute.to_s.sub(/\?$/,"")}]".gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, "")
+  end
+  
+  #from http://www.codeofficer.com/blog/entry/form_builders_in_rails_discovering_field_names_and_ids_for_javascript/
+  def field_name_for_js(builder, attribute)
+    "#{builder.object_name}[#{attribute.to_s.sub(/\?$/,"")}]"
+  end
 
   def tabs(tabs = nil)
     tabs ||= controller_path =~ /admin/ ? FatFreeCRM::Tabs.admin : FatFreeCRM::Tabs.main
