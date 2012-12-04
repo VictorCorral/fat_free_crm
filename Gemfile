@@ -19,6 +19,7 @@ gem 'activerecord-jdbcpostgresql-adapter'
 gem 'hasherize_csv'
 gem 'net-ldap'
 gem 'trinidad', :require => nil
+gem 'hash_to_hidden_fields'
 
 # Allows easy switching between locally developed gems, and gems installed from rubygems.org
 # See README for more info at: https://github.com/ndbroadbent/bundler_local_development

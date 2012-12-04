@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       match :auto_complete
       post :redraw
       get :versions
+      post :index
     end
     member do
       put  :attach
@@ -71,6 +72,7 @@ Rails.application.routes.draw do
       post :redraw
       get :versions
       post :bulk_comment
+      post :index
     end
     member do
       put  :attach

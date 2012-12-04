@@ -417,20 +417,20 @@ module ApplicationHelper
 
     lists = %w(email).map do |format|
       if controller.controller_name == 'contacts'
-        link_to(format.upcase, url_params.merge(:email_list => ''), :title => I18n.t(:"to_email"), :target =>"_blank")
+        link_to_function(format.upcase, "crm.submit_export_form('#{format}')", :title => I18n.t(:"to_#{format}"), :target =>"_blank")
       end
     end
 
     exports = %w(xls csv).map do |format|
-      link_to(format.upcase, url_params.merge(:format => format), :title => I18n.t(:"to_#{format}")) unless action.to_s == "show"
+      link_to_function(format.upcase, "crm.submit_export_form('#{format}')", :title => I18n.t(:"to_#{format}")) unless action.to_s == "show"
     end
 
     feeds = %w(rss atom).map do |format|
-      link_to(format.upcase, url_params.merge(:format => format, :authentication_credentials => token), :title => I18n.t(:"to_#{format}"))
+      link_to_function(format.upcase, "crm.submit_export_form('#{format}')", :title => I18n.t(:"to_#{format}"))
     end
 
     links = %W(perm).map do |format|
-      link_to(format.upcase, url_params, :title => I18n.t(:"to_#{format}"))
+      link_to_function(format.upcase, url_params, :title => I18n.t(:"to_#{format}"))
     end
 
     (lists + exports + feeds + links).compact.join(' | ')

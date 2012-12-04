@@ -38,6 +38,13 @@ var crm = {
   },
 
   //----------------------------------------------------------------------------
+  submit_export_form: function(format) {
+    var form = $$('#export_form')[0];
+    if (format == 'email') { form.action = form.action + '?email_list'; }
+    else { form.action = form.action + '.' + format; }
+    form.submit();
+  },
+  //----------------------------------------------------------------------------
   find_form: function(class_name) {
     var forms = $$('form.' + class_name);
     return (forms.length > 0 ? forms[0].id : null);
