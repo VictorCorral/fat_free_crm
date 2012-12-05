@@ -1,10 +1,10 @@
 - class_name = page_state[:class].name.downcase
 - id_prefix = "#{class_name}_comment_bulk"
-- query = ""
-- query = "?#{@last_query.to_query}" if !@last_query.blank?
 
 %div{ {:id => "#{id_prefix}_post"}}
-  =form_tag(bulk_comment_contacts_path + query, :id => "#{id_prefix}_form", :method => "post") do
+  =form_tag(bulk_comment_contacts_path, :id => "#{id_prefix}_form", :method => "post") do
+    = hash_to_hidden_fields({:query => params[:query]}) unless params[:query].blank?
+    = hash_to_hidden_fields({:q => params[:q]}) unless params[:q].blank?
     = hidden_field_tag "comment[user_id]", current_user.id, :id => "#{id_prefix}_comment_user_id"
     = hidden_field_tag "comment[commentable_type]", class_name.capitalize, :id => "#{id_prefix}_comment_commentable_type"
     -#= hidden_field_tag "#{id_prefix}_last_query", @last_query, :id => "#{id_prefix}_last_query"
