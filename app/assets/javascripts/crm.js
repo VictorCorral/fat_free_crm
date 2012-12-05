@@ -40,9 +40,11 @@ var crm = {
   //----------------------------------------------------------------------------
   submit_export_form: function(format) {
     var form = $$('#export_form')[0];
-    if (format == 'email') { form.action = form.action + '?email_list'; }
-    else { form.action = form.action + '.' + format; }
+    var action = form.action;
+    if (format == 'email') { form.action = action + '?email_list'; }
+    else { form.action = action + '.' + format; }
     form.submit();
+    form.action = action;
   },
   //----------------------------------------------------------------------------
   find_form: function(class_name) {

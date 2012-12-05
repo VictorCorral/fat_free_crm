@@ -63,9 +63,8 @@ class ContactsController < EntitiesController
       @contacts = get_contacts(:page => 1, :per_page => 'all')
       render :text => @contacts.map(&:email).join("; ")
     else
-      @contacts = get_contacts(:page     => params[:page],
-                               :per_page => params[:per_page])
-      respond_with @contacts do |format|
+      #For reasons unknown, localtion must equal nil to avoid an exception from respond_with
+      respond_with @contacts, :location => nil do |format|
         format.xls { render :layout => 'header' }
       end
     end
