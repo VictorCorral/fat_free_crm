@@ -66,7 +66,7 @@ class AccountsController < EntitiesController
       # GET /accounts
       else
         @accounts = get_accounts(:page => params[:page])
-        respond_with @accounts do |format|
+        respond_with @accounts, :location => nil do |format|
           format.xls { render :layout => 'header' }
       end
     end
