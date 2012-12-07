@@ -66,6 +66,7 @@ feature 'Accounts', %q{
     click_link 'A new account'
     page.should have_content('A new account')
     click_link 'Edit'
+#    sleep 600000
     fill_in 'account_name', :with => 'A new account *editted*'
     click_button 'Save Account'
     page.should have_content('A new account *editted*')

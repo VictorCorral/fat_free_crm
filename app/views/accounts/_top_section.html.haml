@@ -17,12 +17,11 @@
         %td
           .label #{t :rating}:
           = rating_select "account[rating]", { :id => :account_rating, :selected => @account.rating, :style => "width:160px" }
-    -if !Rails.env.test?
-      %table
-        %tr
-          %td
-          .label #{t :parent_account}:
-          = parent_account_select(f)
+    %table
+      %tr
+        %td
+        .label #{t :parent_account}:
+        = parent_account_select(f)
       - if Setting.background_info && Setting.background_info.include?(:account)
         %tr
           %td(colspan="5")

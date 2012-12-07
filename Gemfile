@@ -12,6 +12,7 @@ end
 gem 'jruby-openssl'
 gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmssql-adapter'
+gem 'activerecord-jdbcsqlite3-adapter'
 gem 'activerecord-jdbcpostgresql-adapter'
 # gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
@@ -71,8 +72,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
-  gem 'selenium-webdriver', '~> 2.25.0'
+  gem 'capybara', '~>1.1'
+  gem 'selenium-webdriver', '~> 2.26.0'
   gem 'spork'
   gem 'database_cleaner'
   gem 'fuubar'

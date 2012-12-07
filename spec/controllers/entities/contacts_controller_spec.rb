@@ -147,6 +147,7 @@ describe ContactsController do
       end
 
       it "should redirect to contact index if the contact is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:contact, :user => FactoryGirl.create(:user), :access => "Private")
 
         get :show, :id => @private.id
@@ -204,6 +205,7 @@ describe ContactsController do
       end
 
       it "should redirect to parent asset's index page with the message if parent asset got protected" do
+        pending "Entity protection disabled"
         @account = FactoryGirl.create(:account, :access => "Private")
 
         xhr :get, :new, :related => "account_#{@account.id}"
@@ -259,6 +261,7 @@ describe ContactsController do
       end
 
       it "should reload current page with the flash message if the contact is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:contact, :user => FactoryGirl.create(:user), :access => "Private")
 
         xhr :get, :edit, :id => @private.id
@@ -283,6 +286,7 @@ describe ContactsController do
       end
 
       it "should notify the view if previous contact got protected" do
+        pending "Entity protection disabled"
         @previous.update_attribute(:access, "Private")
 
         xhr :get, :edit, :id => @contact.id, :previous => @previous.id
@@ -447,6 +451,7 @@ describe ContactsController do
         end
 
         it "should reload current page with the flash message if the contact is protected" do
+        pending "Entity protection disabled"
           @private = FactoryGirl.create(:contact, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :put, :update, :id => @private.id
@@ -543,6 +548,7 @@ describe ContactsController do
         end
 
         it "should reload current page with the flash message if the contact is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:contact, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :delete, :destroy, :id => @private.id
@@ -570,6 +576,7 @@ describe ContactsController do
       end
 
       it "should redirect to contact index with the flash message if the contact is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:contact, :user => FactoryGirl.create(:user), :access => "Private")
 
         delete :destroy, :id => @private.id

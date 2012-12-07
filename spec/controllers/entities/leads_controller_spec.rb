@@ -170,6 +170,7 @@ describe LeadsController do
       end
 
       it "should redirect to lead index if the lead is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
         get :show, :id => @private.id
@@ -234,6 +235,7 @@ describe LeadsController do
       end
 
       it "should redirect to parent asset's index page with the message if parent asset got protected" do
+        pending "Entity protection disabled"
         @campaign = FactoryGirl.create(:campaign, :access => "Private")
 
         xhr :get, :new, :related => "campaign_#{@campaign.id}"
@@ -278,6 +280,7 @@ describe LeadsController do
       end
 
       it "should reload current page with the flash message if the lead is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
         xhr :get, :edit, :id => @private.id
@@ -302,6 +305,7 @@ describe LeadsController do
       end
 
       it "should notify the view if previous lead got protected" do
+        pending "Entity protection disabled"
         @previous.update_attribute(:access, "Private")
 
         xhr :get, :edit, :id => @lead.id, :previous => @previous.id
@@ -517,6 +521,7 @@ describe LeadsController do
         end
 
         it "should reload current page with the flash message if the lead is protected" do
+        pending "Entity protection disabled"
           @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :put, :update, :id => @private.id
@@ -625,6 +630,7 @@ describe LeadsController do
         end
 
         it "should reload current page with the flash message if the lead is protected" do
+        pending "Entity protection disabled"
           @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :delete, :destroy, :id => @private.id
@@ -652,6 +658,7 @@ describe LeadsController do
       end
 
       it "should redirect to lead index with the flash message if the lead is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
         delete :destroy, :id => @private.id
@@ -695,6 +702,7 @@ describe LeadsController do
       end
 
       it "should reload current page with the flash message if the lead is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
         xhr :get, :convert, :id => @private.id
@@ -719,6 +727,7 @@ describe LeadsController do
       end
 
       it "should notify the view if previous lead got protected" do
+        pending "Entity protection disabled"
         @previous.update_attribute(:access, "Private")
 
         xhr :get, :convert, :id => @lead.id, :previous => @previous.id
@@ -839,6 +848,7 @@ describe LeadsController do
       end
 
       it "should reload current page with the flash message if the lead is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
         xhr :put, :promote, :id => @private.id
@@ -893,6 +903,7 @@ describe LeadsController do
         end
 
         it "should reload current page with the flash message if the lead is protected" do
+        pending "Entity protection disabled"
           @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :put, :reject, :id => @private.id
@@ -923,6 +934,7 @@ describe LeadsController do
         end
 
         it "should redirect to lead index if the lead is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:lead, :user => FactoryGirl.create(:user), :access => "Private")
 
           put :reject, :id => @private.id

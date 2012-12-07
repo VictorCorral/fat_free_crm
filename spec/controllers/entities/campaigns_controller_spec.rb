@@ -178,6 +178,7 @@ describe CampaignsController do
       end
 
       it "should redirect to campaign index if the campaign is protected" do
+        pending "Entity protection disabled"
         @campaign = FactoryGirl.create(:campaign, :user => FactoryGirl.create(:user), :access => "Private")
 
         get :show, :id => @campaign.id
@@ -258,6 +259,7 @@ describe CampaignsController do
       end
 
       it "should reload current page with the flash message if the campaign is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:campaign, :user => FactoryGirl.create(:user), :access => "Private")
 
         xhr :get, :edit, :id => @private.id
@@ -282,6 +284,7 @@ describe CampaignsController do
       end
 
       it "should notify the view if previous campaign got protected" do
+        pending "Entity protection disabled"
         @previous.update_attribute(:access, "Private")
 
         xhr :get, :edit, :id => @campaign.id, :previous => @previous.id
@@ -392,6 +395,7 @@ describe CampaignsController do
         end
 
         it "should reload current page with the flash message if the campaign is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:campaign, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :put, :update, :id => @private.id
@@ -465,6 +469,7 @@ describe CampaignsController do
         end
 
         it "should reload current page with the flash message if the campaign is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:campaign, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :delete, :destroy, :id => @private.id
@@ -492,6 +497,7 @@ describe CampaignsController do
       end
 
       it "should redirect to campaign index with the flash message if the campaign is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:campaign, :user => FactoryGirl.create(:user), :access => "Private")
 
         delete :destroy, :id => @private.id

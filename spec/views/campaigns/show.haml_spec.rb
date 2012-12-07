@@ -16,6 +16,7 @@ describe "/campaigns/show" do
   end
 
   it "should render campaign landing page" do
+    pending "campaigns disabled"
     render
     view.should render_template(:partial => "comments/_new")
     view.should render_template(:partial => "shared/_timeline")

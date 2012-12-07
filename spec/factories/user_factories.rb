@@ -28,6 +28,7 @@ FactoryGirl.define do
     deleted_at          nil
     updated_at          { FactoryGirl.generate(:time) }
     created_at          { FactoryGirl.generate(:time) }
+    write_access        true
     suspended_at        nil
     password              "password"
     password_confirmation "password"

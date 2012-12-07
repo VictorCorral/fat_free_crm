@@ -1,4 +1,4 @@
-=form_tag({}, :id => 'export_form') do
+=form_tag("/#{controller.controller_name}/search", :id => 'export_form') do
   = hash_to_hidden_fields({:query => params[:query]}) unless params[:query].blank?
   = hash_to_hidden_fields({:q => params[:q]}) unless params[:q].blank?
 - action = nil unless defined?(action)

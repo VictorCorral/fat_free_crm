@@ -173,6 +173,7 @@ describe AccountsController do
       end
 
       it "should redirect to account index if the account is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:account, :user => FactoryGirl.create(:user), :access => "Private")
 
         get :show, :id => @private.id
@@ -256,6 +257,7 @@ describe AccountsController do
       end
 
       it "should reload current page with the flash message if the account is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:account, :user => FactoryGirl.create(:user), :access => "Private")
 
         xhr :get, :edit, :id => @private.id
@@ -280,6 +282,7 @@ describe AccountsController do
       end
 
       it "should notify the view if previous account got protected" do
+        pending "Entity protection disabled"
         @previous.update_attribute(:access, "Private")
 
         xhr :get, :edit, :id => @account.id, :previous => @previous.id
@@ -388,6 +391,7 @@ describe AccountsController do
         end
 
         it "should reload current page with the flash message if the account is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:account, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :put, :update, :id => @private.id
@@ -461,6 +465,7 @@ describe AccountsController do
         end
 
         it "should reload current page with the flash message if the account is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:account, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :delete, :destroy, :id => @private.id
@@ -488,6 +493,7 @@ describe AccountsController do
       end
 
       it "should redirect to account index with the flash message if the account is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:account, :user => FactoryGirl.create(:user), :access => "Private")
 
         delete :destroy, :id => @private.id

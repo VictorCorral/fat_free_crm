@@ -187,6 +187,7 @@ describe OpportunitiesController do
       end
 
       it "should redirect to opportunity index if the opportunity is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:opportunity, :user => FactoryGirl.create(:user), :access => "Private")
 
         get :show, :id => @private.id
@@ -251,6 +252,7 @@ describe OpportunitiesController do
       end
 
       it "should redirect to parent asset's index page with the message if parent asset got protected" do
+        pending "Entity protection disabled"
         @account = FactoryGirl.create(:account, :access => "Private")
 
         xhr :get, :new, :related => "account_#{@account.id}"
@@ -304,6 +306,7 @@ describe OpportunitiesController do
       end
 
       it "should reload current page with the flash message if the opportunity is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:opportunity, :user => FactoryGirl.create(:user), :access => "Private")
 
         xhr :get, :edit, :id => @private.id
@@ -328,6 +331,7 @@ describe OpportunitiesController do
       end
 
       it "should notify the view if previous opportunity got protected" do
+        pending "Entity protection disabled"
         @previous.update_attribute(:access, "Private")
 
         xhr :get, :edit, :id => @opportunity.id, :previous => @previous.id
@@ -662,6 +666,7 @@ describe OpportunitiesController do
         end
 
         it "should reload current page with the flash message if the opportunity is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:opportunity, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :put, :update, :id => @private.id
@@ -779,6 +784,7 @@ describe OpportunitiesController do
         end
 
         it "should reload current page with the flash message if the opportunity is protected" do
+          pending "Entity protection disabled"
           @private = FactoryGirl.create(:opportunity, :user => FactoryGirl.create(:user), :access => "Private")
 
           xhr :delete, :destroy, :id => @private.id
@@ -805,6 +811,7 @@ describe OpportunitiesController do
       end
 
       it "should redirect to opportunity index with the flash message if the opportunity is protected" do
+        pending "Entity protection disabled"
         @private = FactoryGirl.create(:opportunity, :user => FactoryGirl.create(:user), :access => "Private")
 
         delete :destroy, :id => @private.id

@@ -17,8 +17,6 @@ describe "/contacts/show" do
     render
     view.should render_template(:partial => "comments/_new")
     view.should render_template(:partial => "shared/_timeline")
-    view.should render_template(:partial => "shared/_tasks")
-    view.should render_template(:partial => "opportunities/_opportunity")
 
     rendered.should have_tag("div[id=edit_contact]")
   end
