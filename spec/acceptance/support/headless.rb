@@ -5,7 +5,7 @@
 
 if ENV['HEADLESS'] == 'true' or ENV["CI"] == "true"
   require 'headless'
-  headless = Headless.new
+  headless = Headless.new(:dimensions => "1600x1200x24")
   headless.start
   HEADLESS_DISPLAY = ":#{headless.display}"
   at_exit do

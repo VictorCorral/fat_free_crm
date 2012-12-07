@@ -82,6 +82,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    capybara-screenshot (0.3.1)
+      capybara (>= 1.0, < 3)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     chosen-rails_ffcrm (0.9.5)
@@ -332,6 +334,7 @@ DEPENDENCIES
   capistrano
   capistrano_colors
   capybara (~> 1.1)
+  capybara-screenshot
   cocaine
   coffee-rails (~> 3.2.1)
   database_cleaner

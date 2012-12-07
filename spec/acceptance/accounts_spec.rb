@@ -50,6 +50,7 @@ feature 'Accounts', %q{
     click_link 'Create Account'
 
     click_link 'Contact Information'
+    page.should have_content('Comment')
     fill_in 'account_phone', :with => '+1 2345 6789'
 
     click_link 'Comment'

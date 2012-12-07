@@ -8,6 +8,7 @@ feature 'Tasks', %q{
 
   before :each do
     do_login_if_not_already(:first_name => 'Bill', :last_name => 'Murray')
+    pending "Tasks disabled"
   end
 
   scenario 'should view a list of tasks which are assigned to the logged in user' do

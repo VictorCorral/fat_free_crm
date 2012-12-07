@@ -138,6 +138,7 @@ describe CommentsController do
       end
 
       it "should redirect to #{asset}'s index page with the message if the #{asset} got protected" do
+        pending "Protection not supported"
         @asset = FactoryGirl.create(asset, :access => "Private")
         @comment = Comment.new
 

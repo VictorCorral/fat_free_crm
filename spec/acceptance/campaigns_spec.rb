@@ -43,7 +43,7 @@ feature 'Campaigns', %q{
   scenario "remembers the comment field when the creation was unsuccessful", :js => true do
     visit campaigns_page
     click_link 'Create Campaign'
-
+    page.should have_content('Comment')
     click_link 'Comment'
     fill_in 'comment_body', :with => 'This campaign is very important'
     click_button 'Create Campaign'
