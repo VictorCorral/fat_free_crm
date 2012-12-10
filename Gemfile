@@ -8,12 +8,16 @@ platforms :ruby do
   gem 'activerecord-sqlserver-adapter'
   gem 'pg', '~> 0.13.2'
 end
-
-gem 'jruby-openssl'
-gem 'activerecord-jdbc-adapter'
-gem 'activerecord-jdbcmssql-adapter'
-gem 'activerecord-jdbcsqlite3-adapter'
-gem 'activerecord-jdbcpostgresql-adapter'
+platform :jruby do
+  group :development, :test do
+    gem 'therubyrhino'
+  end
+  gem 'jruby-openssl'
+  gem 'activerecord-jdbc-adapter'
+  gem 'activerecord-jdbcmssql-adapter'
+  gem 'activerecord-jdbcsqlite3-adapter'
+  gem 'activerecord-jdbcpostgresql-adapter'
+end
 # gem 'mysql2', '0.3.10'
 # gem 'sqlite3'
 #gem "activerecord-import", "~> 0.2.11"
