@@ -1,0 +1,3 @@
+[submodule "private_config"]
+	path = private_config
+	url = git@github.apexclearing.local:acscd/fat_free_crm_config.git
